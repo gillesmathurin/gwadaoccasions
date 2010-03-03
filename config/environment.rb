@@ -8,7 +8,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.gem 'paperclip', :source => 'http://gemcutter.org'
-  config.gem 'mislav-will_paginate', :lib => 'will_paginate'
+  config.gem 'will_paginate', :lib => 'will_paginate'
   config.gem 'webrat', :lib => false
   config.gem 'cucumber', :lib => false
   config.gem 'rspec-rails', :lib => false
