@@ -1,0 +1,18 @@
+html {
+	width: 1100px;
+}
+
+body {
+	background: url(../images/bg-gradient_02.jpg) repeat-x;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+ul.menubar {
+	
+}
+
+ul.menubar li {
+	float: left;
+	margin-right: 25px;
+}

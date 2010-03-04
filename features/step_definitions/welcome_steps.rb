@@ -10,11 +10,17 @@ When /^I enter the welcome page$/ do
 end
 
 Then /^I should see a menu bar$/ do
-  pending # express the regexp above with the code you wish you had
+  visit root_path
+  response.should have_selector("ul.menubar")
+  response.should contain("Catalogue")
+  response.should contain("Nos Services")
+  response.should contain("Abonnez-vous")
+  response.should contain("Aide")
+  response.should contain("Connexion")
 end
 
-Then /^I should see a "([^\"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see a "([^\"]*)"$/ do |text|
+  response.should contain(text)
 end
 
 Then /^I should see a search form$/ do
