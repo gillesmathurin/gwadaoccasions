@@ -7,7 +7,7 @@ RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  config.gem 'paperclip', :source => 'http://gemcutter.org'
+  config.gem 'paperclip'
   config.gem 'will_paginate', :lib => 'will_paginate'
   config.gem 'webrat', :lib => false
   config.gem 'cucumber', :lib => false
