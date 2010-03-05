@@ -20,7 +20,8 @@ describe "/welcome/index" do
     it "renders a form to search for vehicles" do
       render
       response.should have_selector("form", :method => 'post', :action => searches_path) do |form|
-        # form.should have_selector("input", :type => "select")
+        form.should have_selector("select", :name => "search[category]")
+        # TODO WRITE THE REST OF THE FORM
         form.should have_selector("input", :type => "submit")  
       end
     end
