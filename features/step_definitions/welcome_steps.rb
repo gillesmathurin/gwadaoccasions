@@ -51,3 +51,32 @@ end
 Then /^I should see a "([^\"]*)" message$/ do |arg1|
   response.should contain(arg1)
 end
+
+# With vehicles and registered users
+Given /^there are 2 Vehicles in the database$/ do
+  Vehicle.create!(:price => "3000")
+  Vehicle.create!(:price => "5000")
+end
+
+Given /^there are 2 Visitor accounts in the database$/ do
+  User.create!(:email => "user1@testmail.com",:password => "user123", :password_confirmation => "user123")
+  User.create!(:email => "user2@testmail.com", :password => "user2123", :password_confirmation => "user2123")
+end
+
+Then /^I should see a "([^\"]*)" in the status block$/ do |arg1|
+  response.should contain(arg1)
+end
+
+Then /^I should see "([^\"]*)" in the same status block$/ do |arg1|
+  response.should contain(arg1)
+end
+
+# with selected vehicles for the week
+Given /^there are 1 vehicle selected for the week$/ do
+  Vehicle.create!(:select_for_week => true, :modele => "Peugeot 206", :annee => (4.years.ago).to_date, :price => "3000", :kilometrage => "75000")
+end
+
+Then /^I should see the selected vehicle$/ do
+  response.should contain("Peugeot 206 - Année : 2006 - 75000 km - 3000 €")
+end
+

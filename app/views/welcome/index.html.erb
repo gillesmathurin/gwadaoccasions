@@ -30,19 +30,23 @@
 	</div>
 	<hr/>
 	<h5>La sélection de la semaine</h5>
-	<p class="week_selection">
+	<div class="week_selection">
 		<% if @vehicles_of_the_week.empty? %>
 			Pas d'offres pour le moment.
 		<% else %>
-		
+			<% @vehicles_of_the_week.each do |v| %>
+				<p>
+					<%=h v.modele %> - Année : <%= v.display_year %> - <%= v.kilometrage %> km - <%= v.price %> €
+				</p>
+			<% end %>
 		<% end %>
-	</p>
+	</div>
 </div>
 <div id="sidebar" class="span-6 last">
 	<div class="database_state">
 		<p>Statut</p>
 		<p><%=h @vehicle_number %> offre(s)</p>
-		<p><%=h @user_number %> compte(s) visiteur</p>
+		<p><%=h @user_number %> utilisateur(s) enregistré(s)</p>
 	</div>
 	
 	<div class="registration_block">
