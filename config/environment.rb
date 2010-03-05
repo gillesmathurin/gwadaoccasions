@@ -13,6 +13,8 @@ Rails::Initializer.run do |config|
   config.gem 'cucumber', :lib => false
   config.gem 'rspec-rails', :lib => false
   config.gem 'rspec', :lib => false
+  config.gem 'devise'
+  config.gem 'warden'
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

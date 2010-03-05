@@ -1,16 +1,52 @@
 <div id="content" class="span-17 colborder">
 	<p class="invitation">
-		Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes <%= link_to "Créez votre compte", "", :class => "bigLink" %>
+		Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes<br/> <%= link_to "Créez votre compte", new_user_registration_path, :class => "bigLink" %>
 	</p>
-	<p class="searchform">
-		<% form_for :search, :url => searches_path do |f| -%>
-		  
+	<div class="searchform">
+		<% form_for :search, :url => searches_path() do |f| -%>
+			<table>
+				<tr>
+					<td><%= f.select :category, Category.all.collect {|c| [c.name, c.id]}, {:include_blank => "Type"} %></td>
+				</tr>
+				<tr>
+					<td><%= f.select :minprice, Vehicle::PRICE, {:include_blank => "Prix min"} %></td>
+					<td><%= f.date_select :minyear, :start_year => 1960, :discard_day => true, :discard_month => true, :prompt => { :year => "Annee-modele min" } %></td>
+					<td><%= f.select :minkilometrage, Vehicle::KILOMETRAGE, {:include_blank => "KM min"} %></td>
+					<td><%= f.select :energy, Vehicle::ENERGY, {:include_blank => "Energie"} %></td>
+				</tr>
+				<tr>
+					<td><%= f.select :maxprice, Vehicle::PRICE, {:include_blank => "Prix max"} %></td>
+					<td><%= f.date_select :maxyear, :start_year => 1960, :discard_day => true, :discard_month => true, :prompt => { :year => "Annee-modele max" } %></td>
+					<td><%= f.select :maxkilometrage, Vehicle::KILOMETRAGE, {:include_blank => "KM max"} %></td>
+					<td><%= f.select :boite_vitesse, Vehicle::VITESSE, {:include_blank => "Boite vitesse"} %></td>
+				</tr>
+			</table>
+		  <%= submit_tag "Chercher" %>
 		<% end -%>
+	</div>
+	<hr/>
+	<h5>La sélection de la semaine</h5>
+	<p class="week_selection">
+		<% if @vehicles_of_the_week.empty? %>
+			Pas d'offres pour le moment.
+		<% else %>
+		
+		<% end %>
 	</p>
 </div>
 <div id="sidebar" class="span-6 last">
 	<div class="database_state">
+		<p>Statut</p>
 		<p><%=h @vehicle_number %> offre(s)</p>
 		<p><%=h @user_number %> compte(s) visiteur</p>
+	</div>
+	
+	<div class="registration_block">
+		<p>Vous êtes un professionnel ?</p>
+		<p><%= link_to "Découvrez nos services", "/services.html" %></p>
+		<p>Vous êtes un particulier ?</p>
+		<p>
+			<%= link_to "Publiez gratuitement vos annonces", new_user_registration_path %>
+		</p>
 	</div>
 </div>

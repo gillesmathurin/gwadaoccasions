@@ -1,0 +1,3 @@
+      exists  db/migrate
+      create  db/migrate/20100305162958_add_select_for_week_column_to_vehicles.rb
+wrong number of arguments (1 for 2)

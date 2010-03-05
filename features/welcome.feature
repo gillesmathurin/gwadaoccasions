@@ -11,10 +11,10 @@ Feature: Welcome
 		When I enter the welcome page
 		Then I should see a menu bar
 		And I should see a "Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes" 
-		# And I should see a search form
+		And I should see a search form
 		And I should see a "0 offre" in a text-block 
-		And I should see a "0 compte visiteur" in a text-block
-		And I should see a "Vous êtes un professionel ?" text
+		And I should see a "0 compte(s) visiteur" in a text-block
+		And I should see a "Vous êtes un professionnel ?" text
 		And I should see a "Découvrez nos services" link
 		And I should see a "Vous êtes un particulier ?" in the page
 		And I should see a "Publiez gratuitement vos annonces" link

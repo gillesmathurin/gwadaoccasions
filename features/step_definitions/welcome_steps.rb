@@ -5,6 +5,7 @@ end
 Given /^there is no Vehicle$/ do
   @vehicle_number = 0
   @user_number = 0
+  @vehicles_of_the_week = []
 end
 
 When /^I enter the welcome page$/ do
@@ -25,13 +26,14 @@ Then /^I should see a "([^\"]*)"$/ do |text|
   response.should contain(text)
 end
 
-# Then /^I should see a search form$/ do
-#   # pending
-#   response.should have_selector("form", :action => "/searches", :method => "post")
-# end
+Then /^I should see a search form$/ do
+  # pending
+  response.should have_selector("form", :action => "/searches", :method => "post")
+end
 
 Then /^I should see a "([^\"]*)" link$/ do |text|
-  pending
+  response.should contain(text)
+  response.should have_link("/services.html")
 end
 
 Then /^I should see a "([^\"]*)" in a text\-block$/ do |arg1|
@@ -39,13 +41,13 @@ Then /^I should see a "([^\"]*)" in a text\-block$/ do |arg1|
 end
 
 Then /^I should see a "([^\"]*)" text$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  response.should contain(arg1)
 end
 
 Then /^I should see a "([^\"]*)" in the page$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  response.should contain(arg1)
 end
 
 Then /^I should see a "([^\"]*)" message$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  response.should contain(arg1)
 end
