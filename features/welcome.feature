@@ -5,7 +5,7 @@ Feature: Welcome
 	I want to see a welcome page containing general information about the site
 	I want to see a search form helping me find vehicles that suit my need
 	
-	Scenario: Welcome new visitors on a blank website (with nothing in the database and no visitor accounts)
+	Scenario: Welcome new visitors on an empty website (nothing in the database and no visitor accounts)
 		Given I have not visited the site
 		And there is no Vehicle
 		When I enter the welcome page
@@ -20,5 +20,17 @@ Feature: Welcome
 		And I should see a "Publiez gratuitement vos annonces" link
 		And I should see a "La sélection de la semaine" text
 		And I should see a "Pas d'offres pour le moment" message
+		
+	Scenario: Welcome new visitors with offers and visitors accounts
+		Given I have not visited the site
+		And there are 2 Vehicles in the database
+		And there are 2 Visitor accounts in the database
+		When I enter the welcome page
+		Then I should see a "2 offre(s)" in the status block
+		And I should see "2 compte(s) visiteur"
 
+	Scenario: Welcome visitors with a Weekly selection
+		Given there are 2 vehicles selected for the week
+		When I enter the welcome page
+		Then I should seew
 		

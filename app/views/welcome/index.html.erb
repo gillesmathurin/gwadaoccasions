@@ -20,8 +20,12 @@
 					<td><%= f.select :maxkilometrage, Vehicle::KILOMETRAGE, {:include_blank => "KM max"} %></td>
 					<td><%= f.select :boite_vitesse, Vehicle::VITESSE, {:include_blank => "Boite vitesse"} %></td>
 				</tr>
+				<tr>
+					<td colspan="4">Tous les champs sont optionnels</td>
+					<td><%= submit_tag "Chercher" %></td>
+				</tr>
 			</table>
-		  <%= submit_tag "Chercher" %>
+		  
 		<% end -%>
 	</div>
 	<hr/>

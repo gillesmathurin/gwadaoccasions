@@ -1,3 +1,9 @@
+Category.delete_all
+# Creation des categories
+a = ["Voiture", "Moto", "Jetski", "Bateau"]
+a.each do |e|
+  Category.create!(:name => e)
+end
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
