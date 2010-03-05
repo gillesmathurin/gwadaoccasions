@@ -1,8 +1,10 @@
+# Scenario : Empty database
 Given /^I have not visited the site$/ do
 end
 
 Given /^there is no Vehicle$/ do
-  @vehicules = []
+  @vehicle_number = 0
+  @user_number = 0
 end
 
 When /^I enter the welcome page$/ do
@@ -23,16 +25,17 @@ Then /^I should see a "([^\"]*)"$/ do |text|
   response.should contain(text)
 end
 
-Then /^I should see a search form$/ do
-  pending # express the regexp above with the code you wish you had
-end
+# Then /^I should see a search form$/ do
+#   # pending
+#   response.should have_selector("form", :action => "/searches", :method => "post")
+# end
 
-Then /^I should see a "([^\"]*)" link$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see a "([^\"]*)" link$/ do |text|
+  pending
 end
 
 Then /^I should see a "([^\"]*)" in a text\-block$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  response.should contain(arg1)
 end
 
 Then /^I should see a "([^\"]*)" text$/ do |arg1|

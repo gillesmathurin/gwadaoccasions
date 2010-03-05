@@ -15,8 +15,7 @@
 
 <body>
 	<div class="container">
-		<div class="span-24 last">
-			Header
+		<div id="header" class="span-24 last">
 			<ul class="menubar">
 				<li>Catalogue</li>
 				<li>Nos Services</li>
@@ -25,12 +24,10 @@
 				<li>Connexion</li>
 			</ul>
 		</div>
-		<div class="span-16 colborder">
-			Content
-		</div>
-		<div class="span-7 last">
-			side bar
-		</div>
+		<%= yield %>
+	</div>
+	<div class="subcontainer">
+		&nbsp;		
 	</div>
 </body>
 </html>

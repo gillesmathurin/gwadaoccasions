@@ -1,2 +1,16 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div id="content" class="span-17 colborder">
+	<p class="invitation">
+		Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes <%= link_to "Créez votre compte", "", :class => "bigLink" %>
+	</p>
+	<p class="searchform">
+		<% form_for :search, :url => searches_path do |f| -%>
+		  
+		<% end -%>
+	</p>
+</div>
+<div id="sidebar" class="span-6 last">
+	<div class="database_state">
+		<p><%=h @vehicle_number %> offre(s)</p>
+		<p><%=h @user_number %> compte(s) visiteur</p>
+	</div>
+</div>
