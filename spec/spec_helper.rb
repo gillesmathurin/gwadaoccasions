@@ -4,6 +4,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environment'))
 require 'spec/autorun'
 require 'spec/rails'
+require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 
 # Uncomment the next line to use webrat's matchers
 require 'webrat/integrations/rspec-rails'
@@ -21,6 +22,8 @@ Spec::Runner.configure do |config|
   config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
 
   # == Fixtures
+  config.before(:all)    { Sham.reset(:before_all)  }
+  config.before(:each)   { Sham.reset(:before_each) }
   #
   # You can declare fixtures for each example_group like this:
   #   describe "...." do
