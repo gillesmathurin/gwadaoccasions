@@ -15,3 +15,10 @@ Vehicle.blueprint do
   price
   annee
 end
+
+Car.blueprint do
+  modele
+  description
+  price
+  annee
+end
