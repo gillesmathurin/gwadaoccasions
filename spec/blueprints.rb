@@ -12,7 +12,7 @@ Sham.define do
   modele  { Faker::Lorem.words }
   description  { Faker::Lorem.paragraph }
   price { rand(50000) }
-  annee { (1960..Date.today.year).to_a.rand }
+  annee { (Date.parse("1960-01-01")..Date.today).to_a.rand }
   kilometrage { (0..200000).to_a.rand }
   serialnumber { String.random_alphanumeric }
   immatriculation { String.random_alphanumeric(8) }

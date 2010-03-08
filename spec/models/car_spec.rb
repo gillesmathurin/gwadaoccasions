@@ -14,14 +14,14 @@ describe Car do
   end
 
   it "should create a new instance given valid attributes" do
-    Car.make
+    @car = Car.make
+    @car.should be_valid
     Car.create!(@valid_attributes)
   end
   
   it "requires an integer value for annee" do
     @car = Car.new(@valid_attributes.except(:annee))
     @car.should_not be_valid
-    @car = Car.new(@valid_attributes[:annee => "azerty"])
     @car.should have(1).error_on(:annee)
   end
   

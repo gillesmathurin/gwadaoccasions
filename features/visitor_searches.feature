@@ -5,7 +5,8 @@ Feature: Search
 	I want to use a search form to find vehicles
 	
 	Scenario: Looking for cars with price criteria
-	Given A car with a 6000 € price
+	Given a Voiture Category
+	And A car with a 6000 € price
 	When I search for cars with price between 0 and 10 000 €
 	Then I should find the car
 	

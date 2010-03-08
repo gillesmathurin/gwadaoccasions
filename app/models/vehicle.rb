@@ -1,4 +1,6 @@
 class Vehicle < ActiveRecord::Base
+  default_scope :order => "price asc"
+  
   belongs_to :category
   has_attached_file :overviewpic, :styles => {:thumb => "150x150>", :medium => "250x250>", :large => "450x450>"}
     
