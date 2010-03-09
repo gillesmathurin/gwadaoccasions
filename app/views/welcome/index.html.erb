@@ -35,16 +35,17 @@
 	<h5>La sélection de la semaine</h5>
 	<div class="week_selection">
 		<% if @vehicles_of_the_week.empty? %>
-			Pas d'offres pour le moment.
+			Pas de véhicules sélectionnés cette semaine
 		<% else %>
 			<% @vehicles_of_the_week.each do |v| %>
 				<p>
-					<%=h v.modele %> - Année : <%= v.display_year %> - <%= v.kilometrage %> km - <%= v.price %> €
+					<%=h v.modele %> - Année : <%= v.display_year %> - <%= format_km(v.kilometrage) unless v.kilometrage.blank? %> - <%= v.price %> €
 				</p>
 			<% end %>
 		<% end %>
 	</div>
 </div>
+
 <div id="sidebar" class="span-6 last">
 	<div class="database_state">
 		<p>Statut</p>

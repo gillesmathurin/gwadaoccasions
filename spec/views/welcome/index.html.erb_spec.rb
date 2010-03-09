@@ -89,7 +89,7 @@ describe "/welcome/index" do
     it "displays 'Pas d'offres pour le moment' with the selection bloc" do
       render
       response.should have_selector(".week_selection") do |selector|
-        selector.should contain("Pas d'offres pour le moment.")
+        selector.should contain("Pas de véhicules sélectionnés cette semaine")
       end
     end
     

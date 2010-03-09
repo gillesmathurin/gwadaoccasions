@@ -19,7 +19,7 @@ Feature: Welcome
 		And I should see a "Vous êtes un particulier ?" in the page
 		And I should see a "Publiez gratuitement vos annonces" link
 		And I should see a "La sélection de la semaine" text
-		And I should see a "Pas d'offres pour le moment" message
+		And I should see a "Pas de véhicules sélectionnés cette semaine" message
 		
 	Scenario: Welcome new visitors with offers and visitors accounts
 		Given I have not visited the site

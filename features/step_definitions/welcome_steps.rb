@@ -63,6 +63,7 @@ Given /^there are 2 Visitor accounts in the database$/ do
   User.create!(:email => "user2@testmail.com", :password => "user2123", :password_confirmation => "user2123")
 end
 
+
 Then /^I should see a "([^\"]*)" in the status block$/ do |arg1|
   response.should contain(arg1)
 end
