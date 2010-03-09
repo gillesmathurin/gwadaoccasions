@@ -1,11 +1,11 @@
 === DESCRIPTION ====
 
-This is a basic Second-Hand Vehicle Directory RailsApp which can be improve many ways.
+This is a basic Second-Hand Vehicle Directory RailsApp which can be improve in many ways. It's a work in progress and my currently BDD learning field with Cucumber and Rspec.
 It has a simple graphic design based on BluePrint CSS so it can be easily customized.
 
 This app intends to have some direct marketing features in the near future as there will be to kind of account, one for visitors and another for providers :
 
-	- the visitors will be able to record "interesting vehicles" into their account, as well as tell a friend about them. They will be able to record their search profiles (up to 5) so that they automatically receive alert emails with vehicles description as soon as a match enters the database.
+	- the visitors will be able to record "interesting vehicles" into their account, as well as tell a friend about them. They will be able to record their search profiles (up to 5) so that they automatically receive alert emails with vehicles description as soon as a match enters the database. They will able select vehicles so that they can find them easily the next time they come
 	
 	- the providers will be able to CRUD as much vehicles they want, check the list of matching potential clients for their vehicles and get an PDF list by email everyday of potentiel customers
 	
