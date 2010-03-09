@@ -27,7 +27,7 @@ When /^I search for cars with price between 0 and 10 000 €$/ do
   click_button "Chercher"  
 end
 
-Then /^I should see the car$/ do
+Then /^I should see the car in the results$/ do
   response.should contain("#{@car.modele} - Année : #{@car.display_year} - #{@car.kilometrage} km - #{@car.price} €")
 end
 
@@ -47,7 +47,7 @@ When /^I search for "([^\"]*)" priced between "([^\"]*)" and "([^\"]*)" € with
 end
 
 #3rd scenario
-Then /^I should not see the car$/ do
+Then /^I should not see the car in the results$/ do
   response.should contain("Pas de résultats")
 end
 
