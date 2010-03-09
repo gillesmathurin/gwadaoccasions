@@ -46,6 +46,11 @@ When /^I search for "([^\"]*)" priced between "([^\"]*)" and "([^\"]*)" € with
   click_button "Chercher"
 end
 
+#3rd scenario
+Then /^I should not see the car$/ do
+  response.should contain("Pas de résultats")
+end
+
 
 
 

@@ -17,7 +17,7 @@ Sham.define do
   serialnumber { String.random_alphanumeric }
   immatriculation { String.random_alphanumeric(8) }
   energy { Vehicle::ENERGY.rand }
-  boite_vitesse { Vehicle::VITESSE.rand }
+  boite_vitesse(:unique => false) { Vehicle::VITESSE.rand }
 end
 
 Vehicle.blueprint do
