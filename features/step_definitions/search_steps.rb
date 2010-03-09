@@ -27,8 +27,12 @@ When /^I search for cars with price between 0 and 10 000 €$/ do
   click_button "Chercher"  
 end
 
+Then /^I should see the car description in the results$/ do
+  response.should contain("#{@car.modele} - Année : #{@car.display_year} - 128037.00 km - #{@car.price} €")
+end
+
 Then /^I should see the car in the results$/ do
-  response.should contain("#{@car.modele} - Année : #{@car.display_year} - #{@car.kilometrage} km - #{@car.price} €")
+  response.should contain("#{@car.modele} - Année : #{@car.display_year} - 60000.00 km - #{@car.price} €")
 end
 
 # 2nd scenario :
@@ -57,7 +61,7 @@ Given /^There is a motorbike priced "([^\"]*)" € with "([^\"]*)" km made$/ do 
 end
 
 Then /^I should see the motorbike in the results$/ do
-  response.should contain("#{@motorbike.modele} - Année : #{@motorbike.display_year} - #{@motorbike.kilometrage} km - #{@motorbike.price} €")
+  response.should contain("#{@motorbike.modele} - Année : #{@motorbike.display_year} - 50000.00 km - #{@motorbike.price} €")
 end
 
 #5th scenario :jetski
@@ -74,6 +78,16 @@ When /^I search for "([^\"]*)" priced between "([^\"]*)" and "([^\"]*)" €$/ do
 end
 
 Then /^I should see the jetski in the results$/ do
-  response.should contain("#{@jetski.modele} - Année : #{@jetski.display_year} - #{@jetski.kilometrage} km - #{@jetski.price}")
+  response.should contain("#{@jetski.modele} - Année : #{@jetski.display_year} - 50000.00 km - #{@jetski.price}")
 end
+
+#6th scenario : boats search
+Given /^There is a Bateau priced "([^\"]*)" €$/ do |arg1|
+  @boat = Bateau.make(:price => arg1)
+end
+
+Then /^I should see the bateau in the results$/ do
+  response.should contain("#{@boat.modele} - Année : #{@boat.display_year} - - #{@boat.price} €")
+end
+
 

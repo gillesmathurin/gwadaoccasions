@@ -57,3 +57,10 @@ Jetski.blueprint do
   annee
   kilometrage
 end
+
+Bateau.blueprint do
+  modele
+  description
+  price
+  annee
+end

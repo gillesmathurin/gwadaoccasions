@@ -10,7 +10,7 @@ Feature: Visitor Search
 	And There is car priced "6000" €
 	And There is no vehicles of the week selection
 	When I search for cars with price between 0 and 10 000 €
-	Then I should see the car in the results
+	Then I should see the car description in the results
 	
 	Scenario: Find Voitures (cars) based on Type, Price and Kilometers
 	Given I am on "the homepage"
@@ -39,4 +39,11 @@ Feature: Visitor Search
 	And There is a Jetski priced "5000" € with "50000" km made
 	When I search for "Jetski" priced between "0" and "5000" €
 	Then I should see the jetski in the results
+	
+	Scenario: Find Bateaux (boats)
+	Given I am on "the homepage"
+	And There is a "Bateau" Category
+	And There is a Bateau priced "10000" €
+	When I search for "Bateau" priced between "0" and "15000" €
+	Then I should see the bateau in the results
 	

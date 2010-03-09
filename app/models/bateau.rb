@@ -1,0 +1,2 @@
+class Bateau < Vehicle
+end
