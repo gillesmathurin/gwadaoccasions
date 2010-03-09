@@ -10,7 +10,7 @@ describe "/welcome/index" do
     @vehicle ||= mock_model(Vehicle, stubs)
   end
   
-  def valid_attributes
+  def valid_attributes 
       {
         :type => "value for type",
         :price => 1,
@@ -41,14 +41,19 @@ describe "/welcome/index" do
        :maxprice => "", :minyear => Date.today, :maxyear => Date.today,
        :minkilometrage => "", :maxkilometrage => "", :energy => "",
        :boite_vitesse => "")
+       @mock_pic = mock('overviewpic')
     end
     
     it "displays the number of vehicles available" do
+      mock_vehicle.should_receive(:overviewpic).and_return(@mock_pic)
+      @mock_pic.should_receive(:url).and_return("urlformissingimage")
       render
       response.should contain("1 offre")
     end
     
     it "renders a form to search for vehicles" do
+      mock_vehicle.should_receive(:overviewpic).and_return(@mock_pic)
+      @mock_pic.should_receive(:url).and_return("urlformissingimage")
       render
       response.should have_selector("form", :method => 'post', :action => searches_path) do |form|
         form.should have_selector("select", :name => "search[category]")
@@ -58,6 +63,8 @@ describe "/welcome/index" do
     end
     
     it "displays the number of registered users" do
+      mock_vehicle.should_receive(:overviewpic).and_return(@mock_pic)
+      @mock_pic.should_receive(:url).and_return("urlformissingimage")
       render
       response.should contain("1 utilisateur(s) enregistré(s)")
     end

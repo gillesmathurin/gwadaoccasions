@@ -1,2 +1,15 @@
-<h1>Vehicles#show</h1>
-<p>Find me in app/views/vehicles/show.html.erb</p>
+<div id="content" class="span-17 colborder">
+	<p class="invitation">
+		Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes<br/> <%= link_to "Créez votre compte", new_user_registration_path, :class => "bigLink" %>
+	</p>
+	
+	<hr/>
+	
+	<div class="vehicle_description">
+		<h5><%= @vehicle.modele %> - <%= @vehicle.price %> €</h5>
+		
+		<div class="gallery">
+			<%= image_tag(@vehicle.overviewpic.url(:large)) %>
+		</div>
+	</div>
+</div>

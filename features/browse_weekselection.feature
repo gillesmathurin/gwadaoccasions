@@ -1,8 +1,8 @@
 Feature: Browse WeekSelection
 
-	In order to have more infos on the weekly selected vehicles
+	In order to have direct infos on good vehicles
 	As a visitor 
-	I want to browse into this selection
+	I want to browse the weekly selection
 	
 	Scenario: No vehicles selected for the week
 	Given I have not visited the site
@@ -21,4 +21,12 @@ Feature: Browse WeekSelection
 	Given There is a car selected for the week
 	And I enter the welcome page
 	When I follow "Voir fiche"
-	Then I should be on
+	Then I should be on "vehicle show page"
+	
+@focus
+	Scenario: Viewing a vehicle page (card)
+	Given There is a car selected for the week
+	And I enter the welcome page
+	When I follow "Voir fiche"
+	Then I should be on "vehicle show page"
+	And I should see a complete and detailed description of the vehicle
