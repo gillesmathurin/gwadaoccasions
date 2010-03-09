@@ -26,3 +26,17 @@ Feature: Visitor Search
 	When I search for "Voiture" priced between "2000" and "6000" € with at most "20 000 Km"
 	Then I should not see the car in the results
 	
+	Scenario: Find Motorbikes
+	Given I am on "the homepage"
+	And There is a "Moto" Category
+	And There is a motorbike priced "2000" € with "50000" km made
+	When I search for "Moto" priced between "0" and "5000" € with at most "70 000 Km"
+	Then I should see the motorbike in the results
+	
+	Scenario: Find Jetski
+	Given I am on "the homepage"
+	And There is a "Jetski" Category
+	And There is a Jetski priced "5000" € with "50000" km made
+	When I search for "Jetski" priced between "0" and "5000" €
+	Then I should see the jetski in the results
+	

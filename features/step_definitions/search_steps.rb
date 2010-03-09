@@ -51,6 +51,29 @@ Then /^I should not see the car in the results$/ do
   response.should contain("Pas de résultats")
 end
 
+#4th scenario
+Given /^There is a motorbike priced "([^\"]*)" € with "([^\"]*)" km made$/ do |arg1, arg2|
+  @motorbike = Moto.make(:price => arg1, :kilometrage => arg2)
+end
 
+Then /^I should see the motorbike in the results$/ do
+  response.should contain("#{@motorbike.modele} - Année : #{@motorbike.display_year} - #{@motorbike.kilometrage} km - #{@motorbike.price} €")
+end
 
+#5th scenario :jetski
+Given /^There is a Jetski priced "([^\"]*)" € with "([^\"]*)" km made$/ do |arg1, arg2|
+  @jetski = Jetski.make(:price => arg1, :kilometrage => arg2)
+end
+
+When /^I search for "([^\"]*)" priced between "([^\"]*)" and "([^\"]*)" €$/ do |arg1, arg2, arg3|
+  visit root_path
+  select arg1, :from => "search_category"
+  select arg2, :from => "search_minprice"
+  select arg3, :from => "search_maxprice"
+  click_button "Chercher"
+end
+
+Then /^I should see the jetski in the results$/ do
+  response.should contain("#{@jetski.modele} - Année : #{@jetski.display_year} - #{@jetski.kilometrage} km - #{@jetski.price}")
+end
 

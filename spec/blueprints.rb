@@ -9,7 +9,7 @@ def String.random_alphanumeric(size=16)
 end
 
 Sham.define do
-  modele  { Faker::Lorem.words }
+  modele  { Faker::Name.name }
   description  { Faker::Lorem.paragraph }
   price { rand(50000) }
   annee { (Date.parse("1960-01-01")..Date.today).to_a.rand }
@@ -18,6 +18,7 @@ Sham.define do
   immatriculation { String.random_alphanumeric(8) }
   energy { Vehicle::ENERGY.rand }
   boite_vitesse(:unique => false) { Vehicle::VITESSE.rand }
+  cylindree { [0, 50, 75, 100, 150, 200, 250, 500, 750, 1000, 1500].rand }
 end
 
 Vehicle.blueprint do
@@ -36,4 +37,23 @@ Voiture.blueprint do
   immatriculation
   energy
   boite_vitesse
+end
+
+Moto.blueprint do
+  modele
+  description
+  price
+  annee
+  kilometrage
+  immatriculation
+  boite_vitesse
+  cylindree
+end
+
+Jetski.blueprint do
+  modele
+  description
+  price
+  annee
+  kilometrage
 end
