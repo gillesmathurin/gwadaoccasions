@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Car do
+describe Voiture do
   before(:each) do
     @valid_attributes = {
       :annee => 2009,
@@ -14,13 +14,13 @@ describe Car do
   end
 
   it "should create a new instance given valid attributes" do
-    @car = Car.make
+    @car = Voiture.make
     @car.should be_valid
-    Car.create!(@valid_attributes)
+    Voiture.create!(@valid_attributes)
   end
   
   it "requires an integer value for annee" do
-    @car = Car.new(@valid_attributes.except(:annee))
+    @car = Voiture.new(@valid_attributes.except(:annee))
     @car.should_not be_valid
     @car.should have(1).error_on(:annee)
   end

@@ -27,12 +27,12 @@ describe SearchesController do
         assigns[:vehicles].should == [@vehicle]
       end
       
-      it "renders to the welcome/index view" do
+      it "renders to the show template" do
         Search.should_receive(:new).with({'these' => 'params'}).and_return(@search)
         @search.should_receive(:vehicles).and_return([@vehicle])
         post :create, :search => {:these => "params"}
         assigns[:vehicles].should == [@vehicle]
-        response.should render_template("welcome/index")
+        response.should render_template("index")
         
       end
     end

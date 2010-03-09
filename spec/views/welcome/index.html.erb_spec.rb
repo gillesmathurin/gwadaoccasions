@@ -56,6 +56,7 @@ describe "/welcome/index" do
         form.should have_selector("input", :type => "submit")  
       end
     end
+    
     it "displays the number of registered users" do
       render
       response.should contain("1 utilisateur(s) enregistré(s)")

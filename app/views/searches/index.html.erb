@@ -32,18 +32,12 @@
 	
 	<hr/>
 	
-	<h5>La sélection de la semaine</h5>
-	<div class="week_selection">
-		<% if @vehicles_of_the_week.empty? %>
-			Pas d'offres pour le moment.
-		<% else %>
-			<% @vehicles_of_the_week.each do |v| %>
-				<p>
-					<%=h v.modele %> - Année : <%= v.display_year %> - <%= v.kilometrage %> km - <%= v.price %> €
-				</p>
-			<% end %>
-		<% end %>
+	<div id="search_results">
+		<%= render :partial => "search_results", :locals => {:vehicles => @vehicles} %>
 	</div>
+	
+	<hr/>
+
 </div>
 <div id="sidebar" class="span-6 last">
 	<div class="database_state">

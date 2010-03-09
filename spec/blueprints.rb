@@ -27,7 +27,7 @@ Vehicle.blueprint do
   annee
 end
 
-Car.blueprint do
+Voiture.blueprint do
   modele
   description
   price

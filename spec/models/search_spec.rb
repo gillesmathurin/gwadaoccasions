@@ -20,11 +20,23 @@ describe Search do
   end
   
   describe ".vehicles" do
+    
+    context "search by category" do
+      before(:each) do
+         @car = Voiture.make(:price => 5000)
+      end
+      
+      it "finds all the requested category' vehicles" do
+        @search = Search.new(:category => "Voiture")
+        @search.vehicles.should_not be_empty
+        @search.vehicles.should include(@car)
+      end
+    end
         
     context "search by price" do
       
       before(:each) do
-        @car = Car.make(:price => 5000)
+        @car = Voiture.make(:price => 5000)
       end
       
       it "finds vehicles with correct price only" do
@@ -40,7 +52,7 @@ describe Search do
     context "search by kilometrage" do
       
       before(:each) do
-        @car = Car.make(:kilometrage => 25000)
+        @car = Voiture.make(:kilometrage => 25000)
       end
       
       it "finds vehicles with correct kilometrage only" do
@@ -55,7 +67,7 @@ describe Search do
     context "search by year" do
       
       before(:each) do
-        @car = Car.make(:annee => 7.years.ago)
+        @car = Voiture.make(:annee => 7.years.ago)
       end
       
       it "finds vehicles with correct year only" do
@@ -70,7 +82,7 @@ describe Search do
     context "search by energy type" do
       
       before(:each) do
-        @car = Car.make(:energy => "Essence")
+        @car = Voiture.make(:energy => "Essence")
       end
       
       it "finds vehicles with correct energy type only" do
@@ -85,7 +97,7 @@ describe Search do
     context "search by boite_vitesse type" do
       
       before(:each) do
-        @car = Car.make(:boite_vitesse => "Manuel")
+        @car = Voiture.make(:boite_vitesse => "Manuel")
       end
       
       it "finds vehicles with correct boite_vitess only" do
@@ -98,8 +110,8 @@ describe Search do
     context "search with multiple criterias" do
       
       before(:each) do
-        @car1 = Car.make(:price => 5000, :kilometrage => 20000, :annee => 5.years.ago, :energy => "Electrique")
-        @car2 = Car.make(:price => 7000, :kilometrage => 17000, :annee => 3.years.ago, :boite_vitesse => "Manuel")
+        @car1 = Voiture.make(:price => 5000, :kilometrage => 20000, :annee => 5.years.ago, :energy => "Electrique")
+        @car2 = Voiture.make(:price => 7000, :kilometrage => 17000, :annee => 3.years.ago, :boite_vitesse => "Manuel")
         puts Vehicle.count
       end
       

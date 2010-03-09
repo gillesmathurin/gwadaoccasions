@@ -1,0 +1,20 @@
+<h4>Résultats de votre recherche</h4>
+<% if @vehicles %>
+<div class="search_results">
+	<% unless @vehicles.empty? %>
+		<% @vehicles.each do |v| %>
+			<div class="result">
+				<p>
+					<%=h v.modele %> - Année : <%= v.display_year %> - <%= v.kilometrage %> km - <%= v.price %> €
+				</p>
+			</div>
+		<% end %>
+	<% else %>
+		<div class="result">
+			<p>
+				Pas de résultats.
+			</p>				
+		</div>
+	<% end %>
+</div>
+<%- end -%>

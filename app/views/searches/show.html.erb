@@ -7,7 +7,7 @@
 		<%- form_for :search, :url => searches_path() do |f| -%>
 			<table>
 				<tr>
-					<td><%= f.select :category, Category.all.collect {|c| [c.name, c.name]}, {:include_blank => "Type"} %></td>
+					<td><%= f.select :category, Category.all.collect {|c| [c.name, c.id]}, {:include_blank => "Type"} %></td>
 				</tr>
 				<tr>
 					<td><%= f.select :minprice, Vehicle::PRICE, {:include_blank => "Prix min"} %></td>
@@ -32,18 +32,31 @@
 	
 	<hr/>
 	
-	<h5>La sélection de la semaine</h5>
-	<div class="week_selection">
-		<% if @vehicles_of_the_week.empty? %>
-			Pas d'offres pour le moment.
-		<% else %>
-			<% @vehicles_of_the_week.each do |v| %>
-				<p>
-					<%=h v.modele %> - Année : <%= v.display_year %> - <%= v.kilometrage %> km - <%= v.price %> €
-				</p>
+	<div id="search_results">
+		<h4>Résultats de votre recherche</h4>
+		<% if @vehicles %>
+		<div class="search_results">
+			<% unless @vehicles.empty? %>
+				<% @vehicles.each do |v| %>
+					<div class="result">
+						<p>
+							<%=h v.modele %> - Année : <%= v.display_year %> - <%= v.kilometrage %> km - <%= v.price %> €
+						</p>
+					</div>
+				<% end %>
+			<% else %>
+				<div class="result">
+					<p>
+						Pas de résultats.
+					</p>				
+				</div>
 			<% end %>
-		<% end %>
+		</div>
+		<%- end -%>
 	</div>
+	
+	<hr/>
+
 </div>
 <div id="sidebar" class="span-6 last">
 	<div class="database_state">
