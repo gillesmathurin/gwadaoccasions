@@ -17,7 +17,8 @@ Feature: Browse WeekSelection
 	Then I should see the car overview description
 	And I should see the moto overview description
 	
-	Scenario: Follow a selected for week vehicle
-	Given
-	When
-	Then
+	Scenario: Follow a vehicle of the week_selection link
+	Given There is a car selected for the week
+	And I enter the welcome page
+	When I follow "Voir fiche"
+	Then I should be on

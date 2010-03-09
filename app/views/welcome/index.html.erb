@@ -39,7 +39,7 @@
 		<% else %>
 			<% @vehicles_of_the_week.each do |v| %>
 				<p>
-					<%=h v.modele %> - Année : <%= v.display_year %> - <%= format_km(v.kilometrage) unless v.kilometrage.blank? %> - <%= v.price %> €
+					<%=h v.modele %> - Année : <%= v.display_year %> - <%= format_km(v.kilometrage) unless v.kilometrage.blank? %> - <%= v.price %> € | <%= link_to "Voir fiche", vehicle_path(v) %>
 				</p>
 			<% end %>
 		<% end %>
