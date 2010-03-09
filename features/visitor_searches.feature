@@ -12,7 +12,7 @@ Feature: Visitor Search
 	When I search for cars with price between 0 and 10 000 €
 	Then I should see the car
 	
-	Scenario: Find Voitures (cars) based on Type, Price and Kilometrage
+	Scenario: Find Voitures (cars) based on Type, Price and Kilometers
 	Given I am on "the homepage"
 	And There is a "Voiture" Category
 	And There is car priced "5000" € with "60000" km made
