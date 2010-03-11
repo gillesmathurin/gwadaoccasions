@@ -24,7 +24,7 @@ Feature: Browse WeekSelection
 	Then I should be on "vehicle show page"
 	
 @focus
-	Scenario: Viewing a vehicle page (card)
+	Scenario: Viewing a vehicle page (profile)
 	Given There is a car selected for the week
 	And I enter the welcome page
 	When I follow "Voir fiche"

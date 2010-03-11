@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100305193800) do
+ActiveRecord::Schema.define(:version => 20100311012657) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -61,6 +61,10 @@ ActiveRecord::Schema.define(:version => 20100305193800) do
     t.datetime "updated_at"
     t.boolean  "select_for_week",          :default => false
     t.integer  "category_id"
+    t.string   "backpick_file_name"
+    t.string   "backpic_content_type"
+    t.integer  "backpic_file_size"
+    t.datetime "backpick_updated_at"
   end
 
 end
