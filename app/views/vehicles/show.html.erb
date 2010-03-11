@@ -6,7 +6,9 @@
 	<hr/>
 	
 	<div class="vehicle_description">
-		<h5><%=h @vehicle.modele %> - Année : <%=h @vehicle.display_year %> <%=h @vehicle.price %> €</h5>
+		<h5>
+			<%= vehicle_title(@vehicle) %>
+		</h5>
 		
 		<div class="gallery">
 			<%= image_tag(@vehicle.overviewpic.url(:large)) %>
