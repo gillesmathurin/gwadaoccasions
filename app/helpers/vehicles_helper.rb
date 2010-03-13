@@ -18,6 +18,10 @@ module VehiclesHelper
       "#{format_km(vehicle.kilometrage)} - #{vehicle.energy} - Boite #{vehicle.boite_vitesse} - Immatriculé : #{vehicle.immatriculation}"
     when "Moto"
       "#{format_km(vehicle.kilometrage)} - Immatriculé : #{vehicle.immatriculation}"
+    when "Jetski"
+      ""
+    when "Bateau"
+      ""
     end
   end
 end

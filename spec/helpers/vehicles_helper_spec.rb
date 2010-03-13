@@ -68,10 +68,22 @@ describe VehiclesHelper do
       end      
     end
     
-    context "when the vehicle is a Jetski" do      
+    context "when the vehicle is a Jetski" do
+      it "displays nothing" do
+        vehicle = Jetski.make()
+        content = helper.quick_info(vehicle)
+        content.should be_blank
+        content.should == ""
+      end      
     end
     
-    context "when the vehicle is a Bateau (boat)" do    
+    context "when the vehicle is a Bateau (boat)" do
+      it "displays nothing" do
+        vehicle = Bateau.make()
+        content = helper.quick_info(vehicle)
+        content.should be_blank
+        content.should == ""
+      end    
     end
     
   end

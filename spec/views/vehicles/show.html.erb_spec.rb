@@ -115,7 +115,7 @@ describe "/vehicles/show" do
       render
       response.should have_selector(".description") do |selector|
         selector.should have_selector(".infos") do |infos|
-          infos.should contain("60000.00 km - Essence - Immatriculé : #{assigns[:vehicle].immatriculation}")
+          infos.should contain("60000.00 km - Immatriculé : #{assigns[:vehicle].immatriculation}")
         end
       end
     end
