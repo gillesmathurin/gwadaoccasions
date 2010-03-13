@@ -11,6 +11,15 @@ module VehiclesHelper
       "#{vehicle.modele} - #{vehicle.price} €"
     end
   end
+  
+  def quick_info(vehicle)
+    case vehicle.type
+    when "Voiture"
+      "#{format_km(vehicle.kilometrage)} - #{vehicle.energy} - Boite #{vehicle.boite_vitesse} - Immatriculé : #{vehicle.immatriculation}"
+    when "Moto"
+      "#{format_km(vehicle.kilometrage)} - Immatriculé : #{vehicle.immatriculation}"
+    end
+  end
 end
 
 

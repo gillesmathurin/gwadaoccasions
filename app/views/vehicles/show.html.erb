@@ -28,7 +28,7 @@
 		
 		<div class="description">
 			<p class="infos">
-				<%=h format_km(@vehicle.kilometrage) %> - <%=h @vehicle.energy %> - Boite <%=h @vehicle.boite_vitesse %> - Immatriculé : <%=h @vehicle.immatriculation %>
+				<%= quick_info(@vehicle) %>
 			</p>
 			<p>
 				<%=h @vehicle.description %>
