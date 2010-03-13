@@ -117,7 +117,14 @@ describe "/vehicles/show" do
         selector.should have_selector(".infos") do |infos|
           infos.should contain("60000.00 km - Immatriculé : #{assigns[:vehicle].immatriculation}")
         end
+        selector.should contain("#{assigns[:vehicle].description}")
       end
+    end
+  end
+  
+  context "when vehicle is a Jetski" do
+    before(:each) do
+      
     end
   end
 end

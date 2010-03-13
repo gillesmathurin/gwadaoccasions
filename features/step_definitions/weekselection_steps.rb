@@ -27,7 +27,7 @@ end
 Then /^I should see a complete and detailed description of the vehicle$/ do
   response.should have_selector(".vehicle_description") do |selector|
     selector.should have_selector(".gallery") do |photo|
-      photo.should have_selector("img", :src => @car.overviewpic.url)
+      photo.should have_selector("img", :src => @car.overviewpic.url(:large))
     end
   end
 end
