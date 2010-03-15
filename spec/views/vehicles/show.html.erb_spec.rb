@@ -73,6 +73,23 @@ describe "/vehicles/show" do
       render
       response.should_not contain("cm3")
     end
+    
+    it "shows a 'Imprimez la fiche' link" do
+      render
+      response.should have_selector("a", :href => print_vehicle_path(assigns[:vehicle]) )
+    end
+    
+    it "shows a 'Sélectionnez' link" do
+      render
+      response.should have_selector("a", :href => select_vehicle_path(assigns[:vehicle]))
+    end
+    
+    it "shows a 'Dites le à un ami' link" do
+      render
+      response.should have_selector("a", :href => tellafriend_vehicle_path(assigns[:vehicle])) do |selector|
+        selector.should contain("Dites-le à un ami")
+      end
+    end
   end
     
   context "when vehicle is a motorbike" do
@@ -119,6 +136,16 @@ describe "/vehicles/show" do
         end
         selector.should contain("#{assigns[:vehicle].description}")
       end
+    end
+
+    it "shows a 'Imprimez la fiche' link" do
+      render
+      response.should have_selector("a", :href => print_vehicle_path(assigns[:vehicle]) )
+    end
+    
+    it "shows a 'Sélectionnez' link" do
+      render
+      response.should have_selector("a", :href => select_vehicle_path(assigns[:vehicle]))
     end
   end
   

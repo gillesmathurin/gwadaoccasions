@@ -5,5 +5,9 @@ class VehiclesController < ApplicationController
       format.html # render the show template
     end
   end
+  
+  def print
+    
+  end
 
 end

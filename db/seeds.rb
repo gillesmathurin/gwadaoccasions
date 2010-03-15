@@ -6,7 +6,7 @@ a.each do |e|
 end
 
 #Creation d'une voiture
-Voiture.create!(:annee => 2009,
+Voiture.create!(:annee => 1.year.ago,
 :immatriculation => "value for immatriculation",
 :kilometrage => 20000,
 :modele => "value for modele",

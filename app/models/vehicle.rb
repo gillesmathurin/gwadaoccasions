@@ -1,5 +1,6 @@
 class Vehicle < ActiveRecord::Base
   default_scope :order => "price asc"
+  validates_presence_of :annee, :on => :create, :message => "doit être renseignée"
   
   belongs_to :category
   has_attached_file :overviewpic, :styles => {:thumb => "150x150>", :medium => "250x250>", :large => "450x450>"}
@@ -23,6 +24,6 @@ class Vehicle < ActiveRecord::Base
   named_scope :of_the_week, :conditions => ['select_for_week = ?', true]
   
   def display_year
-    self.annee.year
+    self.annee.try(:year)
   end
 end

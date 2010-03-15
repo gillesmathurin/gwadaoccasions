@@ -54,8 +54,8 @@ end
 
 # With vehicles and registered users
 Given /^there are 2 Vehicles in the database$/ do
-  Vehicle.create!(:price => "3000")
-  Vehicle.create!(:price => "5000")
+  Vehicle.make(:price => "3000")
+  Vehicle.make(:price => "5000")
 end
 
 Given /^there are 2 Visitor accounts in the database$/ do
@@ -78,6 +78,6 @@ Given /^there are 1 vehicle selected for the week$/ do
 end
 
 Then /^I should see the selected vehicle$/ do
-  response.should contain("Peugeot 206 - Année : 2006 - 75000 km - 3000 €")
+  response.should contain("Peugeot 206 - Année : 2006 - 75000.00 km - 3000 €")
 end
 

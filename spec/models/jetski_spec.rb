@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Jetski do
   before(:each) do
     @valid_attributes = {
-      
+      :annee => Date.today
     }
   end
 

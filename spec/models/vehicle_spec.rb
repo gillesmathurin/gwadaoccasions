@@ -27,6 +27,12 @@ describe Vehicle do
     Vehicle.create!(@valid_attributes)
   end
   
+  it "requires an annee attribute" do
+    @vehicle = Vehicle.new(:annee => nil)
+    @vehicle.should_not be_valid
+    @vehicle.should have(1).error_on(:annee)
+  end
+  
   describe ".display_year" do
 
     before(:each) do
