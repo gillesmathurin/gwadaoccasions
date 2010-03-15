@@ -76,12 +76,16 @@ describe "/vehicles/show" do
     
     it "shows a 'Imprimez la fiche' link" do
       render
-      response.should have_selector("a", :href => print_vehicle_path(assigns[:vehicle]) )
+      response.should have_selector("a", :href => print_vehicle_path(assigns[:vehicle])) do |selector|
+        selector.should contain("Imprimez la fiche")
+      end
     end
     
     it "shows a 'Sélectionnez' link" do
       render
-      response.should have_selector("a", :href => select_vehicle_path(assigns[:vehicle]))
+      response.should have_selector("a", :href => select_vehicle_path(assigns[:vehicle])) do |selector|
+        selector.should contain("Sélectionnez")
+      end
     end
     
     it "shows a 'Dites le à un ami' link" do

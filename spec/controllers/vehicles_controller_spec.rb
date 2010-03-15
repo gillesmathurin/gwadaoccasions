@@ -23,4 +23,17 @@ describe VehiclesController do
       response.should render_template(:show)      
     end
   end
+  
+  describe "GET 'index'" do
+    it "assigns a list of vehicles as @vehicles" do
+      Vehicle.should_receive(:paginate).and_return([mock_vehicle])
+      get :index, :params => {:per_page => 15, :page => nil}
+    end
+    
+    it "renders the index template" do
+      Vehicle.should_receive(:paginate).and_return([mock_vehicle])
+      get :index, :params => {:per_page => 15, :page => nil}
+      response.should render_template(:index)      
+    end
+  end
 end

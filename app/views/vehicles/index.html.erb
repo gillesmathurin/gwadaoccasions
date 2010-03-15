@@ -1,0 +1,22 @@
+<div id="content" class="span-17 colborder">	
+	
+	<div class="vehicles_list">
+		
+	</div>
+</div>
+<div id="sidebar" class="span-6 last">
+	<div class="database_state">
+		<p>Statut</p>
+		<p><%=h @vehicle_number %> offre(s)</p>
+		<p><%=h @user_number %> utilisateur(s) enregistré(s)</p>
+	</div>
+	
+	<div class="registration_block">
+		<p>Vous êtes un professionnel ?</p>
+		<p><%= link_to "Découvrez nos services", "/services.html" %></p>
+		<p>Vous êtes un particulier ?</p>
+		<p>
+			<%= link_to "Publiez gratuitement vos annonces", new_user_registration_path %>
+		</p>
+	</div>
+</div>
