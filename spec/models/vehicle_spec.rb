@@ -33,7 +33,7 @@ describe Vehicle do
     @vehicle.should have(1).error_on(:annee)
   end
   
-  describe ".display_year" do
+  describe "#display_year" do
 
     before(:each) do
       @vehicle = Vehicle.new(@valid_attributes)
@@ -48,4 +48,5 @@ describe Vehicle do
       @vehicle.display_year.should == Date.today.year
     end
   end
+  
 end

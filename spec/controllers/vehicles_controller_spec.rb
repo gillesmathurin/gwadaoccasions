@@ -8,7 +8,7 @@ describe VehiclesController do
   end
 
   def mock_vehicle(stubs={})
-    @mock_vehicle = mock_model(Vehicle, stubs)
+    @mock_vehicle ||= mock_model(Vehicle, stubs)
   end
   
   describe "GET 'show'" do
@@ -25,6 +25,7 @@ describe VehiclesController do
   end
   
   describe "GET 'index'" do
+    
     it "assigns a list of vehicles as @vehicles" do
       Vehicle.should_receive(:paginate).and_return([mock_vehicle])
       get :index, :params => {:per_page => 15, :page => nil}

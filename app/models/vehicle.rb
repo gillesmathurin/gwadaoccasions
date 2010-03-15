@@ -26,4 +26,5 @@ class Vehicle < ActiveRecord::Base
   def display_year
     self.annee.try(:year)
   end
+  
 end

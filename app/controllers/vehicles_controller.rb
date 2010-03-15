@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
   
   def index
+    # @vehicles = Vehicle.paginate(:page => params[:page], :per_page => 15).group_by(&:type)
     @vehicles = Vehicle.paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html
