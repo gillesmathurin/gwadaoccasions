@@ -7,5 +7,12 @@ Feature: Browse Catalog
 		Given I am on the homepage page
 		And there are vehicles of each type in the database
 		When I follow "Catalogue"
-		Then I should see a list of "Voiture", "Moto", "Jetski" and "Bateau" vehicles 
+		Then I should see a list of Voiture, Moto, Jetski, Boat vehicles 
 	
+	Scenario: with 15 items by page
+		Given I am on the homepage
+		And There are "30" vehicles in the database
+		When I follow "Catalogue"
+		Then I should see 15 vehicles listed
+		And I should see a "Suivant" link
+		And I should see "Précédent"

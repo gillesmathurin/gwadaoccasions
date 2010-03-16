@@ -1,20 +1,17 @@
 <div id="content" class="span-17 colborder">	
 	
-	<h5>Toutes les offres classées par prix croissant</h5>
+	<h4>Toutes les offres classées par prix croissant</h4>
 	
 	<div class="vehicles_list">
-		<% if !@vehicles.blank? %>
-		  <% for vehicle in @vehicles %>
-			<%= image_tag(vehicle.overviewpic.url(:thumb)) %> <%= vehicle_info(vehicle) %> <%= link_to "Voir fiche", vehicle_path(vehicle) %>
-		  <% end %>
-		<% else %>
-		  
+		
+		<% @vehicles.each do |v| %>
+			<p class="listitem">
+				<%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %> <%= link_to "Voir fiche", vehicle_path(v), :class => "showlink"%>
+			</p>
 		<% end %>
 		
-
-		
 		<p class="navlinks">
-			<%= will_paginate @vehicles %>
+			<%= will_paginate @vehicles, :previous_label => "Précédent", :next_label => "Suivant" %>
 		</p>
 	</div>
 </div>
@@ -22,8 +19,8 @@
 <div id="sidebar" class="span-6 last">
 	<div class="database_state">
 		<p>Statut</p>
-		<p><%#h @vehicle_number %> offre(s)</p>
-		<p><%#h @user_number %> utilisateur(s) enregistré(s)</p>
+		<p><%=h @vehicle_number %> offre(s)</p>
+		<p><%=h @user_number %> utilisateur(s) enregistré(s)</p>
 	</div>
 	
 	<div class="registration_block">

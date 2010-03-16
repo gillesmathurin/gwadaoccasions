@@ -28,7 +28,7 @@ When /^I search for cars with price between 0 and 10 000 €$/ do
 end
 
 Then /^I should see the car description in the results$/ do
-  response.should contain("#{@car.modele} - Année : #{@car.display_year} - 128037.00 km - #{@car.price} €")
+  response.should contain("#{@car.modele} - Année : #{@car.display_year} - #{format_km(@car.kilometrage)} - #{@car.price} €")
   response.should have_link(vehicle_path(@car))
 end
 

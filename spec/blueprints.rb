@@ -16,7 +16,7 @@ Sham.define do
   kilometrage { (0..200000).to_a.rand }
   serialnumber { String.random_alphanumeric }
   immatriculation { String.random_alphanumeric(8) }
-  energy { Vehicle::ENERGY.rand }
+  energy(:unique => false) { Vehicle::ENERGY.rand }
   boite_vitesse(:unique => false) { Vehicle::VITESSE.rand }
   cylindree { [0, 50, 75, 100, 150, 200, 250, 500, 750, 1000, 1500].rand }
 end
