@@ -3,13 +3,16 @@
 	<h4>Toutes les offres classées par prix croissant</h4>
 	
 	<div class="vehicles_list">
-		
-		<% @vehicles.each do |v| %>
-			<p class="listitem">
+		<% if !@vehicles.blank? %>
+		  <% for v in @vehicles %>
+		    <p class="listitem">
 				<%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %> <%= link_to "Voir fiche", vehicle_path(v), :class => "showlink"%>
 			</p>
+		  <% end %>
+		<% else %>
+		  Pas d'offres pour le moment.
 		<% end %>
-		
+
 		<p class="navlinks">
 			<%= will_paginate @vehicles, :previous_label => "Précédent", :next_label => "Suivant" %>
 		</p>

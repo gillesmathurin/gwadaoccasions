@@ -16,3 +16,9 @@ Feature: Browse Catalog
 		Then I should see 15 vehicles listed
 		And I should see a "Suivant" link
 		And I should see "Précédent"
+		
+	Scenario: without vehicles
+		Given I am on the homepage
+		And There aren't any vehicles in the database
+		When I follow "Catalogue"
+		Then I should see "Pas d'offres pour le moment."

@@ -34,3 +34,8 @@ end
 Then /^I should see 15 vehicles listed$/ do
   response.should have_selector("p", :class => "listitem", :count => 15)
 end
+
+Given /^There aren't any vehicles in the database$/ do
+  @vehicles = []
+end
+
