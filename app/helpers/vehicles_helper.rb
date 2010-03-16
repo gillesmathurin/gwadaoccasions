@@ -1,8 +1,10 @@
 module VehiclesHelper
-  def vehicle_title(vehicle)
+  
+  def vehicle_info(vehicle)
     case vehicle.type
     when "Voiture"
-      "#{vehicle.modele} - Année : #{vehicle.display_year} - #{vehicle.price} €"
+      s = vehicle.modele + " - Année : " + vehicle.display_year.to_s + "- " + vehicle.price.to_s + " €"
+      s
     when "Moto"
       "#{vehicle.modele} - #{vehicle.cylindree} cm3 - Année : #{vehicle.display_year} - #{vehicle.price} €"
     when "Jetski"
@@ -24,6 +26,7 @@ module VehiclesHelper
       ""
     end
   end
+
 end
 
 

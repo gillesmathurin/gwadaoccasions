@@ -6,9 +6,8 @@
 	<hr/>
 	
 	<div class="vehicle_description">
-		<h5>
-			<%= vehicle_title(@vehicle) %>
-		</h5>
+		
+		<p><%= vehicle_info(@vehicle) %></p>
 		
 		<div class="gallery">
 			<%= image_tag(@vehicle.overviewpic.url(:large)) %>
@@ -43,7 +42,9 @@
 			</p>
 		</div>
 	</div>
+
 </div>
+
 <div id="sidebar" class="span-6 last">
 	<div class="database_state">
 		<p>Statut</p>

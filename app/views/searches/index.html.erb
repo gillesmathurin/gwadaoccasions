@@ -2,7 +2,9 @@
 	<p class="invitation">
 		Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes<br/> <%= link_to "Créez votre compte", new_user_registration_path, :class => "bigLink" %>
 	</p>
-
+	
+	<hr/>
+	
 	<div class="searchform">
 		<%- form_for :search, :url => searches_path() do |f| -%>
 			<table>
@@ -39,6 +41,7 @@
 	<hr/>
 
 </div>
+
 <div id="sidebar" class="span-6 last">
 	<div class="database_state">
 		<p>Statut</p>

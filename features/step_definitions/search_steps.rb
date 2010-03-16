@@ -29,10 +29,12 @@ end
 
 Then /^I should see the car description in the results$/ do
   response.should contain("#{@car.modele} - Année : #{@car.display_year} - 128037.00 km - #{@car.price} €")
+  response.should have_link(vehicle_path(@car))
 end
 
 Then /^I should see the car in the results$/ do
   response.should contain("#{@car.modele} - Année : #{@car.display_year} - 60000.00 km - #{@car.price} €")
+  response.should have_link(vehicle_path(@car))
 end
 
 # 2nd scenario :
@@ -53,6 +55,7 @@ end
 #3rd scenario
 Then /^I should not see the car in the results$/ do
   response.should contain("Pas de résultats")
+  response.should_not have_link(vehicle_path(@car))  
 end
 
 #4th scenario
@@ -62,6 +65,7 @@ end
 
 Then /^I should see the motorbike in the results$/ do
   response.should contain("#{@motorbike.modele} - Année : #{@motorbike.display_year} - 50000.00 km - #{@motorbike.price} €")
+  response.should have_link(vehicle_path(@motorbike))
 end
 
 #5th scenario :jetski
@@ -79,6 +83,7 @@ end
 
 Then /^I should see the jetski in the results$/ do
   response.should contain("#{@jetski.modele} - Année : #{@jetski.display_year} - 50000.00 km - #{@jetski.price}")
+  response.should have_link(vehicle_path(@jetski))
 end
 
 #6th scenario : boats search
@@ -88,6 +93,7 @@ end
 
 Then /^I should see the bateau in the results$/ do
   response.should contain("#{@boat.modele} - Année : #{@boat.display_year} - - #{@boat.price} €")
+  response.should have_link(vehicle_path(@boat))
 end
 
 

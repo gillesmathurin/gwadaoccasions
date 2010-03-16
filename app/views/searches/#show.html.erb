@@ -40,7 +40,7 @@
 				<% @vehicles.each do |v| %>
 					<div class="result">
 						<p>
-							<%=h v.modele %> - Année : <%= v.display_year %> - <%= v.kilometrage %> km - <%= v.price %> €
+							<%=h v.modele %> - Année : <%= v.display_year %> - <%= v.kilometrage %> km - <%= v.price %> - <%= link_to "Voir fiche", vehicle_path(v) %> €
 						</p>
 					</div>
 				<% end %>

@@ -5,7 +5,7 @@
 		<% @vehicles.each do |v| %>
 			<div class="result">
 				<p>
-					<%=h v.modele %> - Année : <%=h v.display_year %> - <%= format_km(v.kilometrage) unless v.kilometrage.blank? %> - <%=h v.price %> €
+					<%=h v.modele %> - Année : <%=h v.display_year %> - <%= format_km(v.kilometrage) unless v.kilometrage.blank? %> - <%=h v.price %> € - <%= link_to "Voir fiche", vehicle_path(v) %>
 				</p>
 			</div>
 		<% end %>
