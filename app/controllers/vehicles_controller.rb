@@ -21,10 +21,17 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.find(params[:id])
     
     respond_to do |format|
-      if current_user && !current_user.selections.include?(@vehicle)
-        
+      if current_user && !current_user.vehicles.include?(@vehicle)
+        flash[:notice] = "Véhicule ajouté à votre sélection."
+        current_user.vehicles << @vehicle
+        format.html { redirect_to vehicle_path(@vehicle) }
+      elsif current_user && current_user.vehicles.include?(@vehicle)
+        flash[:notice] = "Véhicule déjà présent dans votre sélection."
+        format.html { redirect_to vehicle_path(@vehicle)}
+      else
+        flash[:notice] = "Identifiez vous"
+        format.html { redirect_to new_user_session_path()}
       end
-      format.html {  }
     end
   end
 
