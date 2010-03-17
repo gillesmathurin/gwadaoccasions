@@ -3,6 +3,9 @@ class Vehicle < ActiveRecord::Base
   validates_presence_of :annee, :on => :create, :message => "doit être renseignée"
   
   belongs_to :category
+  has_many :selections
+  has_many :users, :through => :selections
+  
   has_attached_file :overviewpic, :styles => {:thumb => "150x150>", :medium => "250x250>", :large => "450x450>"}
   has_attached_file :frontpic, :styles => {:thumb => "150x150>", :medium => "250x250>", :large => "450x450>"}
   has_attached_file :backpic, :styles => {:thumb => "150x150>", :medium => "250x250>", :large => "450x450>"}

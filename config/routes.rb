@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.devise_for :users
   map.resources :categories
-  map.resources :vehicles, :member => { :print => :get, :select => :get, :tellafriend => :get }
+  map.resources :vehicles, :member => { :print => :get, :select => :put, :tellafriend => :get }
   map.resources :searches
   # The priority is based upon order of creation: first created -> highest priority.
 

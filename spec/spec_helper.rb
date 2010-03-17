@@ -55,3 +55,16 @@ Spec::Runner.configure do |config|
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+
+def create_default_user
+  unless User.first(:conditions => {:email => "gillesmath@me.com"})
+    user = User.create(:email => "gillesmath@me.com",
+     :password => "kakaboudin", :password_confirmation => "kakaboudin")
+  end
+  user.confirm!
+  user
+end

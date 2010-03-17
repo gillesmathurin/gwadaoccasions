@@ -11,6 +11,10 @@ describe VehiclesController do
     @mock_vehicle ||= mock_model(Vehicle, stubs)
   end
   
+  def user
+    @user ||= create_default_user
+  end
+  
   describe "GET 'show'" do
     it "assigns the requested vehicle as @vehicle" do
       Vehicle.should_receive(:find).with("37").and_return(mock_vehicle)
@@ -37,4 +41,28 @@ describe VehiclesController do
       response.should render_template(:index)      
     end
   end
+  
+  describe "PUT 'select'" do
+    
+    context "with a logged_in user and a un-selected vehicle" do
+      before(:each) do
+        sign_in(user)
+        @mock_selections = mock('selections')
+        @mock_current_user = user
+      end
+      
+      it "assigns the requested vehicle as @vehicle" do
+        Vehicle.should_receive(:find).with("37").and_return(mock_vehicle)
+        put :select, :id => "37"
+      end
+      
+      it "adds the vehicle to the current user selections list" do
+        Vehicle.should_receive(:find).with("37").and_return(mock_vehicle)
+        user.should_receive(:selections).and_return(@mock_selections)
+        @mock_selections.should_receive(:include?).with(@vehicle).and_return(false)
+        put :select, :id => "37"
+      end
+    end    
+  end
+  
 end
