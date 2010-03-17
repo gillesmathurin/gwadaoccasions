@@ -10,12 +10,12 @@ describe WelcomeController do
     
     before(:each) do
       @search = mock_model(Search).as_new_record
+      Vehicle.should_receive(:count).and_return("0")
+      User.should_receive(:count).and_return("0")
     end
     
     it "fetches the number of vehicles, visitor account and expose newly created search instance as @search" do
       Search.should_receive(:new).and_return(@search)
-      Vehicle.should_receive(:count).and_return("0")
-      User.should_receive(:count).and_return("0")
       Vehicle.should_receive(:of_the_week).and_return([mock_vehicle])
       get :index
       response.should render_template(:index)
