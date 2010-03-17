@@ -1,7 +1,8 @@
 require 'machinist/active_record'
 require 'sham'
 require 'faker'
-
+include ActionView::Helpers::NumberHelper
+include ApplicationHelper
 
 Given /^There is a "([^\"]*)" Category$/ do |category|
   Category.create!(:name => category)
@@ -33,7 +34,7 @@ Then /^I should see the car description in the results$/ do
 end
 
 Then /^I should see the car in the results$/ do
-  response.should contain("#{@car.modele} - Année : #{@car.display_year} - 60000.00 km - #{@car.price} €")
+  response.should contain("#{@car.modele} - Année : #{@car.display_year} - #{format_km(@car.kilometrage)} - #{@car.price} €")
   response.should have_link(vehicle_path(@car))
 end
 
