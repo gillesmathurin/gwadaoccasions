@@ -21,13 +21,13 @@ Feature: Browse WeekSelection
 		Given There is a car selected for the week
 		And I enter the welcome page
 		When I follow "Voir fiche"
-		Then I should be on "the vehicle page"
+		Then I should be on "a vehicle page"
 	
 	Scenario: Viewing a vehicle page (profile)
 		Given There is a car selected for the week
 		And I enter the welcome page
 		When I follow "Voir fiche"
-		Then I should be on "the vehicle page"
+		Then I should be on "a vehicle page"
 		And I should see a complete and detailed description of the vehicle
 		And I should see a "Imprimez la fiche" link
 		And I should see a "Sélectionnez" link
