@@ -1,4 +1,5 @@
 <div id="content" class="span-17 colborder">
+	
 	<p class="invitation">
 		Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes<br/> <%= link_to "Créez votre compte", new_user_registration_path, :class => "bigLink" %>
 	</p>
@@ -10,7 +11,7 @@
 		<p><%= vehicle_info(@vehicle) %></p>
 		
 		<div class="gallery">
-			<%= image_tag(@vehicle.overviewpic.url(:large)) %>
+			<p><%= image_tag(@vehicle.overviewpic.url(:large)) %></p>
 			<table>
 				<tr>
 					<td><%= image_tag(@vehicle.frontpic.url(:thumb)) %></td>
@@ -41,6 +42,7 @@
 				<%= link_to "Dites-le à un ami", tellafriend_vehicle_path(@vehicle) %>
 			</p>
 		</div>
+		
 	</div>
 
 </div>
