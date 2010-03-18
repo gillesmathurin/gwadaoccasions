@@ -38,7 +38,7 @@
 		<div class="actions">
 			<p>
 				<%= link_to "Imprimez la fiche", print_vehicle_path(@vehicle) %> | 
-				<%= link_to "Sélectionnez", select_vehicle_path(@vehicle) %> |
+				<%= link_to "Sélectionnez", select_vehicle_path(@vehicle), :method => :put %> |
 				<%= link_to "Dites-le à un ami", tellafriend_vehicle_path(@vehicle) %>
 			</p>
 		</div>

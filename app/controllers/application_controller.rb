@@ -19,4 +19,6 @@ class ApplicationController < ActionController::Base
   def visitor_count
     @user_number = User.count
   end
+  
+
 end

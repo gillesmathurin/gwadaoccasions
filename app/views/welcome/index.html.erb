@@ -1,4 +1,7 @@
 <div id="content" class="span-17 colborder">
+	<%= flash[:notice] if flash[:notice] %>
+	<%= flash[:alert] if flash[:alert] %>
+	
 	<p class="invitation">
 		Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes<br/> <%= link_to "Créez votre compte", new_user_registration_path, :class => "bigLink" %>
 	</p>

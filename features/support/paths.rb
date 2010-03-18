@@ -16,6 +16,12 @@ module NavigationHelpers
       vehicle_path(Vehicle.first)
     when /register/
       '/users/sign_up'
+    when /sign_in/
+      '/users/sign_in'
+    when /^(.*) profile page$/i
+      user_path(User.find_by_email($1))
+    when /the root page/
+      '/users'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

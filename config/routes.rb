@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.devise_for :users
+  map.resources :users
   map.resources :categories
   map.resources :vehicles, :member => { :print => :get, :select => :put, :tellafriend => :get }
   map.resources :searches
