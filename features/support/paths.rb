@@ -14,6 +14,8 @@ module NavigationHelpers
       searches_path
     when /a vehicle page/
       vehicle_path(Vehicle.first)
+    when /register/
+      '/users/sign_up'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
