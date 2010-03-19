@@ -20,8 +20,8 @@ module NavigationHelpers
       '/users/sign_in'
     when /^(.*) profile page$/i
       user_path(User.find_by_email($1))
-    when /the root page/
-      '/users'
+    when /unconfirmed sign_in page/
+      '/users/sign_in?unconfirmed=true'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

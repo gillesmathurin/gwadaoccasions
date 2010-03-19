@@ -20,3 +20,10 @@ Given /^I am a new, authenticated user$/ do
   And %{I fill in "user_password" with "#{password}"}
   And %{I press "Sign in"}
 end
+
+Then /^I am redirected to "([^\"]*)"$/ do |url|
+  assert [301, 302].include?(@integration_session.status), "Expected status to be 301 or 302, got #{@integration_session.status}"
+  location = @integration_session.headers["Location"]
+  assert_equal url, location
+  visit location
+end
