@@ -8,6 +8,10 @@ def String.random_alphanumeric(size=16)
   s
 end
 
+def pass
+  s ||= "secretpass"
+end
+
 Sham.define do
   modele  { Faker::Name.name }
   description  { Faker::Lorem.paragraph }
@@ -19,6 +23,9 @@ Sham.define do
   energy(:unique => false) { Vehicle::ENERGY.rand }
   boite_vitesse(:unique => false) { Vehicle::VITESSE.rand }
   cylindree { [0, 50, 75, 100, 150, 200, 250, 500, 750, 1000, 1500].rand }
+  email { Faker::Internet.email }
+  password(:unique => false) { pass }
+  password_confirmation(:unique => false) {pass}
 end
 
 Vehicle.blueprint do
@@ -63,4 +70,11 @@ Bateau.blueprint do
   description
   price
   annee
+end
+
+User.blueprint do
+  email
+  password
+  password_confirmation
+  confirmed_at {Time.now}
 end

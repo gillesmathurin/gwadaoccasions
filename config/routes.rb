@@ -1,6 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
   map.devise_for :users
-  map.resources :users
+  map.user_root '/users', :controller => 'users', :action => 'show'
+  map.resources :users do |users|
+    # users.root :controller => 'users' , :action => :show
+  end
   map.resources :categories
   map.resources :vehicles, :member => { :print => :get, :select => :put, :tellafriend => :get }
   map.resources :searches

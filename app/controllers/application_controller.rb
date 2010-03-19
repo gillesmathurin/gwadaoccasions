@@ -13,11 +13,11 @@ class ApplicationController < ActionController::Base
   private
   
   def vehicle_count
-    @vehicle_number = Vehicle.count    
+    @vehicle_number ||= Vehicle.count    
   end
   
   def visitor_count
-    @user_number = User.count
+    @user_number ||= User.count
   end
   
 

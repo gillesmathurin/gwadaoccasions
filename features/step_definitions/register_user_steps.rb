@@ -1,3 +1,5 @@
+include Devise::TestHelpers
+
 Given /^I am not authenticated$/ do
   visit('/users/sign_out')
 end
@@ -7,6 +9,17 @@ Given /^I have one\s+user "([^\"]*)" with password "([^\"]*)" and login "([^\"]*
            :login => login,
            :password => password,
            :password_confirmation => password).save!
+end
+
+Given /^I have one\s+user "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
+  # @user = User.new(:email => email,
+  #          :password => password,
+  #          :password_confirmation => password).save!
+  # @user.update_attribute(:confirmed_at, Time.now)
+  @user = User.make(:email => email, :password => password, :password_confirmation => password)
+  @user.update_attribute(:confirmed_at, Time.now)
+  @user.update_attribute(:confirmation_sent_at, 1.hour.ago)
+  session[:user_id] = @user.id
 end
 
 Given /^I am a new, authenticated user$/ do
@@ -22,7 +35,7 @@ Given /^I am a new, authenticated user$/ do
 end
 
 Then /^I am redirected to "([^\"]*)"$/ do |url|
-  assert [301, 302].include?(@integration_session.status), "Expected status to be 301 or 302, got #{@integration_session.status}"
+  assert [301, 302].include?(@integration_session.status), "Expected status to be 301 or 302, got #{@integration_session.status}, location #{@integration_session.headers["Location"]}"
   location = @integration_session.headers["Location"]
   assert_equal url, location
   visit location

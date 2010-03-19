@@ -19,9 +19,12 @@ module NavigationHelpers
     when /sign_in/
       '/users/sign_in'
     when /^(.*) profile page$/i
-      user_path(User.find_by_email($1))
-    when /unconfirmed sign_in page/
-      '/users/sign_in?unconfirmed=true'
+      # user_path(User.find_by_email($1).id)
+      user_path(User.last.id)
+    when /login/
+      new_user_session_path
+    when /user_root_path/
+      '/users'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
