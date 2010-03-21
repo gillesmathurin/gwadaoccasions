@@ -12,22 +12,18 @@ Given /^I have one\s+user "([^\"]*)" with password "([^\"]*)" and login "([^\"]*
 end
 
 Given /^I have one\s+user "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
-  # @user = User.new(:email => email,
-  #          :password => password,
-  #          :password_confirmation => password).save!
-  # @user.update_attribute(:confirmed_at, Time.now)
   @user = User.make(:email => email, :password => password, :password_confirmation => password)
   @user.update_attribute(:confirmed_at, Time.now)
   @user.update_attribute(:confirmation_sent_at, 1.hour.ago)
-  session[:user_id] = @user.id
+  # session[:user_id] = @user.id
 end
 
 Given /^I am a new, authenticated user$/ do
   email = 'testing@man.net'
-  login = 'Testing man'
+  # login = 'Testing man'
   password = 'secretpass'
 
-  Given %{I have one user "#{email}" with password "#{password}" and login "#{login}"}
+  Given %{I have one user "#{email}" with password "#{password}"}
   And %{I go to login}
   And %{I fill in "user_email" with "#{email}"}
   And %{I fill in "user_password" with "#{password}"}
