@@ -3,7 +3,7 @@ Feature: Register user
   As a Visitor
   I want to create an account
 
-	Scenario: Creating a new account
+	Scenario: Creating a new account	
 	  Given I am not authenticated
 	  When I go to register
 		And I fill in "user_email" with "testing@man.net"
@@ -14,7 +14,7 @@ Feature: Register user
 	  And I should see "You have to confirm your account before continuing."
 
 	
-	Scenario Outline: Creating a new account
+	Scenario Outline: Creating a new account	
 	  Given I am not authenticated
 	  When I go to register
 		And I fill in "user_email" with "<email>"
@@ -29,7 +29,7 @@ Feature: Register user
 			| testing@man.net	|	secretpass		|
 			|	foo@bar.com			|	fr33z3				|
 
-@wip
+
   Scenario Outline: Logging in
 		Given I am not authenticated
 		And I have one user "<email>" with password "<password>"
@@ -39,8 +39,33 @@ Feature: Register user
 	  And I press "Sign in"
 		Then I should be on "user_root_path"
 		And I should see "Signed in successfully."
+		And I should see "Deconnexion"
 		
 		Examples:
 			| email						|	password			|
 			| testing@man.net	|	secretpass		|
 			|	foo@bar.com			|	fr33z3				|
+			
+			
+	Scenario: Logging out from the homepage	
+	  Given I am a new, authenticated user
+		And I am on the homepage
+	  When I follow "Deconnexion"
+	  Then I should see "Connexion"
+		And I should not see "Deconnexion"
+		
+	Scenario: Logging out from a user profile page
+	  Given I am a new, authenticated user
+		And I am on my user profile page
+	  When I follow "Deconnexion" 
+	  Then I am redirected to "/users/"
+	# Then I should be on the homepage
+	
+	
+	
+	
+	
+	
+	
+	
+	
