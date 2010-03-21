@@ -53,13 +53,14 @@ Feature: Register user
 	  When I follow "Deconnexion"
 	  Then I should see "Connexion"
 		And I should not see "Deconnexion"
+		And I should be on "the homepage"
 		
 	Scenario: Logging out from a user profile page
 	  Given I am a new, authenticated user
 		And I am on my user profile page
 	  When I follow "Deconnexion" 
-	  Then I am redirected to "/users/"
-	# Then I should be on the homepage
+		Then I should be on the homepage
+		
 	
 	
 	

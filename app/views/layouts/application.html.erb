@@ -24,7 +24,13 @@
 				<li>Nos Services</li>
 				<li>Abonnez-vous</li>
 				<li>Aide</li>
-				<li>Connexion</li>
+				<li>
+					<% if user_signed_in? %>
+						<%= link_to "Deconnexion", destroy_user_session_path() %>
+					<% else %>
+						<%= link_to "Connexion", new_user_session_path() %>
+					<% end %>
+				</li>
 			</ul>
 		</div>
 		<%= yield %>
