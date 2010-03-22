@@ -5,6 +5,10 @@ class SearchProfilesController < ApplicationController
     @search_profile = current_user.search_profiles.build()
   end
   
+  def edit
+    @search_profile = current_user.search_profiles.find(params[:id])
+  end
+  
   def create
     @search_profile = current_user.search_profiles.build(params[:search_profile])
     
@@ -16,6 +20,19 @@ class SearchProfilesController < ApplicationController
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @search_profile.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  def update
+    @search_profile = current_user.search_profiles.find(params[:id])
+    
+    respond_to do |format|
+      if @search_profile.update_attributes(params[:search_profile])
+        flash[:notice] = "Profil de recherche modifié."
+        format.html { redirect_to user_path(current_user.id) }        
+      else
+        format.html { render :action => "edit" }
       end
     end
   end

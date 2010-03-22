@@ -30,6 +30,10 @@ Given /^I am a new, authenticated user$/ do
   And %{I press "Sign in"}
 end
 
+Given /^I have a search profile for a "([^\"]*)" within "([^\"]*)" and "([^\"]*)"$/ do |category, minprice, maxprice|
+  @search_profile = SearchProfile.make(:category => category, :minprice => minprice, :maxprice => maxprice, :user_id => @user.id)
+end
+
 Then /^I am redirected to "([^\"]*)"$/ do |url|
   assert [301, 302].include?(@integration_session.status), "Expected status to be 301 or 302, got #{@integration_session.status}, location #{@integration_session.headers["Location"]}"
   location = @integration_session.headers["Location"]

@@ -7,8 +7,31 @@
 	
 	<div id="search_profiles">
 		<p>
-			<%= link_to "Ajouter un profil de recherche", new_user_search_profile_path(current_user) %>
+			<%= @user.search_profiles.size %> profil(s) de recherche, <%= link_to "Ajouter un profil de recherche", new_user_search_profile_path(current_user) %>
 		</p>
+		<% if !@search_profiles.blank? %>
+		<table>
+			<tr>
+				<th colspan="2">Je recherche :</th>
+			</tr>
+		  <% for profile in @search_profiles %>
+		    <tr>
+		    	<td>
+		    		<%= profile.category %> entre : <%= number_to_currency(profile.minprice, :unit => "€", :format => "%n %u") %> et <%= number_to_currency(profile.maxprice, :unit => "€", :format => "%n %u") %> <%= kilometers_criteria(profile) %>
+		    	</td>
+				<td>
+					<%= link_to "Modifier le profil", edit_user_search_profile_path(@user, profile) %>
+				</td>
+		    </tr>
+		  <% end %>
+		<% else %>
+		  	<tr>
+		  		<td colspan="2">Vous n'avez pas encore de profils de recherche enregistrés.</td>
+		  	</tr>
+		<% end %>			
+		</table>
+
+		
 	</div>
 </div>
 

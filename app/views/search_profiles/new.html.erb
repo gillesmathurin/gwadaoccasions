@@ -16,7 +16,7 @@
 				<td><%= f.select :maxkilometer, Vehicle::KILOMETRAGE, {:include_blank => "KM max"} %></td>
 			</tr>
 			<tr>
-				<td><%= submit_tag "Enregistrer le profil" %></td>
+				<td><%= f.submit "Enregistrer le profil" %></td>
 			</tr>
 		  </table>
 		<% end -%>

@@ -16,8 +16,12 @@ Sham.define do
   modele  { Faker::Name.name }
   description  { Faker::Lorem.paragraph }
   price { rand(50000) }
+  minprice { price }
+  maxprice { minprice + 10000 }
   annee { (Date.parse("1960-01-01")..Date.today).to_a.rand }
   kilometrage { (0..200000).to_a.rand }
+  minkilometer { kilometrage }
+  maxkilometer { minkilometer + 20000 }
   serialnumber { String.random_alphanumeric }
   immatriculation { String.random_alphanumeric(8) }
   energy(:unique => false) { Vehicle::ENERGY.rand }
@@ -26,6 +30,7 @@ Sham.define do
   email { Faker::Internet.email }
   password(:unique => false) { pass }
   password_confirmation(:unique => false) {pass}
+  category(:unique => false) { ["Voiture", "Moto", "Jetski", "Bateau"].rand() }
 end
 
 Vehicle.blueprint do
@@ -77,4 +82,12 @@ User.blueprint do
   password
   password_confirmation
   confirmed_at {Time.now}
+end
+
+SearchProfile.blueprint do
+  category
+  minprice
+  maxprice
+  minkilometer
+  maxkilometer
 end

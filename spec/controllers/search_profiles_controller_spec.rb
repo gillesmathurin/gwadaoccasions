@@ -8,7 +8,7 @@ describe SearchProfilesController do
   end
   
   def search_profile(stubs ={})
-    @mock_searchprofile = mock_model(SearchProfile, stubs)
+    @mock_searchprofile ||= mock_model(SearchProfile, stubs)
   end
 
 
@@ -21,6 +21,9 @@ describe SearchProfilesController do
         @current_user = mock("current_user")
         @mock_searchprofiles = mock('search_profiles')
         @search_profile = mock_model(SearchProfile).as_new_record
+        controller.stub(:current_user).and_return(@current_user)
+        @current_user.stub(:search_profiles).and_return(@mock_searchprofiles)
+        @mock_searchprofiles.stub(:build).and_return(@search_profile)
       end
 
       it "assigns a new search profile as @search_profile" do
@@ -32,9 +35,6 @@ describe SearchProfilesController do
       end
       
       it "renders the new template" do
-        controller.should_receive(:current_user).and_return(@current_user)
-        @current_user.should_receive(:search_profiles).and_return(@mock_searchprofiles)
-        @mock_searchprofiles.should_receive(:build).and_return(@search_profile)
         get :new
         assigns[:search_profile].should == @search_profile
         response.should render_template('new')
@@ -51,7 +51,7 @@ describe SearchProfilesController do
   
   describe "POST 'create'" do
     
-    context "with a successful saved" do
+    context "with valid params" do
       
       before(:each) do
         @user = create_default_user
@@ -77,7 +77,7 @@ describe SearchProfilesController do
       end
     end
     
-    context "with a failed save" do
+    context "with unvalid params" do
       
       before(:each) do
         @user = create_default_user
@@ -92,6 +92,54 @@ describe SearchProfilesController do
       it "re-renders to the new template" do
         post :create, :search_profile => {:these => 'params'}
         response.should render_template(:new)        
+      end
+    end
+  end
+  
+  describe "PUT update" do
+    context "with valid params" do
+      before(:each) do
+        @user = create_default_user
+        sign_in(@user)
+        @current_user = mock("current_user")
+        @mock_searchprofiles = mock('search_profiles')
+        controller.stub(:current_user).twice.and_return(@current_user)
+        @current_user.stub(:search_profiles).and_return(@mock_searchprofiles)
+        @mock_searchprofiles.stub(:find).with("37").and_return(search_profile)
+      end
+      
+      it "finds and updates the requested search profile" do
+        @mock_searchprofiles.should_receive(:find).with("37").and_return(search_profile)
+        search_profile.should_receive(:update_attributes).and_return(true)
+        put :update, :user_id => @current_user.id, :id => "37",
+         :search_profile => {:these => "params"}
+      end
+      
+      it "redirects to the current user profile page" do
+        @mock_searchprofiles.should_receive(:find).with("37").and_return(search_profile)
+        search_profile.should_receive(:update_attributes).and_return(true)
+        put :update, :user_id => @current_user.id, :id => "37",
+         :search_profile => {:these => "params"}
+        response.should redirect_to(user_path(@current_user.id))                        
+      end
+    end
+    
+    context "with unvalid params" do
+      before(:each) do
+        @user = create_default_user
+        sign_in(@user)
+        @current_user = mock("current_user")
+        @mock_searchprofiles = mock('search_profiles')
+        controller.stub(:current_user).twice.and_return(@current_user)
+        @current_user.stub(:search_profiles).and_return(@mock_searchprofiles)
+        @mock_searchprofiles.stub(:find).with("37").and_return(search_profile)
+        search_profile.stub(:update_attributes).and_return(false)
+      end
+      
+      it "re-renders the edit template" do
+        put :update, :user_id => @current_user.id, :id => "37",
+         :search_profile => {}
+         response.should render_template(:edit)         
       end
     end
   end
