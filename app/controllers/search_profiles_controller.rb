@@ -37,4 +37,13 @@ class SearchProfilesController < ApplicationController
     end
   end
   
+  def destroy
+    @search_profile = current_user.search_profiles.find(params[:id])
+    @search_profile.destroy
+    respond_to do |format|
+      flash[:notice] = "Profil de recherche supprimé."
+      format.html { redirect_to user_path(current_user.id) }
+    end
+  end
+  
 end

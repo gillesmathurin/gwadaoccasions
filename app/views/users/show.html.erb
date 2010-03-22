@@ -20,7 +20,7 @@
 		    		<%= profile.category %> entre : <%= number_to_currency(profile.minprice, :unit => "€", :format => "%n %u") %> et <%= number_to_currency(profile.maxprice, :unit => "€", :format => "%n %u") %> <%= kilometers_criteria(profile) %>
 		    	</td>
 				<td>
-					<%= link_to "Modifier le profil", edit_user_search_profile_path(@user, profile) %>
+					<%= link_to "Modifier le profil", edit_user_search_profile_path(@user, profile) %> | <%= link_to "Supprimer le profil", user_search_profile_path(@user, profile), :method => :delete %>
 				</td>
 		    </tr>
 		  <% end %>

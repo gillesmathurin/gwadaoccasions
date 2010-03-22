@@ -143,4 +143,29 @@ describe SearchProfilesController do
       end
     end
   end
+
+  describe "DELETE destroy" do
+    before(:each) do
+      @user = create_default_user
+      sign_in(@user)
+      @current_user = mock("current_user")
+      @mock_searchprofiles = mock('search_profiles')
+      controller.stub(:current_user).twice.and_return(@current_user)
+      @current_user.stub(:search_profiles).and_return(@mock_searchprofiles)
+    end
+    
+    it "finds and destroys the requested search profile" do
+      @mock_searchprofiles.should_receive(:find).with("37").and_return(search_profile)
+      search_profile.should_receive(:destroy)
+      delete :destroy, :user_id => @current_user.id, :id => "37"
+    end
+    
+    it "redirects to the current_user profile page" do
+      @mock_searchprofiles.should_receive(:find).with("37").and_return(search_profile)
+      search_profile.should_receive(:destroy)
+      delete :destroy, :user_id => @current_user.id, :id => "37"
+      response.should redirect_to(user_path(@current_user.id))
+      
+    end
+  end
 end
