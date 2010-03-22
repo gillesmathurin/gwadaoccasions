@@ -9,10 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100317162901) do
+ActiveRecord::Schema.define(:version => 20100322184534) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "search_profiles", :force => true do |t|
+    t.string   "category"
+    t.integer  "minprice"
+    t.integer  "maxprice"
+    t.integer  "minkilometer"
+    t.integer  "maxkilometer"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

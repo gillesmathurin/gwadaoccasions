@@ -1,4 +1,14 @@
 <div id="content" class="span-17 colborder">
-	<%= flash[:notice] if flash[:notice] %>
-	<%= flash[:alert] if flash[:alert] %>
+	<%= render :partial => "shared/flash_messages" %>
+	
+	<div id="profile_infos">
+		
+	</div>
+	
+	<div id="search_profiles">
+		<p>
+			<%= link_to "Ajouter un profil de recherche", new_user_search_profile_path(current_user) %>
+		</p>
+	</div>
 </div>
+

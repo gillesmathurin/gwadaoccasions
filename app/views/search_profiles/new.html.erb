@@ -1,0 +1,28 @@
+<div id="content" class="span-17 colborder">
+	<h4>Enregistrez un profil de recherche</h4>
+	
+	<div class="searchform">
+
+		<% form_for [current_user, @search_profile] do |f| -%>
+			<%= f.error_messages %>
+		  <table>
+		  	<tr>
+		  		<td><%= f.select :category, Category.all.collect {|c| [c.name, c.name]}, {:include_blank => "Type"} %></td>
+		  	</tr>
+			<tr>
+				<td><%= f.select :minprice, Vehicle::PRICE, {:include_blank => "Prix min"} %></td>
+				<td><%= f.select :maxprice, Vehicle::PRICE, {:include_blank => "Prix max"} %></td>
+				<td><%= f.select :minkilometer, Vehicle::KILOMETRAGE, {:include_blank => "KM min"} %></td>
+				<td><%= f.select :maxkilometer, Vehicle::KILOMETRAGE, {:include_blank => "KM max"} %></td>
+			</tr>
+			<tr>
+				<td><%= submit_tag "Enregistrer le profil" %></td>
+			</tr>
+		  </table>
+		<% end -%>
+	</div>
+</div>
+
+<div id="sidebar", class="span-6 last">
+	
+</div>

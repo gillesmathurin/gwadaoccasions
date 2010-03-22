@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  category: MyString
+  minprice: 1
+  maxprice: 1
+  minkilometer: 1
+  maxkilometer: 1
+
+two:
+  category: MyString
+  minprice: 1
+  maxprice: 1
+  minkilometer: 1
+  maxkilometer: 1

@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   
   has_many :selections
   has_many :vehicles, :through => :selections
+  has_many :search_profiles
 end

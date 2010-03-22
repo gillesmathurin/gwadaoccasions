@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.user_root '/users', :controller => 'users', :action => 'show'
   map.resources :users do |users|
     # users.root :controller => 'users' , :action => :show
+    users.resources :search_profiles
   end
   map.resources :categories
   map.resources :vehicles, :member => { :print => :get, :select => :put, :tellafriend => :get }
