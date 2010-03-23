@@ -25,6 +25,8 @@ module NavigationHelpers
       new_user_session_path
     when /user_root_path/
       '/users'
+    when /new search_profile/
+      new_user_search_profile_path(User.last.id)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
