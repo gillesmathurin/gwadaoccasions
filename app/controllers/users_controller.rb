@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @search_profiles = @user.search_profiles
+    @selections = @user.selections
   end
 
 end

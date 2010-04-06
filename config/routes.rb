@@ -4,10 +4,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |users|
     # users.root :controller => 'users' , :action => :show
     users.resources :search_profiles
+    users.resources :selections
   end
   map.resources :categories
   map.resources :vehicles, :member => { :print => :get, :select => :put, :tellafriend => :get }
   map.resources :searches
+  map.resources :selections
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

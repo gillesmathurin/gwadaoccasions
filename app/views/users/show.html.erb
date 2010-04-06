@@ -5,9 +5,37 @@
 		
 	</div>
 	
+	<div id="selections">
+		<p>
+			<%= @selections.size %> véhicule(s) sélectionnés.
+		</p>
+		<% if !@selections.blank? %>
+		<table>
+			<tr>
+				<th colspan="2">Ma sélection</th>
+			</tr>			
+		  <% for selection in @selections %>
+		    <tr>
+				<td>
+					<%= selection.vehicle.modele %> Année : <%= selection.vehicle.display_year %>, <%= selection.vehicle.price %> €
+				</td>
+				<td>
+					<%= link_to "Dé-selectionner", user_selection_path(@user.id, selection.id), :method => :delete %>
+				</td>
+			</tr>
+		  <% end %>
+		<% else %>
+		  <tr>
+		  		<td colspan="2">Pas de véhicules sélectionnés.</td>
+		  </tr>
+		<% end %>
+		</table>
+		
+	</div>
+	
 	<div id="search_profiles">
 		<p>
-			<%= @user.search_profiles.size %> profil(s) de recherche, <%= link_to "Ajouter un profil de recherche", new_user_search_profile_path(current_user) %>
+			<%= @search_profiles.size %> profil(s) de recherche, <%= link_to "Ajouter un profil de recherche", new_user_search_profile_path(current_user) %>
 		</p>
 		<% if !@search_profiles.blank? %>
 		<table>
@@ -17,10 +45,10 @@
 		  <% for profile in @search_profiles %>
 		    <tr>
 		    	<td>
-		    		<%= profile.category %> entre : <%= number_to_currency(profile.minprice, :unit => "€", :format => "%n %u") %> et <%= number_to_currency(profile.maxprice, :unit => "€", :format => "%n %u") %> <%= kilometers_criteria(profile) %>
+		    		<%= profile.category %> entre : <%= number_to_currency(profile.minprice, :delimiter => " ", :unit => "€", :format => "%n %u") %> et <%= number_to_currency(profile.maxprice, :delimiter => " ", :unit => "€", :format => "%n %u") %> <%= kilometers_criteria(profile) %>
 		    	</td>
 				<td>
-					<%= link_to "Modifier le profil", edit_user_search_profile_path(@user, profile) %> | <%= link_to "Supprimer le profil", user_search_profile_path(@user, profile), :method => :delete %>
+					<%= link_to "Modifier le profil", edit_user_search_profile_path(@user.id, profile.id) %> | <%= link_to "Supprimer le profil", user_search_profile_path(@user.id, profile.id), :method => :delete %>
 				</td>
 		    </tr>
 		  <% end %>

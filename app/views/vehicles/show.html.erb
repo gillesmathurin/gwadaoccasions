@@ -1,9 +1,5 @@
 <div id="content" class="span-17 colborder">
-	<%- if flash[:notice] -%>
-		<div class="flashnotice">
-			<%= flash[:notice] %>
-		</div>
-	<%- end -%>
+	<%= render :partial => "shared/flash_messages" %>
 	
 	<p class="invitation">
 		Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes<br/> <%= link_to "Créez votre compte", new_user_registration_path, :class => "bigLink" %>
