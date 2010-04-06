@@ -81,10 +81,10 @@ describe "/vehicles/show" do
       end
     end
     
-    it "doesn't show a 'Sélectionnez' link" do
+    it "shows a 'Sélectionnez' link" do
       render
-      response.should_not have_selector("a", :href => select_vehicle_path(assigns[:vehicle])) do |selector|
-        selector.should_not contain("Sélectionnez")
+      response.should have_selector("a", :href => select_vehicle_path(assigns[:vehicle])) do |selector|
+        selector.should contain("Sélectionnez")
       end
     end
     
@@ -162,9 +162,9 @@ describe "/vehicles/show" do
       response.should have_selector("a", :href => print_vehicle_path(assigns[:vehicle]) )
     end
     
-    it "doesn't show a 'Sélectionnez' link" do
+    it "shows a 'Sélectionnez' link" do
       render
-      response.should_not have_selector("a", :href => select_vehicle_path(assigns[:vehicle]))
+      response.should have_selector("a", :href => select_vehicle_path(assigns[:vehicle]))
     end
 
     context "and a user is logged_in" do

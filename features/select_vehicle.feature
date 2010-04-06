@@ -17,6 +17,17 @@ Feature: Select vehicle
 	  When I follow "Sélectionnez"
 	  Then I should see "Véhicule ajouté à votre sélection" within ".flashnotice"
 		And I should have "1" selected vehicles
+		
+	Scenario: The logged in user has already selected
+	  Given there are vehicles of each type in the database
+		And I am a new, authenticated user
+		And I am on "a vehicle page"
+		And I have already selected this vehicle
+	  When I follow "Sélectionnez"
+	  Then I should see "Véhicule déjà présent dans votre sélection."
+	
+	
+	
 
 	
 
