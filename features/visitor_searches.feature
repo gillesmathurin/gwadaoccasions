@@ -4,7 +4,7 @@ Feature: Visitor Search
 	As a visitor
 	I want to use a search form to find vehicles
 	
-	Scenario: Find Voitures (cars) based on with price criteria
+	Scenario: Find Voitures (cars) with price criteria
 	Given I am on "the homepage"
 	And There is a "Voiture" Category
 	And There is car priced "6000" €

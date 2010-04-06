@@ -81,10 +81,10 @@ describe "/vehicles/show" do
       end
     end
     
-    it "shows a 'Sélectionnez' link" do
+    it "doesn't show a 'Sélectionnez' link" do
       render
-      response.should have_selector("a", :href => select_vehicle_path(assigns[:vehicle])) do |selector|
-        selector.should contain("Sélectionnez")
+      response.should_not have_selector("a", :href => select_vehicle_path(assigns[:vehicle])) do |selector|
+        selector.should_not contain("Sélectionnez")
       end
     end
     
@@ -94,6 +94,21 @@ describe "/vehicles/show" do
         selector.should contain("Dites-le à un ami")
       end
     end
+
+    context "and a user is logged_in" do
+      before(:each) do
+        @user = create_default_user
+        sign_in(@user)
+      end
+      
+      it "shows a 'Sélectionnez' link" do
+        render
+        response.should have_selector("a", :href => select_vehicle_path(assigns[:vehicle])) do |selector|
+          selector.should contain("Sélectionnez")
+        end
+      end
+    end
+    
   end
     
   context "when vehicle is a motorbike" do
@@ -147,9 +162,21 @@ describe "/vehicles/show" do
       response.should have_selector("a", :href => print_vehicle_path(assigns[:vehicle]) )
     end
     
-    it "shows a 'Sélectionnez' link" do
+    it "doesn't show a 'Sélectionnez' link" do
       render
-      response.should have_selector("a", :href => select_vehicle_path(assigns[:vehicle]))
+      response.should_not have_selector("a", :href => select_vehicle_path(assigns[:vehicle]))
+    end
+
+    context "and a user is logged_in" do
+      before(:each) do
+        @user = create_default_user
+        sign_in(@user)
+      end
+      
+      it "shows a 'Sélectionnez' link" do
+        render
+        response.should have_selector("a", :href => select_vehicle_path(assigns[:vehicle]))
+      end
     end
   end
   
