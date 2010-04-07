@@ -26,6 +26,9 @@ class Vehicle < ActiveRecord::Base
   #methodes
   named_scope :of_the_week, :conditions => ['select_for_week = ?', true]
   
+  named_scope :with_price_criterias, lambda { |type, minprice, maxprice| { :conditions => ['type = ? AND price >= ? AND price <= ?', type, minprice, maxprice] } }
+  
+  
   def display_year
     self.annee.try(:year)
   end

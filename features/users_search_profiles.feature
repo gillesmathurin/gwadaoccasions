@@ -42,8 +42,8 @@ Feature: Users search profiles
 			|	Moto			|	4000			|	6000		 |	50000				 |	120000			 |
 			|	Jetski		|	4000			|	8000		 |	50000				 |	120000			 |
 			|	Bateau		|	4000			|	8000		 |							 |							 |		
+	
 
-@focus		
 	Scenario: Delete a search profile
 	  Given I am a new, authenticated user
 		And I have a search profile for a "Voiture" within "3000" and "6000"
@@ -51,6 +51,7 @@ Feature: Users search profiles
 	  When I follow "Supprimer le profil"
 		Then I should see "Profil de recherche supprimé."
 		And I should see "Vous n'avez pas encore de profils de recherche enregistrés."
+	
 		
 	Scenario Outline: Create at most 5 search profiles
 	  Given I am a new, authenticated user
@@ -71,7 +72,7 @@ Feature: Users search profiles
 			|	Moto			|	4000			|	6000		 |	50000				 |	120000			 |
 			|	Jetski		|	4000			|	8000		 |	50000				 |	120000			 |
 			|	Bateau		|	4000			|	8000		 |							 |							 |		
-		
+	
 			
 	Scenario: Create at most 5 search profiles
 	  Given I am a new, authenticated user
@@ -87,8 +88,14 @@ Feature: Users search profiles
 	  Then I should see "Vous avez atteint le nombre maximum de profils. Veuillez modifier un profil existant."
 
 	
-	
-	
+
+@focus	
+	Scenario: Shows compatible vehicles if any
+		Given there are vehicles of each type in the database
+	  And I am a new, authenticated user
+		And I have a search profile for a "Voiture" within "3000" and "7000"
+		And I am on my user profile page
+		Then I should see the vehicle in the compatible vehicles list
 	
 	
 	

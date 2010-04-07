@@ -9,4 +9,13 @@ class User < ActiveRecord::Base
   has_many :selections
   has_many :vehicles, :through => :selections
   has_many :search_profiles
+  
+  def compatible_vehicles
+    vehicles = []
+    self.search_profiles.each do |profile|
+      found_vehicles = Vehicle.with_price_criterias(profile.category, profile.minprice, profile.maxprice)
+      vehicles.concat(found_vehicles)
+    end
+    vehicles
+  end
 end

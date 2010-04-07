@@ -44,3 +44,9 @@ Then /^I am redirected to "([^\"]*)"$/ do |url|
   assert_equal url, location
   visit location
 end
+
+Then /^I should see the vehicle in the compatible vehicles list$/ do
+  response.should have_selector(".compatible_vehicles") do |selector|
+    selector.should contain("#{@car.modele} - Année : #{@car.display_year} - #{@car.price} € | Voir…")
+  end
+end

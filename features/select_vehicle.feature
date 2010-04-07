@@ -15,7 +15,7 @@ Feature: Select vehicle
 		And I have "0" selected vehicles
 		And I am on "a vehicle page"
 	  When I follow "Sélectionnez"
-	  Then I should see "Véhicule ajouté à votre sélection" within ".flashnotice"
+	  Then I should see "Véhicule ajouté à votre sélection"
 		And I should have "1" selected vehicles
 		
 	Scenario: The logged in user has already selected
@@ -25,14 +25,12 @@ Feature: Select vehicle
 		And I have already selected this vehicle
 	  When I follow "Sélectionnez"
 	  Then I should see "Véhicule déjà présent dans votre sélection."
-
-# @focus	
+	
 	Scenario: Deselect a vehicle
 		Given there are vehicles of each type in the database
 	  And I am a new, authenticated user
 		And I have already selected this vehicle
 		And I am on my user profile page
-		# Then show me the page
 	  When I follow "Dé-selectionner"
 	  Then I should see "Pas de véhicules sélectionnés"
 		And I should have "0" selected vehicles
