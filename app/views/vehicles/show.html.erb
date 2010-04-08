@@ -43,11 +43,13 @@
 				<%= link_to_function("Dites-le à un ami", "$('tell_#{@vehicle.id}').toggle()" ) %>
 			</p>
 			<div id="tell_<%= @vehicle.id %>" style="display:none" class="append">
-				<%- form_remote_tag :url => tellafriend_vehicle_path(@vehicle) do -%>
+				<%- form_remote_tag :url => tellafriend_vehicle_path(@vehicle),:update => "flash_messages", :complete => "$('tell_#{@vehicle.id}').hide();" do -%>
 					De : <%= text_field_tag :from_email %>
 					Email destinataire : <%= text_field_tag :friend_email %>
 					<%= submit_tag "Envoyer" %>
 				<%- end -%>
+			</div>
+			<div id="mailmessage">				
 			</div>
 		</div>
 		

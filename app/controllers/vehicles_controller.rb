@@ -44,6 +44,6 @@ class VehiclesController < ApplicationController
     else
       flash[:notice] = "Vérifiez les adresses emails saisies."
     end
-    render :action => "show"
+    render :partial => "shared/flash_messages", :layout => false
   end
 end

@@ -7,7 +7,7 @@ class VehicleMailer < ActionMailer::Base
     from       sender
     sent_on    Time.now
     
-    body       :vehicle => vehicle, :friend_email => recipient
+    body       :vehicle => vehicle, :friend_email => recipient, :sender => sender
   end
 
 end

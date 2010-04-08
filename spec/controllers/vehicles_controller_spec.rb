@@ -161,11 +161,5 @@ describe VehiclesController do
         flash[:notice].should == "Vérifiez les adresses emails saisies."
       end
     end
-    
-    it "renders the show action template" do
-      post :tellafriend, :id => "37", :from_email => "monemail@bar.com",
-        :friend_email => "foo@bar.com"
-      response.should render_template("show")
-    end
   end
 end
