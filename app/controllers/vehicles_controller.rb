@@ -22,8 +22,8 @@ class VehiclesController < ApplicationController
     
     respond_to do |format|
       if current_user && !current_user.vehicles.include?(@vehicle)
-        flash[:notice] = "Véhicule ajouté à votre sélection."
         current_user.vehicles << @vehicle
+        flash[:notice] = "Véhicule ajouté à votre sélection."
         format.html { redirect_to vehicle_path(@vehicle) }
       elsif current_user && current_user.vehicles.include?(@vehicle)
         flash[:notice] = "Véhicule déjà présent dans votre sélection."
@@ -35,4 +35,15 @@ class VehiclesController < ApplicationController
     end
   end
 
+  def tellafriend
+    @vehicle = Vehicle.find(params[:id])
+    from = params[:from_email]
+    friend = params[:friend_email]
+    if VehicleMailer.deliver_to_friend(from, friend, @vehicle)    
+      flash[:notice] = "Email envoyé à votre ami."
+    else
+      flash[:notice] = "Vérifiez les adresses emails saisies."
+    end
+    render :action => "show"
+  end
 end

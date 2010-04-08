@@ -120,4 +120,52 @@ describe VehiclesController do
     end
   end
   
+  describe "POST 'tellafriend'" do
+    
+    before(:each) do
+      Vehicle.stub!(:find)
+      VehicleMailer.stub!(:deliver_to_friend)
+    end
+    
+    it "finds the requested vehicle as @vehicle" do
+      Vehicle.should_receive(:find).with("37").and_return(mock_vehicle)
+      post :tellafriend, :id => "37", :friend_email => "foo@bar.com"
+    end
+    
+    context "email sent with success" do
+      it "sends and email to the email owner with the @vehicle infos" do
+        Vehicle.should_receive(:find).with("37").and_return(mock_vehicle)
+        VehicleMailer.should_receive(:deliver_to_friend).
+          with("monemail@bar.com", "foo@bar.com", mock_vehicle)
+        post :tellafriend, :id => "37", :from_email => "monemail@bar.com",
+          :friend_email => "foo@bar.com"
+      end
+
+      it "displays a 'Email envoyé avec succès.' message" do
+        Vehicle.should_receive(:find).with("37").and_return(mock_vehicle)
+        VehicleMailer.should_receive(:deliver_to_friend).
+          with("monemail@bar.com", "foo@bar.com", mock_vehicle).and_return(true)
+        post :tellafriend, :id => "37", :from_email => "monemail@bar.com",
+          :friend_email => "foo@bar.com"
+        flash[:notice].should == "Email envoyé à votre ami."
+      end
+    end
+    
+    context "email not sent successfully" do
+      it "displays a 'Email envoyé avec succès.' message" do
+        Vehicle.should_receive(:find).with("37").and_return(mock_vehicle)
+        VehicleMailer.should_receive(:deliver_to_friend).
+          with("monemail@bar.com", "foo@bar.com", mock_vehicle).and_return(false)
+        post :tellafriend, :id => "37", :from_email => "monemail@bar.com",
+          :friend_email => "foo@bar.com"
+        flash[:notice].should == "Vérifiez les adresses emails saisies."
+      end
+    end
+    
+    it "renders the show action template" do
+      post :tellafriend, :id => "37", :from_email => "monemail@bar.com",
+        :friend_email => "foo@bar.com"
+      response.should render_template("show")
+    end
+  end
 end

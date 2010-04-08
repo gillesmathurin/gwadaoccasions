@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
     users.resources :selections
   end
   map.resources :categories
-  map.resources :vehicles, :member => { :print => :get, :select => :put, :tellafriend => :get }
+  map.resources :vehicles, :member => { :print => :get, :select => :put, :tellafriend => :post }
   map.resources :searches
   map.resources :selections
   # The priority is based upon order of creation: first created -> highest priority.

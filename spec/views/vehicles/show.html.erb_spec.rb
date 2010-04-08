@@ -90,7 +90,7 @@ describe "/vehicles/show" do
     
     it "shows a 'Dites le à un ami' link" do
       render
-      response.should have_selector("a", :href => tellafriend_vehicle_path(assigns[:vehicle])) do |selector|
+      response.should have_selector("a", :onclick => "$('tell_#{assigns[:vehicle].id}').toggle(); return false;", :href => "#") do |selector|
         selector.should contain("Dites-le à un ami")
       end
     end
@@ -185,4 +185,5 @@ describe "/vehicles/show" do
       
     end
   end
+
 end

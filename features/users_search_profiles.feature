@@ -88,14 +88,13 @@ Feature: Users search profiles
 	  Then I should see "Vous avez atteint le nombre maximum de profils. Veuillez modifier un profil existant."
 
 	
-
-@focus	
+	
 	Scenario: Lead to matching vehicles
 		Given there are vehicles of each type in the database
 	  And I am a new, authenticated user
 		And I have a search profile for a "Voiture" within "3000" and "7000"
 		And I am on my user profile page
-		Then I should see the vehicle in the compatible vehicles list
+		Then I should see vehicle(s) in the compatible vehicles list
 	
 	
 	

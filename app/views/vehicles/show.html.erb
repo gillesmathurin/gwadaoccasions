@@ -40,8 +40,15 @@
 			<p>
 				<%= link_to "Imprimez la fiche", print_vehicle_path(@vehicle) %> | 
 				<%= link_to "Sélectionnez", select_vehicle_path(@vehicle), :method => :put %>  |
-				<%= link_to "Dites-le à un ami", tellafriend_vehicle_path(@vehicle) %>
+				<%= link_to_function("Dites-le à un ami", "$('tell_#{@vehicle.id}').toggle()" ) %>
 			</p>
+			<div id="tell_<%= @vehicle.id %>" style="display:none" class="append">
+				<%- form_remote_tag :url => tellafriend_vehicle_path(@vehicle) do -%>
+					De : <%= text_field_tag :from_email %>
+					Email destinataire : <%= text_field_tag :friend_email %>
+					<%= submit_tag "Envoyer" %>
+				<%- end -%>
+			</div>
 		</div>
 		
 	</div>
