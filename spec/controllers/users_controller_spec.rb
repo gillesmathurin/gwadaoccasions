@@ -29,6 +29,7 @@ describe UsersController do
     
     it "assigns the current_user search profiles as @search_profiles" do
       @mock_currentuser.should_receive(:search_profiles).and_return([@search_profile])
+      @mock_currentuser.should_receive(:matching_vehicles).and_return(@matching_vehicles)
       get :show
       assigns[:search_profiles].should == [@search_profile]
     end
@@ -40,10 +41,11 @@ describe UsersController do
       assigns[:selections].should == @selections
     end
     
-    it "assigns the current_user search profiles comptabible vehicles as @compatible_vehicles" do
-      @compatible_vehicles = mock('compatible_vehicles')
+    it "assigns the vehicles matching the current_user search profiles as @matching_vehicles" do
+      @matching_vehicles = [mock_model(Vehicle)]
+      @mock_currentuser.should_receive(:matching_vehicles).and_return(@matching_vehicles)
       get :show
-      assigns[:compatible_vehicles].should == @compatible_vehicles
+      assigns[:matching_vehicles].should == @matching_vehicles
     end
   end
 end

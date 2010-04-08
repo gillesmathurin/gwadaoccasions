@@ -17,7 +17,7 @@ describe "/users/show" do
     @selection = mock_model(Selection, :user_id => mock_user.id, :vehicle_id => @vehicle.id)
     assigns[:selections] = [@selection]
     assigns[:search_profiles] = [@search_profile]
-    assigns[:compatible_vehicles] = [@vehicle]
+    assigns[:matching_vehicles] = [@vehicle2]
     assigns[:user] = mock_user
     @selection.stub!(:vehicle).and_return(@vehicle)
     render 'users/show'
@@ -49,7 +49,7 @@ describe "/users/show" do
     
     it "shows compatible vehicles" do
       response.should have_selector(".compatible_vehicles") do |selector|
-        selector.should contain("#{@vehicle2.modele} - Année : #{@vehicle2.display_year} - 4 000.00 €")
+        selector.should contain("#{@vehicle2.modele} - Année : #{@vehicle2.display_year} - 4000 €")
       end
     end
   end

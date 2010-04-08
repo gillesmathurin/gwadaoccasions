@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = current_user
     @search_profiles = @user.search_profiles
     @selections = @user.selections
-    @compatible_vehicles = @user.compatible_vehicles
+    @matching_vehicles = @user.matching_vehicles
   end
 
 end

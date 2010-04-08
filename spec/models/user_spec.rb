@@ -5,7 +5,7 @@ describe User do
     @valid_attributes = {}
   end
   
-  describe "#compatible_vehicles" do
+  describe "#matching_vehicles" do
     
     def make_user_with_search_profiles
       User.make do |user|
@@ -21,8 +21,8 @@ describe User do
         @moto = Moto.make(:price => 5000)
       end
 
-      it "returns a compatible vehicle" do
-        @vehicles = @user.compatible_vehicles
+      it "returns a mat vehicle" do
+        @vehicles = @user.matching_vehicles
         @vehicles.should include(@voiture)
         @vehicles.should_not include(@moto)
       end
@@ -36,7 +36,7 @@ describe User do
       end
       
       it "returns an empty array" do
-        @vehicles = @user.compatible_vehicles
+        @vehicles = @user.matching_vehicles
         @vehicles.should be_empty
       end
     end

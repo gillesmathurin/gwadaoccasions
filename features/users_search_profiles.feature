@@ -90,7 +90,7 @@ Feature: Users search profiles
 	
 
 @focus	
-	Scenario: Shows compatible vehicles if any
+	Scenario: Lead to matching vehicles
 		Given there are vehicles of each type in the database
 	  And I am a new, authenticated user
 		And I have a search profile for a "Voiture" within "3000" and "7000"

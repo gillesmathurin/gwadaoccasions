@@ -60,6 +60,15 @@
 		</table>
 		
 		<div class="compatible_vehicles">
+			<% if !@matching_vehicles.blank? %>
+			  <% for vehicle in @matching_vehicles %>
+			    <p>
+			    	<%= image_tag(vehicle.overviewpic.url(:thumb)) %> <%= vehicle.modele %> - Année : <%= vehicle.display_year %> - <%= vehicle.price %> € | <%= link_to "Voir …", vehicle_path(vehicle) %>
+			    </p>
+			  <% end %>
+			<% else %>
+			  
+			<% end %>
 			
 		</div>		
 	</div>

@@ -47,6 +47,6 @@ end
 
 Then /^I should see the vehicle in the compatible vehicles list$/ do
   response.should have_selector(".compatible_vehicles") do |selector|
-    selector.should contain("#{@car.modele} - Année : #{@car.display_year} - #{@car.price} € | Voir…")
+    selector.should contain("#{@car.modele} - Année : #{@car.display_year} - #{@car.price} € | Voir …")
   end
 end
