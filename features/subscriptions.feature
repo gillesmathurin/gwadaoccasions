@@ -3,10 +3,10 @@ Feature: Subscriptions
   As a provider (vehicle seller)
   I want to susbcribe to the service
 
-	Scenario: New subscription
-	  Given I am a provider not authenticated
-	  When I go to "S'abonner"
-	  Then outcome
+	Scenario: New Provider registration
+	  Given I am not authenticated
+	  When I follow "S'abonner"
+	  Then I should be on "new subscription page"
 	
 	
 	

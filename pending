@@ -1,0 +1,3 @@
+      exists  db/migrate
+      create  db/migrate/20100409171357_add_status_column_to_providers.rb
+wrong number of arguments (1 for 2)
