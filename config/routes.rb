@@ -1,5 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   map.devise_for :providers
+  
+  map.provider_root '/providers', :controller => 'providers', :action => 'show'
+  
+  map.resources :providers do |providers|
+    providers.resources :vehicles
+  end
 
   map.devise_for :users
   

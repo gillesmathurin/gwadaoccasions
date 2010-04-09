@@ -6,7 +6,7 @@ Feature: Subscriptions
 	Scenario: New Provider registration
 	  Given I am not authenticated
 	  When I follow "S'abonner"
-	  Then I should be on "new subscription page"
+	  Then I should be on "provider sign_up" page
 	
 	
 	
