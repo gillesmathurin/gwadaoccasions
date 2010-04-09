@@ -45,7 +45,7 @@ Then /^I am redirected to "([^\"]*)"$/ do |url|
   visit location
 end
 
-Then /^I should see vehicle(s) in the compatible vehicles list$/ do
+Then /^I should see vehicle\(s\) in the compatible vehicles list$/ do
   response.should have_selector(".compatible_vehicles") do |selector|
     selector.should contain("#{@car.modele} - Année : #{@car.display_year} - #{@car.price} € | Voir …")
   end
