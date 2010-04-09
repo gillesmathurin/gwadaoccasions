@@ -9,13 +9,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100322184534) do
+ActiveRecord::Schema.define(:version => 20100409141639) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "providers", :force => true do |t|
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "login"
+    t.string   "company"
+    t.string   "address"
+    t.string   "zipcode"
+    t.string   "city"
+    t.string   "state"
+    t.string   "telephone"
+    t.string   "fax"
+    t.string   "mobile"
+    t.string   "contact_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "providers", ["confirmation_token"], :name => "index_providers_on_confirmation_token", :unique => true
+  add_index "providers", ["email"], :name => "index_providers_on_email", :unique => true
+  add_index "providers", ["reset_password_token"], :name => "index_providers_on_reset_password_token", :unique => true
 
   create_table "search_profiles", :force => true do |t|
     t.string   "category"

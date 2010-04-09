@@ -31,6 +31,13 @@
 						<%= link_to "Connexion", new_user_session_path() %>
 					<% end %>
 				</li>
+				<li>
+					<% if provider_signed_in? %>
+					 	<%= link_to "Deconnexion", destroy_provider_session_path() %>
+					<% else %>
+						<%= link_to "Espace Pro", new_provider_session_path() %>
+					<% end %>
+				</li>
 			</ul>
 		</div>
 		<%= yield %>

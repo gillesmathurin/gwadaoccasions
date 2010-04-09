@@ -1,11 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
+  map.devise_for :providers
+
   map.devise_for :users
+  
   map.user_root '/users', :controller => 'users', :action => 'show'
+  
   map.resources :users do |users|
-    # users.root :controller => 'users' , :action => :show
     users.resources :search_profiles
     users.resources :selections
   end
+  
   map.resources :categories
   map.resources :vehicles, :member => { :print => :get, :select => :put, :tellafriend => :post }
   map.resources :searches
