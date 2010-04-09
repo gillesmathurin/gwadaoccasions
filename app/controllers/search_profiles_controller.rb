@@ -15,7 +15,7 @@ class SearchProfilesController < ApplicationController
     respond_to do |format|
       if @search_profile.save
         flash[:notice] = 'Profil de recherche enregistré.'
-        format.html { redirect_to(user_path(current_user.id)) }
+        format.html { redirect_to(user_url(current_user.id)) }
         format.xml { render :xml => @search_profile, :status => :created, :location => @search_profile }
       else
         format.html { render :action => "new" }
@@ -30,7 +30,7 @@ class SearchProfilesController < ApplicationController
     respond_to do |format|
       if @search_profile.update_attributes(params[:search_profile])
         flash[:notice] = "Profil de recherche modifié."
-        format.html { redirect_to user_path(current_user.id) }        
+        format.html { redirect_to user_url(current_user.id) }        
       else
         format.html { render :action => "edit" }
       end
@@ -42,7 +42,7 @@ class SearchProfilesController < ApplicationController
     @search_profile.destroy
     respond_to do |format|
       flash[:notice] = "Profil de recherche supprimé."
-      format.html { redirect_to user_path(current_user.id) }
+      format.html { redirect_to user_url(current_user.id) }
     end
   end
   

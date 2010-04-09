@@ -19,15 +19,15 @@ describe SelectionsController do
       end
       
       it "fetches the requested user's selection and destroy it" do
-        @user.should_receive(:selections).and_return(@mock_selection)
-        @mock_selection.should_receive(:find).and_return(@selection)
+        @user.should_receive(:selections).and_return(@mock_selections)
+        @mock_selections.should_receive(:find).with("#{@selection.id}").and_return(@selection)
         @selection.should_receive(:destroy)
         delete :destroy, :user_id => @user.id, :id => @selection.id
       end
       
       it "redirect to the current user's page" do
-        @user.should_receive(:selections).and_return(@mock_selection)
-        @mock_selection.should_receive(:find).and_return(@selection)
+        @user.should_receive(:selections).and_return(@mock_selections)
+        @mock_selections.should_receive(:find).and_return(@selection)
         @selection.should_receive(:destroy)
         delete :destroy, :user_id => @user.id, :id => @selection.id
         response.should redirect_to(user_path(@user.id))
