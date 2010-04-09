@@ -27,6 +27,10 @@ module NavigationHelpers
       '/users'
     when /new search_profile/
       new_user_search_profile_path(User.last.id)
+    when /provider sign_up/
+      new_provider_registration_path
+    when /provider_root_path/
+      '/providers'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

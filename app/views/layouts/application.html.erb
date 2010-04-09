@@ -22,7 +22,7 @@
 			<ul class="menubar">
 				<li><%= link_to "Catalogue", vehicles_path() %></li>
 				<li>Nos Services</li>
-				<li>Abonnez-vous</li>
+				<li><%= link_to "Abonnez vous", new_provider_registration_path() %> </li>
 				<li>Aide</li>
 				<li>
 					<% if user_signed_in? %>

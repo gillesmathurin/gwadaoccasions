@@ -10,6 +10,15 @@ class ApplicationController < ActionController::Base
   
   before_filter :vehicle_count, :visitor_count
   
+  def after_sign_in_path_for(resource)
+    debugger
+    if resource.is_a?(Provider)
+      provider_url(resource.id)
+    else
+      super
+    end
+  end
+  
   private
   
   def vehicle_count

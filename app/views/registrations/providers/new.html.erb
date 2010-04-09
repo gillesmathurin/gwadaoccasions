@@ -5,18 +5,46 @@
 	<div class="searchform">
 		<% form_for resource_name, resource, :url => registration_path(resource_name) do |f| -%>
 		  <%= f.error_messages %>
-		  <p><%= f.label :login, "Login" %></p>
-		  <p><%= f.text_field :login %></p>	
-		  <p><%= f.label :email %></p>
-		  <p><%= f.text_field :email %></p>
+			<p><%= f.label :company, "Nom Société" %></p>
+			<p><%= f.text_field :company %> </p>
+			
+			<p><%= f.label :address, "Adresse" %> </p>
+			<p><%= f.text_field :address %> </p>
+			
+			<p><%= f.label :zipcode, "Code Postal" %> </p>
+			<p><%= f.text_field :zipcode %></p>
+			
+			<p><%= f.label :city, "Ville" %> </p>
+			<p><%= f.text_field :city %></p>
+			
+			<p><%= f.label :state, "Pays" %></p>
+			<p><%= f.text_field :state %></p>
+			
+			<p><%= f.label :telephone, "Telephone" %></p>
+			<p><%= f.text_field :telephone %></p>			
+			
+			<p><%= f.label :fax, "Fax" %></p>
+			<p><%= f.text_field :fax %></p>
+			
+			<p><%= f.label :mobile, "Mobile" %></p>
+			<p><%= f.text_field :mobile %></p>
+			
+			<p><%= f.label :contact_name, "Nom Responsable" %></p>
+			<p><%= f.text_field :contact_name %></p>
+			
+		  	<p><%= f.label :login, "Login" %></p>
+		  	<p><%= f.text_field :login %></p>
+			
+		  	<p><%= f.label :email %></p>
+		  	<p><%= f.text_field :email %></p>
 
-		  <p><%= f.label :password %></p>
-		  <p><%= f.password_field :password %></p>
+		  	<p><%= f.label :password %></p>
+		  	<p><%= f.password_field :password %></p>
 
-		  <p><%= f.label :password_confirmation %></p>
-		  <p><%= f.password_field :password_confirmation %></p>
+		  	<p><%= f.label :password_confirmation %></p>
+		  	<p><%= f.password_field :password_confirmation %></p>
 
-		  <p><%= f.submit "Sign up" %></p>
+		  	<p><%= f.submit "Sign up" %></p>
 		<% end -%>
 
 		<%= render :partial => "shared/devise_links" %>
