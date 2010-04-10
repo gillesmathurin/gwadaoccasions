@@ -7,7 +7,7 @@ Given /^I am not authenticated as provider$/ do
 end
 
 Given /^There is a subscription plan$/ do
-  @plan = Plan.make(:nom => "Standard")
+  @plan = Plan.make(:nom => "Standard", :id => 1)
 end
 
 Given /^I have one\s+provider "([^\"]*)" with password "([^\"]*)" and login "([^\"]*)"$/ do |email, password, login|
@@ -19,7 +19,6 @@ Given /^I follow Espace Pro$/ do
   # visit path_to("provider_login")
   click_link("Espace Pro")
 end
-
 
 Given /^I am a new, authenticated pending provider$/ do
   email = 'testing@man.net'
@@ -34,8 +33,16 @@ Given /^I am a new, authenticated pending provider$/ do
   And %{I press "Sign in"}
 end
 
-When /^I choose to create a Standard plan$/ do
-  choose "1"
+Given /^I have a pending subscription$/ do
+  @subscription = @provider.subscription
+end
+
+When /^I choose to create a "([^\"]*)" plan$/ do |arg1|
+  choose arg1
+end
+
+Then /^I should have a pending subscription$/ do
+  @subscription = @provider.subscription.make
 end
 
 

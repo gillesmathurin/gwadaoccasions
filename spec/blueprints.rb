@@ -113,3 +113,9 @@ Plan.blueprint do
   nom { "Standard" }
   price { 8500 }
 end
+
+Subscription.blueprint do
+  provider_id {  }
+  plan_id {  }
+  status { "pending" }
+end

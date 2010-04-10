@@ -3,6 +3,8 @@ class ProvidersController < ApplicationController
   
   def show
     @provider = current_provider
+    @plans = Plan.all
+    @subscription = @provider.build_subscription
   end
 
 end

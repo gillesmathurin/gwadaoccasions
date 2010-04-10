@@ -19,16 +19,24 @@
 		</p>
 		
 		<p>
-			<%= link_to "Modifier votre Compte", edit_provider_registration_path(@provider) %>
+			<%= link_to "Modifier votre Compte", edit_provider_registration_path() %>
 		</p>
 		
 		<hr/>
 		
 		<h3>Choisissez votre formule d'abonnment</h3>
 		
-		<p>
-			
-		</p>
+		<% form_for @subscription do |f| -%>
+		  <%= f.error_messages %>
+			<% @plans.each do |p| %>
+				<p>
+					<%= f.radio_button :plan_id, p.id, {:name => p.nom} %> : <%= p.nom %> <%= format_price(p.human_price) %>
+				</p>
+				<p>
+					<%= submit_tag "Souscrire" %>
+				</p>			
+			<% end %>
+		<% end -%>
 	</div>
 	<% else %>
 	

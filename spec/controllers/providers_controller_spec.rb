@@ -12,6 +12,7 @@ describe ProvidersController do
       before(:each) do
         sign_in(provider)
         controller.stub!(:current_provider).and_return(provider)
+        provider.stub!(:build_subscription)
       end
       
       it "should be successful" do
@@ -21,6 +22,7 @@ describe ProvidersController do
       end
       
       it "assigns the current provider as @provider" do
+        provider.should_receive(:build_subscription)
         get 'show'
         assigns[:provider].should == provider
       end

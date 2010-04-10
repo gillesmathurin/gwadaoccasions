@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :subscriptions
   map.devise_for :providers
   
   map.provider_root '/providers', :controller => 'providers', :action => 'show'

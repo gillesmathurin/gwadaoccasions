@@ -34,7 +34,8 @@ describe "/providers/show" do
     
     it "shows the subscription form" do
       response.should have_selector("form", :method => "post", :action => subscriptions_path) do |form|
-        form.should have_selector("input", :type => "radio", :value => @plan.id)
+        form.should have_selector("input", :type => "radio", :value => @plan.id, :name => @plan.nom)
+        form.should have_selector("input", :type => "submit", :value => "Souscrire")
       end
     end
   end

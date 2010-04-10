@@ -33,6 +33,8 @@ module NavigationHelpers
       '/providers'
     when /provider_login/
       '/providers/sign_in'
+    when /subscription show/
+      subscription_path(@subscription)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

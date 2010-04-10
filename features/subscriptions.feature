@@ -3,14 +3,15 @@ Feature: Subscriptions
   As a provider (vehicle seller)
   I want to susbcribe to the service
 
+	Background: Provider is logged out
+		Given I am not authenticated as provider
+		
 	Scenario: New Provider registration
-	  Given I am not authenticated
 	  When I follow "Abonnez vous"
 	  Then I should be on "provider sign_up" page
 	
 	
-	Scenario: Step 1 - fill in the provider registration form correctly
-	  Given I am not authenticated as provider
+	Scenario: Step 1 - filling in the provider registration form correctly
 		And there are no providers yet
 	  When I follow "Abonnez vous"
 		And I fill in the following:
@@ -30,20 +31,27 @@ Feature: Subscriptions
 		And I press "Enregistrer"
 		Then I should have "1" provider
 	  And I should be on "provider_root_path" page
-
-@focus
-	Scenario: Step 2 - choose the subscription plan
-		Given I am not authenticated as provider
-	  Given I am a new, authenticated pending provider
-		And There is a subscription plan 
-	  When I choose to create a Standard plan
-		And I press "Souscrire"
-	  Then I should be on "verify" page
 	
-	Scenario: Step 3 - Verify before going to payment gateway
-	  Given context
-	  When event
-	  Then outcome
+
+	Scenario: Step 2 - choosing the subscription plan
+	  And I am a new, authenticated pending provider
+		And There is a subscription plan
+		And I am on "provider_root_path" page 
+	  When I choose to create a "Standard" plan
+		And I press "Souscrire"
+		Then I should have a pending subscription
+	  And I should be on "subscription show" page
+	
+@focus
+	Scenario: Step 3 - Proceeding to payment
+	  And I am a new, authenticated pending provider
+		And There is a subscription plan
+		And I am on "provider_root_path" page 
+		And I press "Souscrire"
+		And I have a pending subscription
+		And I am on "subscription show" page 
+	  When I press "Payer sur paypal"
+	  Then 
 	
 	
 	

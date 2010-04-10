@@ -1,0 +1,23 @@
+<div id="content" class="span-17 colborder">
+	<% if @subscription.pending? %>
+	<h2>Vérification avant paiement</h2>
+	
+	<p>
+		Vous serez rediriger sur le site de Paypal pour effectuer le paiement
+	</p>
+	
+	<p>
+		<!-- TODO : ajouter le bouton de paiement paypal -->
+	</p>
+	
+	<p>
+		Abonnement choisi : <%= @subscription.plan.nom %> : <%= format_price(@subscription.plan.human_price) %>
+	</p>
+	
+	<p>
+		<!-- TODO : ajouter le bouton de paiement paypal -->
+	</p>
+	<% else %>
+		<h2>Merci de vous être abonné ! Bienvenue parmi nous</h2>
+	<% end %>
+</div>
