@@ -108,3 +108,8 @@ Provider.blueprint do
   contact_name { Faker::Name.name }
   status { "pending" }
 end
+
+Plan.blueprint do
+  nom { "Standard" }
+  price { 8500 }
+end

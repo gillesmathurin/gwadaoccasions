@@ -9,7 +9,11 @@ describe "/providers/show" do
   context "with a pending provider" do
     before(:each) do
       sign_in(provider)
+      @plan = mock_model(Plan, :nom => "Standard")
+      @subscription = mock_model(Subscription).as_new_record
       assigns[:provider] = provider
+      assigns[:subscription] = @subscription
+      assigns[:plans] = [@plan]
       render 'providers/show'
     end
     
@@ -28,9 +32,9 @@ describe "/providers/show" do
       response.should contain("#{provider.email}")
     end
     
-    it "shows the subscription plan choose by the provider" do
-      response.should have_selector(".abonnement") do |selector|
-        selector.should contain("Abonnement Standard : 85 € TTC / mois")
+    it "shows the subscription form" do
+      response.should have_selector("form", :method => "post", :action => subscriptions_path) do |form|
+        form.should have_selector("input", :type => "radio", :value => @plan.id)
       end
     end
   end

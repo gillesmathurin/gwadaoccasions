@@ -2,6 +2,7 @@
 
 	<h2>Sign up</h2>
 	
+	
 	<div class="searchform">
 		<% form_for resource_name, resource, :url => registration_path(resource_name) do |f| -%>
 		  <%= f.error_messages %>
@@ -43,8 +44,8 @@
 
 		  	<p><%= f.label :password_confirmation %></p>
 		  	<p><%= f.password_field :password_confirmation %></p>
-
-		  	<p><%= f.submit "Souscrire" %></p>
+		
+		  	<p><%= f.submit "Enregistrer" %></p>
 		<% end -%>
 
 		<%= render :partial => "shared/devise_links" %>

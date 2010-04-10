@@ -31,6 +31,8 @@ module NavigationHelpers
       new_provider_registration_path
     when /provider_root_path/
       '/providers'
+    when /provider_login/
+      '/providers/sign_in'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

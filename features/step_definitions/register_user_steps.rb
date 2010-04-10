@@ -2,7 +2,6 @@ include Devise::TestHelpers
 
 Given /^I am not authenticated$/ do
   visit('/users/sign_out')
-  visit('/providers/sign_out')
 end
 
 Given /^I have one\s+user "([^\"]*)" with password "([^\"]*)" and login "([^\"]*)"$/ do |email, password, login|
