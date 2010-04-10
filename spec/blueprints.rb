@@ -91,3 +91,20 @@ SearchProfile.blueprint do
   minkilometer
   maxkilometer
 end
+
+Provider.blueprint do
+  email
+  password
+  password_confirmation
+  login { "login" }
+  company { "MyCompany" }
+  telephone { "0000000000" }
+  fax { "0000000000" }
+  mobile { "0000000000" }
+  address { "adresse" }
+  zipcode { "97180" }
+  city { "Sainte-Anne" }
+  state { "Guadeloupe" }
+  contact_name { Faker::Name.name }
+  status { "pending" }
+end

@@ -1,2 +1,37 @@
-<h1>Providers#show</h1>
-<p>Find me in app/views/providers/show.html.erb</p>
+<div id="content" class="span-17 colborder">
+	<%= render :partial => "shared/flash_messages" %>
+	
+	<% if @provider.pending? %>
+	<div class="subscribe-block">
+		<h2>Veuillez vérifier les informations de votre profil</h2>
+		
+		<p>
+			Nom : <%= @provider.contact_name %><br/>
+			Login : <%= @provider.login %><br/>
+			Email : <%= @provider.email %><br/>
+			Société : <%= @provider.company %><br/>
+			Tel : <%= @provider.telephone %><br/>
+			Fax : <%= @provider.fax %><br/>
+			Mobile : <%= @provider.mobile if @provider.mobile %><br/>
+			Adresse : <%= @provider.address %><br/>
+			Code Postal : <%= @provider.zipcode %><br/>
+			Ville : <%= @provider.city %><br/>
+		</p>
+		
+		<p>
+			<%= link_to "Modifier votre Compte", edit_provider_registration_path(@provider) %>
+		</p>
+		
+		<hr/>
+		
+		<h3>Formule d'abonnement choisi</h3>
+		
+		<p>
+			<%= @provider.subscription.plan.nom %> : <%= format_price(@provider.subscription.plan.price_with_decimal) %> TTC / mois
+		</p>
+	</div>
+	<% else %>
+	
+	<% end %>
+	
+</div>

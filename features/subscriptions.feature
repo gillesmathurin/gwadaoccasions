@@ -27,11 +27,9 @@ Feature: Subscriptions
 			| provider_email		| foobar@mail.com	|
 			| provider_password	|	carmen30	|
 			| provider_password_confirmation | carmen30|
-		And I press "Sign up"
+		And I press "Souscrire"
 		Then I should have "1" provider
 	  And I should be on "provider_root_path" page
-	 	And show me the page
-		# And I should see "Bienvenue"
 	
 	
 	

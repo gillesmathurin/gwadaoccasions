@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  plan_id: 1
+  subscription_date: 2010-04-09 20:05:23
+  status: MyString
+  provider_id: 1
+  subscriber_id: MyString
+
+two:
+  plan_id: 1
+  subscription_date: 2010-04-09 20:05:23
+  status: MyString
+  provider_id: 1
+  subscriber_id: MyString
