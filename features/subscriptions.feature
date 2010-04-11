@@ -51,7 +51,9 @@ Feature: Subscriptions
 		And I have a pending subscription
 		And I am on "subscription show" page 
 	  When I press "Payer sur paypal"
-	  Then 
+	  Then I should have a paid subscription
+		And I should have an active provider account
+		And I should be on "congrats" page
 	
 	
 	

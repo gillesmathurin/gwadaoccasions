@@ -9,11 +9,12 @@ describe "/providers/show" do
   context "with a pending provider" do
     before(:each) do
       sign_in(provider)
-      @plan = mock_model(Plan, :nom => "Standard")
-      @subscription = mock_model(Subscription).as_new_record
+      @plan = mock_model(Plan, :nom => "Standard", :price => 8500)
+      @subscription = mock_model(Subscription, :provider_id => provider, :plan_id => nil).as_new_record
       assigns[:provider] = provider
       assigns[:subscription] = @subscription
       assigns[:plans] = [@plan]
+      @plan.stub!(:human_price).and_return(85.00)
       render 'providers/show'
     end
     
@@ -34,7 +35,7 @@ describe "/providers/show" do
     
     it "shows the subscription form" do
       response.should have_selector("form", :method => "post", :action => subscriptions_path) do |form|
-        form.should have_selector("input", :type => "radio", :value => @plan.id, :name => @plan.nom)
+        form.should have_selector("input", :type => "radio", :value => "#{@plan.id}", :name => @plan.nom)
         form.should have_selector("input", :type => "submit", :value => "Souscrire")
       end
     end

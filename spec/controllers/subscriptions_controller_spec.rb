@@ -1,14 +1,17 @@
 require 'spec_helper'
 
 describe SubscriptionsController do
-
-  #Delete these examples and add some real ones
-  it "should use SubscriptionsController" do
-    controller.should be_an_instance_of(SubscriptionsController)
+  
+  def provider
+    @provider ||= Provider.make
   end
 
-
   describe "GET 'new'" do
+    
+    before(:each) do
+      sign_in(provider)
+    end
+    
     it "should be successful" do
       get 'new'
       response.should be_success
