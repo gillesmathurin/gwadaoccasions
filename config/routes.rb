@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :subscriptions
+  map.congrats 'congratulations/:id', :controller => "subscriptions", :action => "congrats"
   map.devise_for :providers
   
   map.provider_root '/providers', :controller => 'providers', :action => 'show'

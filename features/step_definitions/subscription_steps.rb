@@ -34,7 +34,8 @@ Given /^I am a new, authenticated pending provider$/ do
 end
 
 Given /^I have a pending subscription$/ do
-  @subscription = @provider.subscription
+  # @subscription = @provider.create_subscription(:plan_id => @plan)
+  @subscription = Subscription.make(:provider => @provider, :plan => @plan)
 end
 
 When /^I choose to create a "([^\"]*)" plan$/ do |arg1|

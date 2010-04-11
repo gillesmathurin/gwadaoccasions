@@ -22,4 +22,8 @@ class SubscriptionsController < ApplicationController
       end
     end
   end
+  
+  def congrats
+    
+  end
 end

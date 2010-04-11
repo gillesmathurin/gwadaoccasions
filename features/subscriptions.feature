@@ -46,10 +46,8 @@ Feature: Subscriptions
 	Scenario: Step 3 - Proceeding to payment
 	  And I am a new, authenticated pending provider
 		And There is a subscription plan
-		And I am on "provider_root_path" page 
-		And I press "Souscrire"
 		And I have a pending subscription
-		And I am on "subscription show" page 
+		And I am on "subscription show" page
 	  When I press "Payer sur paypal"
 	  Then I should have a paid subscription
 		And I should have an active provider account

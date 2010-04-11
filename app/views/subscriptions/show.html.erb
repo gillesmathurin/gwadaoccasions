@@ -8,7 +8,7 @@
 	
 	<p align="center">
 		<% paypal_form_tag do %>
-			<%= paypal_subscription_setup "Abonnement Standard", APP_CONFIG[:paypal_email], "#{@subscription.plan.human_price}", @subscription.id, :return => congrats_url(@provider.id), :notify_url => payment_notifications_url, :currency_code => "EUR" %>
+			<%= paypal_subscription_setup "Abonnement Standard", APP_CONFIG[:paypal_email], @subscription.plan.human_price, @subscription.id, :return => congrats_url(@provider.id), :notify_url => payment_notifications_url, :currency_code => "EUR" %>
 			<%= submit_tag "Payer sur Paypal" %>
 		<% end %>
 	</p>
@@ -19,7 +19,7 @@
 	
 	<p align="center">
 		<% paypal_form_tag do %>
-			<%= paypal_subscription_setup "Abonnement Standard", APP_CONFIG[:paypal_email], "#{@subscription.plan.human_price}", @subscription.id, :return => congrats_url(@provider.id), :notify_url => payment_notifications_url, :currency_code => "EUR" %>
+			<%= paypal_subscription_setup "Abonnement Standard", APP_CONFIG[:paypal_email], @subscription.plan.human_price, @subscription.id, :return => congrats_url(@provider.id), :notify_url => payment_notifications_url, :currency_code => "EUR" %>
 			<%= submit_tag "Payer sur Paypal" %>
 		<% end %>
 	</p>
