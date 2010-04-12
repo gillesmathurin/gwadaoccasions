@@ -10,6 +10,11 @@ test:
   paypal_cert_id: 123456789
   paypal_url: testpaypalurl
 
+cucumber:
+  paypal_email: test@example.com
+  paypal_secret: testscret
+  paypal_cert_id: 123456789
+  paypal_url: "https://www.sandbox.paypal.com/cgi-bin/websrc"
 # real production configuration
 # production:
 #   paypal_email: gillesmath@me.com

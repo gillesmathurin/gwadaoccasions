@@ -16,6 +16,9 @@ require 'cucumber/web/tableish'
 
 require 'webrat'
 require 'webrat/core/matchers'
+require 'fakeweb'
+require 'spec/stubs/cucumber'
+# require "spec/mocks"
 
 Webrat.configure do |config|
   config.mode = :rails
