@@ -42,15 +42,18 @@ When /^I choose to create a "([^\"]*)" plan$/ do |arg1|
   choose arg1
 end
 
-When /^I press on "([^\"]*)" button$/ do |arg1|
-  FakeWeb.allow_net_connect = false
-  FakeWeb.register_uri(:post, "https://www.sandbox.paypal.com/cgi-bin/websrc", :response => File.read(RAILS_ROOT + "/spec/fixtures/sample_ipn_response.txt"))
+When /^I press on Payer sur paypal button$/ do
   # TODO : stub or mock the process of paypal payment using fakeweb and Net::HTTP
+  FakeWeb.allow_net_connect = false
+  # TODO : refactor this method to set the response the paypal ipn
+  FakeWeb.register_uri(:post, "https://www.sandbox.paypal.com/cgi-bin/websrc", :body => "VERIFIED")
+  # TODO : then register another uri who verify the ipn
   url = URI.parse("https://www.sandbox.paypal.com/cgi-bin/websrc")
-  http = Net::HTTP.new(url.host, url.port)
+  http = Net::HTTP.new(url.host, 443)
   http.use_ssl = true
-  request = Net::HTTP::Post.new(url.path, {})
-  response = http.start { |http| http.request(request)}
+  response = http.start { http.post(url.path, {}) }
+  FakeWeb.allow_net_connect = true
+  response == "VERIFIED"
 end
 
 
@@ -66,9 +69,9 @@ Then /^I should have "([^\"]*)" provider$/ do |arg1|
 end
 
 Then /^I should have a paid subscription$/ do
-  pending # express the regexp above with the code you wish you had
+  @subscription.status == "paid"
 end
 
 Then /^I should have an active provider account$/ do
-  pending # express the regexp above with the code you wish you had
+  @provider.status == "active"
 end

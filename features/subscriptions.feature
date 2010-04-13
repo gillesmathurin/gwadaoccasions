@@ -49,7 +49,7 @@ Feature: Subscriptions
 		And I have a pending subscription
 		And I am on "subscription show" page
 		# And show me the page
-	  When I press on "Payer sur paypal" button
+	  When I press on Payer sur paypal button
 	  Then I should have a paid subscription
 		And I should have an active provider account
 		And I should be on "congrats" page
