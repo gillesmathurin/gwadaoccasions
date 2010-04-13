@@ -1,7 +1,7 @@
 <div id="content" class="span-17 colborder">
 	<% if @subscription.pending? %>
 	<h2>Vérification avant paiement</h2>
-	
+	<%= debug @subscription %>
 	<p>
 		Vous serez rediriger sur le site de Paypal pour effectuer le paiement
 	</p>

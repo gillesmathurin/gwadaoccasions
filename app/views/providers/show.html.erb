@@ -30,7 +30,7 @@
 		  <%= f.error_messages %>
 			<% @plans.each do |p| %>
 				<p>
-					<%= f.radio_button :plan_id, p.id, {:name => p.nom} %> : <%= p.nom %> <%= format_price(p.human_price) %>
+					<%= f.radio_button :plan_id, p.id  %> : <%= p.nom %> <%= format_price(p.human_price) %>
 				</p>
 				<p>
 					<%= submit_tag "Souscrire" %>

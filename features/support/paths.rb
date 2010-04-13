@@ -35,6 +35,8 @@ module NavigationHelpers
       '/providers/sign_in'
     when /subscription show/
       subscription_path(@subscription)
+    when /congrats/
+      congrats_path(@subscription)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

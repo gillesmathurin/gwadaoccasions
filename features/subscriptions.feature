@@ -31,28 +31,18 @@ Feature: Subscriptions
 		And I press "Enregistrer"
 		Then I should have "1" provider
 	  And I should be on "provider_root_path" page
-	
 
 	Scenario: Step 2 - choosing the subscription plan
+		Given I am not authenticated as provider
 	  And I am a new, authenticated pending provider
 		And There is a subscription plan
 		And I am on "provider_root_path" page 
 	  When I choose to create a "Standard" plan
 		And I press "Souscrire"
-		Then I should have a pending subscription
+		Then I should have a pending subscription with a "Standard" plan
 	  And I should be on "subscription show" page
-	
-@focus
-	Scenario: Step 3 - Proceeding to payment
-	  And I am a new, authenticated pending provider
-		And There is a subscription plan
-		And I have a pending subscription
-		And I am on "subscription show" page
-		# And show me the page
-	  When I press on Payer sur paypal button
-	  Then I should have a paid subscription
-		And I should have an active provider account
-		And I should be on "congrats" page
+		And I should see "Payer sur paypal"
+
 	
 	
 	

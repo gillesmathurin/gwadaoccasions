@@ -39,27 +39,14 @@ Given /^I have a pending subscription$/ do
 end
 
 When /^I choose to create a "([^\"]*)" plan$/ do |arg1|
-  choose arg1
+  choose "subscription_plan_id_1"
 end
 
 When /^I press on Payer sur paypal button$/ do
-  # TODO : stub or mock the process of paypal payment using fakeweb and Net::HTTP
-  FakeWeb.allow_net_connect = false
-  # TODO : refactor this method to set the response the paypal ipn
-  FakeWeb.register_uri(:post, "https://www.sandbox.paypal.com/cgi-bin/websrc", :body => "VERIFIED")
-  # TODO : then register another uri who verify the ipn
-  url = URI.parse("https://www.sandbox.paypal.com/cgi-bin/websrc")
-  http = Net::HTTP.new(url.host, 443)
-  http.use_ssl = true
-  response = http.start { http.post(url.path, {}) }
-  FakeWeb.allow_net_connect = true
-  response == "VERIFIED"
 end
 
-
 Then /^I should have a pending subscription$/ do
-  # @subscription = @provider.subscription.make
-  @subscription = Subscription.make(:provider => @provider, :plan => @plan)
+  @subscription = @provider.subscription
 end
 
 
@@ -69,7 +56,8 @@ Then /^I should have "([^\"]*)" provider$/ do |arg1|
 end
 
 Then /^I should have a paid subscription$/ do
-  @subscription.status == "paid"
+  assert_equal("paid", @provider.status)
+  # @subscription.status == "paid"
 end
 
 Then /^I should have an active provider account$/ do
