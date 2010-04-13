@@ -1,5 +1,6 @@
 class PaymentNotificationsController < ApplicationController
   protect_from_forgery :except => [:create]
+  ssl_required :create 
   
   def create
     notify = Paypal::Notification.new(request.raw_post)

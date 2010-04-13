@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   
   before_filter :vehicle_count, :visitor_count
+  include SslRequirement
+  
+  def ssl_required?
+    return false if local_request? || RAILS_ENV == "test"
+    super
+  end
   
   # def after_sign_in_path_for(resource)
   #   if resource.is_a?(Provider)

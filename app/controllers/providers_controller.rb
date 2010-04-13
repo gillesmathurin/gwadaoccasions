@@ -1,5 +1,6 @@
 class ProvidersController < ApplicationController
   before_filter :authenticate_provider!
+  ssl_required :show
   
   def show
     @provider = current_provider
