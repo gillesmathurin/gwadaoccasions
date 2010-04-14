@@ -41,7 +41,19 @@ describe "/providers/show" do
     end
   end
   
-
-
-
+  context "with a active provider" do
+    before(:each) do
+      sign_in(provider(:status => "active"))
+      @plan = Plan.make()
+      @subscription = Subscription.make(:provider => @provider, :plan => @plan)
+      assigns[:provider] = @provider
+      assigns[:subscription]
+      @plan.stub!(:human_price).and_return(85.00)
+      render 'providers/show'
+    end
+    
+    it "shows and Invoice History link" do
+      response.should contain("Historique des factures")
+    end
+  end
 end

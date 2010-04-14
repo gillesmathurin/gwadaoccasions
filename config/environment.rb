@@ -17,6 +17,7 @@ Rails::Initializer.run do |config|
   config.gem 'warden'
   config.gem 'machinist'
   config.gem 'faker'
+  config.gem "tabs_on_rails", :source => "http://gemcutter.org"
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

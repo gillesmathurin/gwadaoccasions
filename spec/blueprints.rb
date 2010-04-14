@@ -119,3 +119,11 @@ Subscription.blueprint do
   plan_id {  }
   status { "pending" }
 end
+
+PaymentNotification.blueprint do
+  # subscription_id {}
+  params { "params" }
+  created_at { Time.now }
+  status { "paid" }
+  transaction_id { String.random_alphanumeric(8) }
+end
