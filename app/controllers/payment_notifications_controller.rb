@@ -2,6 +2,12 @@ class PaymentNotificationsController < ApplicationController
   protect_from_forgery :except => [:create]
   ssl_required :create 
   
+  before_filter :find_provider, :only => [:index]
+  
+  def index
+    @payment_notifications = @provider.subscriptions.payment_notifications if @provider
+  end
+  
   def create
     notify = Paypal::Notification.new(request.raw_post)
     if notify.acknowledge
@@ -33,5 +39,11 @@ class PaymentNotificationsController < ApplicationController
   
   def plan_price(invoice)
     Subscription.find(invoice).plan.human_price
+  end
+  
+  private
+  
+  def find_provider
+    @provider = Provider.find(params[:provider_id]) if params[:provider_id]
   end
 end

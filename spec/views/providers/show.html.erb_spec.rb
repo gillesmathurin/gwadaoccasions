@@ -52,8 +52,7 @@ describe "/providers/show" do
       render 'providers/show'
     end
     
-    it "shows and Invoice History link" do
-      response.should contain("Historique des factures")
-    end
+    it "shows a Subscription History link"
+    
   end
 end

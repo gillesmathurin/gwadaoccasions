@@ -10,7 +10,7 @@ Feature: Invoices history
 	  Given I am a new, authenticated active provider
 		And I have been subscribed since "3" months
 		And I am on "provider_root_path" page
-	  When I follow "Historique des factures"
+	  When I follow "Historique Abonnement"
 	  Then I should be on "my invoices history"
 		# And I should see
 	
