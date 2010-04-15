@@ -27,12 +27,12 @@ render_tabnav :provider,
 
   add_tab do |t|
    	t.named 'Mon compte'
-   	t.links_to provider_path(@provider)
+   	t.links_to provider_path(current_provider)
   end
          
   add_tab do |t|
    	t.named 'Historique Abonnement'
-   	t.links_to provider_subscription_payment_notifications_path(@provider, @subscription)
+   	t.links_to provider_subscription_payment_notifications_path(current_provider, @subscription)
   end 
   
   add_tab do |t|

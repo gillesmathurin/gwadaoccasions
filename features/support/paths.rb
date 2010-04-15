@@ -39,6 +39,8 @@ module NavigationHelpers
       congrats_path(@subscription)
     when /Historique Abonnement/
       provider_subscription_payment_notifications_path(@provider, @subscription)
+    when /new salesman/
+      new_provider_salesman_path(@provider)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

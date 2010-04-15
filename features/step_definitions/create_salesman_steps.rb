@@ -1,10 +1,11 @@
 Given /^I have "([^\"]*)" salesman$/ do |arg1|
-  @provider.salesmans.count == arg1
-end
-
-When /^I fill in the following$/ do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+  if arg1.to_i == 0
+    @provider.salesmans.count == arg1    
+  else
+    arg1.to_i.times do
+      Salesman.make(:provider => @provider)
+    end
+  end
 end
 
 When /^I press\t"([^\"]*)"$/ do |arg1|

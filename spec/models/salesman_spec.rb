@@ -4,8 +4,7 @@ describe Salesman do
   before(:each) do
     @valid_attributes = {
       :name => "value for name",
-      :mobile_phone => "value for mobile_phone",
-      :provider_id => 1
+      :mobile_phone => "value for mobile_phone"
     }
   end
 

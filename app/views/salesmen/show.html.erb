@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @salesman.name %>
+</p>
+
+<p>
+  <b>Mobile phone:</b>
+  <%=h @salesman.mobile_phone %>
+</p>
+
+
+<%= link_to 'Edit', edit_salesman_path(@salesman) %> |
+<%= link_to 'Back', salesmen_path %>

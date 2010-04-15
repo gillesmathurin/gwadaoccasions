@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :salesmans
+  map.resources :salesmen
   
   map.resources :subscriptions do |subscriptions|
     subscriptions.resources :payment_notifications
@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :providers do |providers|
     providers.resources :vehicles
     providers.resources :subscriptions, :has_many => :payment_notifications
-    providers.resources :salesmans
+    providers.resources :salesmen
   end
 
   map.devise_for :users

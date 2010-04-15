@@ -3,9 +3,7 @@
 one:
   name: MyString
   mobile_phone: MyString
-  provider_id: 1
 
 two:
   name: MyString
   mobile_phone: MyString
-  provider_id: 1

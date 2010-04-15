@@ -1,0 +1,20 @@
+<h1>Editing salesman</h1>
+
+<% form_for(@salesman) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :mobile_phone %><br />
+    <%= f.text_field :mobile_phone %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @salesman %> |
+<%= link_to 'Back', salesmen_path %>
