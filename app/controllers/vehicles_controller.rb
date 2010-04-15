@@ -1,7 +1,12 @@
 class VehiclesController < ApplicationController
+  before_filter :find_provider
   
   def index
-    @vehicles = Vehicle.paginate(:page => params[:page], :per_page => 15)
+    if @provider
+      @vehicles = @provider.vehicles.paginate(:page => params[:page], :per_page => 15)
+    else
+      @vehicles = Vehicle.paginate(:page => params[:page], :per_page => 15)
+    end
     respond_to do |format|
       format.html {}
     end
@@ -45,5 +50,11 @@ class VehiclesController < ApplicationController
       flash[:notice] = "Vérifiez les adresses emails saisies."
     end
     render :partial => "shared/flash_messages", :layout => false
+  end
+  
+  private
+  
+  def find_provider
+    @provider = Provider.find(params[:provider_id]) if params[:provider_id]
   end
 end

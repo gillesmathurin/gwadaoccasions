@@ -5,7 +5,7 @@ class PaymentNotificationsController < ApplicationController
   before_filter :find_provider, :only => [:index]
   
   def index
-    @payment_notifications = @provider.subscriptions.payment_notifications if @provider
+    @payment_notifications = @provider.subscription.payment_notifications if @provider
   end
   
   def create

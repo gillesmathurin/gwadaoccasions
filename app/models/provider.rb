@@ -1,5 +1,6 @@
 class Provider < ActiveRecord::Base
   has_one :subscription
+  has_many :vehicles, :dependent => :destroy
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :registerable, :database_authenticatable, :recoverable,

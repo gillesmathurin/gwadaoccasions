@@ -24,15 +24,20 @@ render_tabnav :provider,
   #     t.links_to :controller => name
   #   end
   # end 
+
+  add_tab do |t|
+   	t.named 'Mon compte'
+   	t.links_to provider_path(@provider)
+  end
          
   add_tab do |t|
    	t.named 'Historique Abonnement'
-   	t.links_to payment_notifications_path
+   	t.links_to payment_notifications_path(:provider_id => @provider.id)
   end 
   
   add_tab do |t|
 	t.named 'Vehicules'
-	t.links_to vehicles_path
+	t.links_to provider_vehicles_path(@provider)
   end
   #
   #add_tab do |t|

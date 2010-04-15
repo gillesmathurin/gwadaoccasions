@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "/providers/show" do
+  include Widgets
   
   def provider(stubs = {})
     @provider ||= Provider.make(stubs)
@@ -52,7 +53,14 @@ describe "/providers/show" do
       render 'providers/show'
     end
     
-    it "shows a Subscription History link"
+    it "shows a 'Historique Abonnement' link" do
+      pending()
+      response.should have_selector("#provider_nav") do |selector|
+        selector.should have_selector("li") do |li|
+          li.should contain("Historique Abonnement")
+        end
+      end
+    end
     
   end
 end

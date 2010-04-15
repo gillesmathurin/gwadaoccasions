@@ -2,6 +2,7 @@ class Vehicle < ActiveRecord::Base
   default_scope :order => "price asc"
   validates_presence_of :annee, :on => :create, :message => "doit être renseignée"
   
+  belongs_to :provider
   belongs_to :category
   has_many :selections
   has_many :users, :through => :selections

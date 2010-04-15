@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100411043340) do
+ActiveRecord::Schema.define(:version => 20100415011406) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(:version => 20100411043340) do
     t.string   "lbackpic_content_type"
     t.integer  "lbackpic_file_size"
     t.datetime "lbackpic_updated_at"
+    t.integer  "provider_id"
   end
 
 end
