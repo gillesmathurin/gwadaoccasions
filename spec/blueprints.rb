@@ -122,7 +122,7 @@ end
 
 PaymentNotification.blueprint do
   # subscription_id {}
-  params { "params" }
+  params { {:mc_gross => "85.00"} }
   created_at { Time.now }
   status { "paid" }
   transaction_id { String.random_alphanumeric(8) }

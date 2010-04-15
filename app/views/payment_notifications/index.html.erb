@@ -1,0 +1,24 @@
+<div id="content" class="span-17 colborder">
+	<%= render :partial => "shared/flash_messages" %>
+	
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr>
+			<th>Transaction ID</th>
+			<th>Status</th>
+			<th>Date</th>
+			<th>Montant</th>
+		</tr>
+		<% @payment_notifications.each do |pn| %>
+		<tr>
+			<td><%= pn.transaction_id %></td>
+			<td><%= pn.status %></td>
+			<td><%= pn.created_at %></td>
+			<td><%= pn.params[:mc_gross] %></td>
+		</tr>
+		<% end %>
+	</table>
+	
+	<p class="navlinks">		
+	<%= will_paginate @payment_notifications, :previous_label => "Précédent", :next_label => "Suivant" %>	
+	</p>
+</div>

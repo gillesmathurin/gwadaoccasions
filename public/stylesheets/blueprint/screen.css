@@ -318,4 +318,5 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 	z-index: 2;
 	width: 90%;
 	margin-left: 20px;
+	display: inline-block;
 }

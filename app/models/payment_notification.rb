@@ -1,4 +1,5 @@
 class PaymentNotification < ActiveRecord::Base
+  default_scope :order => "created_at desc"
   belongs_to :subscription
   serialize :params
   after_create :mark_subscription_as_verified

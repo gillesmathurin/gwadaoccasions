@@ -19,7 +19,7 @@ end
 Given /^I have been subscribed since "([^\"]*)" months$/ do |arg1|
   number = arg1.to_i
   @subscription = Subscription.make(:provider => @provider, :status => "verified")
-  while number > 1
+  while number > 0
    PaymentNotification.make(:created_at => number.months.ago, :subscription => @subscription)
     number = number - 1    
   end

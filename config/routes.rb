@@ -1,5 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :subscriptions
+  map.resources :salesmans
+  
+  map.resources :subscriptions do |subscriptions|
+    subscriptions.resources :payment_notifications
+  end
+  
   map.congrats 'congratulations/:id', :controller => "subscriptions", :action => "congrats"
   map.resources :payment_notifications
   map.devise_for :providers
@@ -8,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :providers do |providers|
     providers.resources :vehicles
+    providers.resources :subscriptions, :has_many => :payment_notifications
+    providers.resources :salesmans
   end
 
   map.devise_for :users

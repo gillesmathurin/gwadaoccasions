@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100415011406) do
+ActiveRecord::Schema.define(:version => 20100415141104) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(:version => 20100415011406) do
   add_index "providers", ["confirmation_token"], :name => "index_providers_on_confirmation_token", :unique => true
   add_index "providers", ["email"], :name => "index_providers_on_email", :unique => true
   add_index "providers", ["reset_password_token"], :name => "index_providers_on_reset_password_token", :unique => true
+
+  create_table "salesmen", :force => true do |t|
+    t.string   "name"
+    t.string   "mobile_phone"
+    t.integer  "provider_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "search_profiles", :force => true do |t|
     t.string   "category"
