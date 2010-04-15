@@ -1,4 +1,5 @@
 class ProvidersController < ApplicationController
+  layout 'provider'
   before_filter :authenticate_provider!
   ssl_required :show
   

@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
     super
   end
   
+  layout :set_layout
+  
   # def after_sign_in_path_for(resource)
   #   if resource.is_a?(Provider)
   #     provider_url(resource.id)
@@ -34,5 +36,8 @@ class ApplicationController < ActionController::Base
     @user_number ||= User.count
   end
   
+  def set_layout
+    provider_signed_in? ? 'provider' : 'application'
+  end
 
 end
