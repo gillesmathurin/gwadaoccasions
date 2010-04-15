@@ -127,3 +127,8 @@ PaymentNotification.blueprint do
   status { "paid" }
   transaction_id { String.random_alphanumeric(8) }
 end
+
+Salesman.blueprint do
+  name { Faker::Name.name }
+  mobile_phone { Faker::PhoneNumber.phone_number }
+end
