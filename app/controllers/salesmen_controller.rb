@@ -1,4 +1,6 @@
 class SalesmenController < ApplicationController
+  before_filter :authenticate_provider!
+  
   # GET /salesmen
   # GET /salesmen.xml
   def index
@@ -24,7 +26,7 @@ class SalesmenController < ApplicationController
   # GET /salesmen/new
   # GET /salesmen/new.xml
   def new
-    @salesman = Salesman.new
+    @salesman = current_provider.salesmen.build()
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,12 +42,12 @@ class SalesmenController < ApplicationController
   # POST /salesmen
   # POST /salesmen.xml
   def create
-    @salesman = Salesman.new(params[:salesman])
+    @salesman = current_provider.salesmen.build(params[:salesman])
 
     respond_to do |format|
       if @salesman.save
         flash[:notice] = 'Salesman was successfully created.'
-        format.html { redirect_to(@salesman) }
+        format.html { redirect_to(provider_root_path) }
         format.xml  { render :xml => @salesman, :status => :created, :location => @salesman }
       else
         format.html { render :action => "new" }

@@ -41,7 +41,7 @@
 	<% else %>
 		<div class="account">
 			<p class="salesman-team">
-				Nombre de commerciaux : <%= @provider.salesmans.count %> | <%= link_to "Ajouter un commercial", new_provider_salesman_path(@provider) %>
+				Nombre de commerciaux : <%= @provider.salesmen.count %> | <%= link_to "Ajouter un commercial", new_provider_salesman_path(@provider) %>
 			</p>
 		</div>
 	<% end %>

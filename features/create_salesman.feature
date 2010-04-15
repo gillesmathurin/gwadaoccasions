@@ -14,9 +14,9 @@ Background: Provider is logged in
 	  When I follow "Ajouter un Commercial"
 		And I am on "new salesman" page
 	  And I fill in the following:
-				| name					| John Smith 	|
-				|	mobile_phone	| 0690898237	|
-		And I press	"Enregistrer"
+				| Nom					| John Smith 	|
+				|	Tel. portable	| 0690898237	|
+		And I press "Enregistrer"
 		Then I should have "1" salesman
 		And I should be on "provider_root_path" page
 		And I should see "Nombre de commerciaux : 1"
