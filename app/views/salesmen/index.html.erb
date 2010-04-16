@@ -1,22 +1,30 @@
-<h1>Listing salesmen</h1>
+<div id="content" class="span-17 colborder">
+	<h1>Listing des Commerciaux</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Mobile phone</th>
-  </tr>
+	<table>
+	  <tr>
+	    <th>Nom</th>
+	    <th>Tel Portable</th>
+	  </tr>
+	<% unless @salesmen.empty? %>
+		<% @salesmen.each do |salesman| %>
+		  <tr>
+		    <td><%=h salesman.name %></td>
+		    <td><%=h french_phone(salesman.mobile_phone) %></td>
+		    <td><%= link_to 'Voir', salesman %></td>
+		    <td><%= link_to 'Modifier', edit_salesman_path(salesman) %></td>
+		    <td><%= link_to 'Supprimer', salesman, :confirm => 'En êtes vous sur?', :method => :delete %></td>
+		  </tr>
+		<% end %>
+	<% else %>
+		<tr>
+			<td colspan="2">Pas de commerciaux enregistrés.</td>
+		</tr>
+	<% end %>
+	</table>
 
-<% @salesmen.each do |salesman| %>
-  <tr>
-    <td><%=h salesman.name %></td>
-    <td><%=h salesman.mobile_phone %></td>
-    <td><%= link_to 'Show', salesman %></td>
-    <td><%= link_to 'Edit', edit_salesman_path(salesman) %></td>
-    <td><%= link_to 'Destroy', salesman, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+	<br />
 
-<br />
+	<%= link_to 'Ajouter Commercial', new_provider_salesman_path(current_provider) %>
+</div>
 
-<%= link_to 'New salesman', new_salesman_path %>

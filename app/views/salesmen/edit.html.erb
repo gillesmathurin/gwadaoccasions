@@ -1,20 +1,21 @@
-<h1>Editing salesman</h1>
+<div id="content" class="span-17 colborder">
+	<h1>Modifier Fiche Commercial</h1>
 
-<% form_for(@salesman) do |f| %>
-  <%= f.error_messages %>
+	<% form_for(@salesman) do |f| %>
+	  <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :mobile_phone %><br />
-    <%= f.text_field :mobile_phone %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+	  <p>
+	    <%= f.label :name, "Nom" %><br />
+	    <%= f.text_field :name %>
+	  </p>
+	  <p>
+	    <%= f.label :mobile_phone, "Tel. portable" %><br />
+	    <%= f.text_field :mobile_phone %>
+	  </p>
+	  <p>
+	    <%= f.submit 'Modifier' %>
+	  </p>
+	<% end %>
 
-<%= link_to 'Show', @salesman %> |
-<%= link_to 'Back', salesmen_path %>
+	<%= link_to 'Retour', provider_salesmen_path(current_provider) %>
+</div>

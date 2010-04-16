@@ -43,6 +43,8 @@ module NavigationHelpers
       new_provider_salesman_path(@provider)
     when /re-new salesman template/
       provider_salesmen_path(@provider)
+    when /salesmen index/
+      provider_salesmen_path(@provider)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

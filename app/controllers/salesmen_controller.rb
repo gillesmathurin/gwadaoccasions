@@ -46,7 +46,7 @@ class SalesmenController < ApplicationController
 
     respond_to do |format|
       if @salesman.save
-        flash[:notice] = 'Salesman was successfully created.'
+        flash[:notice] = 'Vendeur enregistré.'
         format.html { redirect_to(provider_root_path) }
         format.xml  { render :xml => @salesman, :status => :created, :location => @salesman }
       else
@@ -59,12 +59,12 @@ class SalesmenController < ApplicationController
   # PUT /salesmen/1
   # PUT /salesmen/1.xml
   def update
-    @salesman = Salesman.find(params[:id])
+    @salesman = current_provider.salesmen.find(params[:id])
 
     respond_to do |format|
       if @salesman.update_attributes(params[:salesman])
-        flash[:notice] = 'Salesman was successfully updated.'
-        format.html { redirect_to(@salesman) }
+        flash[:notice] = 'Informations vendeur modifié avec succès.'
+        format.html { redirect_to(provider_salesmen_path(current_provider)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,7 +80,7 @@ class SalesmenController < ApplicationController
     @salesman.destroy
 
     respond_to do |format|
-      format.html { redirect_to(salesmen_url) }
+      format.html { redirect_to(provider_salesmen_url(current_provider)) }
       format.xml  { head :ok }
     end
   end

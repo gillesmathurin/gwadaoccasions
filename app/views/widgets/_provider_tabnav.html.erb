@@ -39,6 +39,11 @@ render_tabnav :provider,
 	t.named 'Vehicules'
 	t.links_to provider_vehicles_path(@provider)
   end
+
+  add_tab do |t|
+	t.named 'Commerciaux'
+	t.links_to provider_salesmen_path(current_provider)
+  end
   #
   #add_tab do |t|
   #  t.named 'Customers'
