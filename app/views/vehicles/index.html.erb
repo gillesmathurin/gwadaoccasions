@@ -10,8 +10,16 @@
 		<% if !@vehicles.blank? %>
 		  <% for v in @vehicles %>
 		    <p class="listitem">
-				<%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %> <%= link_to "Voir fiche", vehicle_path(v), :class => "showlink"%>
-			</p>
+					<%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %>
+					<%=h v.modele %> - Année : <%=h v.display_year %> - <%= format_km(v.kilometrage) unless v.kilometrage.blank? %>
+					- <%=h v.price %> € - 
+					<%= link_to "Voir fiche", vehicle_path(v), :class => "showlink"%>
+					<% if provider_signed_in? %>
+						| <%= link_to "Modifier", edit_provider_vehicle_path(current_provider, v.id) %> |
+						<%= link_to "Supprimer", provider_vehicle_path(current_provider, v.id), :method => "delete" %>
+					<% end %>
+				</p>
+
 		  <% end %>
 		<% else %>
 		  Pas d'offres pour le moment.

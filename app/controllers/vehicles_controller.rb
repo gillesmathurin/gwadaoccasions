@@ -57,6 +57,10 @@ class VehiclesController < ApplicationController
     @vehicle = current_provider.vehicles.build()
   end
   
+  def edit
+    @vehicle = current_provider.vehicles.find(params[:id])
+  end
+  
   def create
     @vehicle = current_provider.vehicles.build(params[:vehicle])
     
@@ -69,6 +73,28 @@ class VehiclesController < ApplicationController
         wants.html { render :action => "new" }
         wants.xml { render :xml => @vehicle.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+  
+  def update
+    @vehicle = current_provider.vehicles.find(params[:id])
+    
+    respond_to do |wants|
+      if @vehicle.update_attributes(params[:vehicle])
+        flash[:notice] = "Modifications enregistrées"      
+        wants.html { redirect_to(provider_vehicles_url(current_provider)) }
+      else
+        wants.html { render :action => "edit" }
+      end
+    end
+  end
+  
+  def destroy
+    @vehicle = current_provider.vehicles.find(params[:id])
+    @vehicle.destroy
+    
+    respond_to do |wants|
+      wants.html { redirect_to provider_vehicles_url(current_provider) }
     end
   end
   

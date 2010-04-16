@@ -3,11 +3,11 @@
 	<% form_for [current_provider, @vehicle] do |f| -%>
 		<%= f.error_messages %>
 	  <table>
-
+			
 			<%= render :partial => 'form', :locals => {:f => f} %>
-
+			
 			<tr>
-				<td colspan="2"><%= f.submit "Enregistrer" %></td>
+				<td colspan="2"><%= f.submit "Modifier" %></td>
 			</tr>
 	  </table>
 	<% end -%>

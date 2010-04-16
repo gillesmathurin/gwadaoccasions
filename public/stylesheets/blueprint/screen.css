@@ -260,7 +260,7 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 /* styles des tab */
 .provider_tabnav {
 	color: #000;
-	border-bottom: 2px solid teal;
+	border-bottom: 2px solid #af7770;
 	margin: 13px 0px 0px 20px;
 	padding: 0px;
 	z-index: 1;
@@ -290,7 +290,7 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 	color: #000000;
 	background: #EEEEEE;
 	font-weight: bold;
-	border: 1px inset #608e09;
+	border: 1px inset #a96e67;
 	padding: 2px 5px 0px 5px;
 	margin: 0;
 	text-decoration: none; }
@@ -316,7 +316,7 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 	border: 2px inset teal;
 	border-top: none;
 	z-index: 2;
-	width: 90%;
 	margin-left: 20px;
-	display: inline-block;
+	display: inline;
+	width: 90%;
 }
