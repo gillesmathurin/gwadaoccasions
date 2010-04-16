@@ -7,9 +7,9 @@ Feature: Create vehicles
 		Given I am not authenticated as provider
 	  Given I am a new, authenticated active provider
 
-  Scenario Outline: Create a vehicle of each type
+  Scenario Outline: Create a vehicle of any type
     Given I have "0" vehicles
-		And There is a "Voiture" Category
+		And There are all Categories of vehicle
  		And I am on "provider_root_path" page
     When I follow "Ajouter un Vehicule"
 		And I am on "new vehicle" page
@@ -30,7 +30,10 @@ Feature: Create vehicles
 		
 		Examples:
 			| type		|	annee							|	price	|	modele 			| kilometrage | immatriculation | serialnumber | cylindree | energy | boite_vitesse | description |
-			| Voiture	| Sat, 16 Apr 2005	| 6000 	| Peugeot 206	| 120000			| 940 AZH 971			|	IZNXEDBRTYU	 | 					 | Essence | Manuel				|	bon état		|	
+			| Voiture	| Sat, 16 Apr 2005	| 6000 	| Peugeot 206	| 120000			| 940 AZH 971			|	IZNXEDBRTYU	 | 					 | Essence | Manuel				|	bon état		|
+			| Moto	| Sat, 16 Apr 2005	| 6000 	| Peugeot 206	| 120000			| 940 AZH 971			|	IZNXEDBRTYU	 | 			750		 | Essence | Manuel				|	bon état		|
+			| Jetski	| Sat, 16 Apr 2005	| 6000 	| Yamaha 206	| 120000			| 940 AZH 971			|	IZNXEDBRTYU	 | 		1000		 | Essence | Manuel				|	bon état		|
+			| Bateau	| Sat, 16 Apr 2005	| 6000 	| | 120000			| 			|	IZNXEDBRTYU	 | 					 | Essence | Manuel				|	bon état		|				
   
   
   
