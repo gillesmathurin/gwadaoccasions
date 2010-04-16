@@ -1,6 +1,10 @@
 <div id="content" class="span-17 colborder">	
 	
-	<h4>Toutes les offres classées par prix croissant</h4>
+	<% if request.path == vehicles_path() %>
+		<h4>Listing des véhicules</h4>
+	<% elsif provider_signed_in? %>
+		<h4>Tous vos véhicules</h4>
+	<% end %>
 	
 	<div class="vehicles_list">
 		<% if !@vehicles.blank? %>

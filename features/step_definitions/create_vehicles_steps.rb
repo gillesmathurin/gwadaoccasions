@@ -8,6 +8,13 @@ Given /^I have "([^\"]*)" vehicles$/ do |arg1|
   end
 end
 
+Given /^I have "([^\"]*)" "([^\"]*)"$/ do |number, category|
+  case category 
+  when "Voiture"
+    number.to_i.times { Voiture.make(:immatriculation => "89AZH971") }
+  end
+end
+
 Given /^There are all Categories of vehicle$/ do
   %w(Voiture Moto Jetski Bateau).each { |c| Category.create(:name => c) }
 end

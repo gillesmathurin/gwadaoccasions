@@ -35,5 +35,22 @@ Feature: Create vehicles
 			| Jetski	| Sat, 16 Apr 2005	| 6000 	| Yamaha 206	| 120000			| 940 AZH 971			|	IZNXEDBRTYU	 | 		1000		 | Essence | Manuel				|	bon état		|
 			| Bateau	| Sat, 16 Apr 2005	| 6000 	| | 120000			| 			|	IZNXEDBRTYU	 | 					 | Essence | Manuel				|	bon état		|				
   
+@focus
+	Scenario: Create a duplicate vehicle
+	  Given I have "1" "Voiture"
+		And There are all Categories of vehicle
+ 		And I am on "provider_root_path" page
+    When I follow "Ajouter un Vehicule"
+		And I fill in the following:
+			|	immatriculation	|	89AZH971 |
+			| modele					| Peugeot 206	|
+			|	prix						|	6000				|
+			|	kilometrage			| 120000			|
+		And I press "Enregistrer"
+		Then I should see "2 errors prohibited this vehicle from being saved"
+		And I should see "Immatriculation must be unique"
+	
+	
+			
   
   

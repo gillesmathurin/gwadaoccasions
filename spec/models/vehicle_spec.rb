@@ -33,6 +33,12 @@ describe Vehicle do
     @vehicle.should have(1).error_on(:annee)
   end
   
+  it "requires an unique immatriculation attribute" do
+    @vehicle = Vehicle.create(@valid_attributes)
+    @vehicle2 = Vehicle.create(@valid_attributes)
+    @vehicle2.should have(1).errors_on(:immatriculation)
+  end
+  
   describe "#display_year" do
 
     before(:each) do

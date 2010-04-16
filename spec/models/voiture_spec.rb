@@ -22,7 +22,7 @@ describe Voiture do
   it "requires a date value for annee" do
     @car = Voiture.new(@valid_attributes.except(:annee))
     @car.should_not be_valid
-    @car.should have(2).error_on(:annee)
+    @car.should have(1).error_on(:annee)
   end
   
 end

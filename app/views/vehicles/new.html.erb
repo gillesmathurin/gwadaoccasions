@@ -48,6 +48,54 @@
 				<td><%= f.text_area :description %></td>
 			</tr>
 			<tr>
+				<td><%= f.label :overviewpic, "Photo d'ensemble" %></td>
+				<td><%= f.file_field :overviewpic %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :backpic, "Photo arrière" %></td>
+				<td><%= f.file_field :backpic %></td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :frontpic, "Photo avant" %>
+				</td>
+				<td>
+					<%= f.file_field :frontpic %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :rfrontpic, "Photo Avant droite" %>
+				</td>
+				<td>
+					<%= f.file_field :rfrontpic %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :lfrontpic, "Photo Avant gauche" %>
+				</td>
+				<td>
+					<%= f.file_field :lfrontpic %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :rbackpic, "Photo Arrière droite" %>
+				</td>
+				<td>
+					<%= f.file_field :rbackpic %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :lbackpic, "Photo Arrière gauche" %>
+				</td>
+				<td>
+					<%= f.file_field :lbackpic %>
+				</td>
+			</tr>
+			<tr>
 				<td colspan="2">
 					<%= f.submit "Enregistrer" %>
 				</td>

@@ -1,6 +1,7 @@
 class Vehicle < ActiveRecord::Base
   default_scope :order => "price asc"
   validates_presence_of :annee, :on => :create, :message => "doit être renseignée"
+  validates_uniqueness_of :immatriculation, :on => :create, :message => "must be unique"
   
   belongs_to :provider
   belongs_to :category
