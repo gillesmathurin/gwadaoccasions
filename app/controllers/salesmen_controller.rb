@@ -4,7 +4,7 @@ class SalesmenController < ApplicationController
   # GET /salesmen
   # GET /salesmen.xml
   def index
-    @salesmen = Salesman.all
+    @salesmen = current_provider.salesmen
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,7 +36,7 @@ class SalesmenController < ApplicationController
 
   # GET /salesmen/1/edit
   def edit
-    @salesman = Salesman.find(params[:id])
+    @salesman = current_provider.salesmen.find(params[:id])
   end
 
   # POST /salesmen
@@ -47,7 +47,7 @@ class SalesmenController < ApplicationController
     respond_to do |format|
       if @salesman.save
         flash[:notice] = 'Vendeur enregistré.'
-        format.html { redirect_to(provider_root_path) }
+        format.html { redirect_to(provider_root_url) }
         format.xml  { render :xml => @salesman, :status => :created, :location => @salesman }
       else
         format.html { render :action => "new" }
