@@ -18,22 +18,27 @@ describe SearchesController do
         Search.should_receive(:new).with({'these' => 'params'}).and_return(@search)
         @search.should_receive(:vehicles).and_return([@vehicle])
         post :create, :search => {:these => "params"}
+        assigns[:vehicles].should == [@vehicle]
+        assigns[:vehicle_number]
       end
       
       it "assigns fetched vehicles as @vehicles" do
         Search.should_receive(:new).with({'these' => 'params'}).and_return(@search)
         @search.should_receive(:vehicles).and_return([@vehicle])
+        Vehicle.should_receive(:count)
         post :create, :search => {:these => "params"}
         assigns[:vehicles].should == [@vehicle]
+        assigns[:vehicle_number]
       end
       
       it "renders to the show template" do
         Search.should_receive(:new).with({'these' => 'params'}).and_return(@search)
         @search.should_receive(:vehicles).and_return([@vehicle])
+        Vehicle.should_receive(:count)
         post :create, :search => {:these => "params"}
         assigns[:vehicles].should == [@vehicle]
-        response.should render_template("index")
-        
+        assigns[:vehicle_number]
+        response.should render_template("index")        
       end
     end
   end
