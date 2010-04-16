@@ -33,7 +33,6 @@ Background: Provider is logged in
 		And I should be on "provider_root_path" page
 		And I should see "Nombre de commerciaux : 2"
 		
-@focus
 	Scenario: Create a duplicate salesman
 		Given I have "1" salesman
 		And I am on "provider_root_path" page

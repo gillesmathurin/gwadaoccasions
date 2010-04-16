@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe VehiclesController do
-  include Warden::Test::Helpers
 
   #Delete these examples and add some real ones
   it "should use VehiclesController" do
@@ -14,6 +13,59 @@ describe VehiclesController do
   
   def user
     @user ||= create_default_user
+  end
+  
+  def mock_provider(stubs={:status => 'active'})
+    @mock_provider ||= Provider.make(stubs)
+  end
+  
+  describe "GET 'new'" do
+    before(:each) do
+      sign_in(mock_provider)
+    end
+    
+    it "assigns a new vehicle as @vehicle for the current provider" do
+      controller.stub_chain(:current_provider, :vehicles, :build).and_return(mock_vehicle.as_new_record)
+      get :new
+      assigns[:vehicle].should eql(mock_vehicle.as_new_record)
+    end
+  end
+  
+  describe "POST 'create'" do
+    before(:each) do
+      sign_in(mock_provider)
+      controller.stub!(:current_provider).and_return(mock_provider)
+    end
+    
+    context "with valid params" do
+      it "assigns a newly created provider's vehicle as @vehicle" do
+        controller.stub_chain(:current_provider, :vehicles, :build).with({"these" => "params"}).
+          and_return(mock_vehicle(:save => true))
+        post :create, :vehicle => {:these => "params"}
+      end
+      
+      it "redirects to the provider's vehicles list page" do
+        controller.stub_chain(:current_provider, :vehicles, :build).with({"these" => "params"}).
+          and_return(mock_vehicle(:save => true))
+        post :create, :vehicle => {:these => "params"}
+        response.should redirect_to(provider_vehicles_url(mock_provider))
+      end
+    end
+    
+    context "with invalid params" do
+      it "assigns a newly but unsaved provider's vehicle as @vehicle" do
+        controller.stub_chain(:current_provider, :vehicles, :build).with({}).
+          and_return(mock_vehicle(:save => false))
+        post :create, :vehicle => {}
+      end
+      
+      it "re-renders the new template" do
+        controller.stub_chain(:current_provider, :vehicles, :build).with({}).
+          and_return(mock_vehicle(:save => false))
+        post :create, :vehicle => {}
+        response.should render_template(:new)        
+      end
+    end
   end
   
   describe "GET 'show'" do

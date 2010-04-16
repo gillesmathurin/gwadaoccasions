@@ -43,6 +43,9 @@
 			<p class="salesman-team">
 				Nombre de commerciaux : <%= @provider.salesmen.count %> | <%= link_to "Ajouter un commercial", new_provider_salesman_path(@provider) %>
 			</p>
+			<p>
+				Nombre de véhicules : <%= @provider.vehicles.count %> | <%= link_to "Ajouter un Vehicule", new_provider_vehicle_path(@provider) %>
+			</p>
 		</div>
 	<% end %>
 	

@@ -45,6 +45,10 @@ module NavigationHelpers
       provider_salesmen_path(@provider)
     when /salesmen index/
       provider_salesmen_path(@provider)
+    when /new vehicle/
+      new_provider_vehicle_path(@provider)
+    when /provider's vehicles/
+      provider_vehicles_path(@provider)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

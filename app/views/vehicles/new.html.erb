@@ -1,0 +1,57 @@
+<div id="content" class="span-17 colborder">
+
+	<% form_for [current_provider, @vehicle] do |f| -%>
+		<%= f.error_messages %>
+	  <table>
+	  	<tr>
+	  		<td><%= f.label :type, "Type" %></td>
+				<td><%= f.select :type, Category.all.collect {|c| [c.name, c.name]} %></td>
+	  	</tr>
+			<tr>
+				<td><%= f.label :annee, "Annee" %></td>
+				<td><%= f.date_select :annee, :start_year => 1960, :discard_day => true, :discard_month => true, :prompt => { :year => "Annee-modele" } %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :price, "Prix" %></td>
+				<td><%= f.text_field :price %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :modele, "Modele" %> </td>
+				<td><%= f.text_field :modele %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :kilometrage, "Kilometrage" %> </td>
+				<td><%= f.text_field :kilometrage %> </td>
+			</tr>
+			<tr>
+				<td><%= f.label :immatriculation, "Immatriculation" %></td>
+				<td><%= f.text_field :immatriculation %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :serialnumber, "N° de série" %> </td>
+				<td><%= f.text_field :serialnumber %> </td>
+			</tr>
+			<tr>
+				<td><%= f.label :cylindree, "Cylindree" %></td>
+				<td><%= f.text_field :cylindree %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :energy, "Carburant" %></td>
+				<td><%= f.select :energy, Vehicle::ENERGY %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :boite_vitesse, "Type Boite de Vitesse" %></td>
+				<td><%= f.select :boite_vitesse, Vehicle::VITESSE %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :description, "Description" %></td>
+				<td><%= f.text_area :description %></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<%= f.submit "Enregistrer" %>
+				</td>
+			</tr>
+	  </table>
+	<% end -%>
+</div>

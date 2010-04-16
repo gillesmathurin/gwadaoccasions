@@ -1,4 +1,5 @@
 class VehiclesController < ApplicationController
+  before_filter :authenticate_provider!, :only => [:new, :edit, :create, :update, :destroy]
   before_filter :find_provider
   
   def index
@@ -50,6 +51,25 @@ class VehiclesController < ApplicationController
       flash[:notice] = "Vérifiez les adresses emails saisies."
     end
     render :partial => "shared/flash_messages", :layout => false
+  end
+  
+  def new
+    @vehicle = current_provider.vehicles.build()
+  end
+  
+  def create
+    @vehicle = current_provider.vehicles.build(params[:vehicle])
+    
+    respond_to do |wants|
+      if @vehicle.save
+        flash[:notice] = 'Véhicule enregistré avec succès.'
+        wants.html { redirect_to( provider_vehicles_url(current_provider) ) }
+        wants.xml { render :xml => @vehicle, :status => :created, :location => @vehicle }
+      else
+        wants.html { render :action => "new" }
+        wants.xml { render :xml => @vehicle.errors, :status => :unprocessable_entity }
+      end
+    end
   end
   
   private
