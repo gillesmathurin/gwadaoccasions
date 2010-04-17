@@ -3,8 +3,7 @@ class BackgroundTask
   VehicleLeadsStruct = Struct.new(:vehicle, :leads)
   ProviderLeadsStruct = Struct.new(:provider, :vehicles_leads)
   
-  def self.sends_leads_list_to_providers
-    
+  def self.sends_leads_list_to_providers    
     # Arrays to store registered users matching vehicles
     @vehicle_leads_array = []
     # Array to store provider and leads user association
@@ -29,8 +28,18 @@ class BackgroundTask
       rescue Exception => e
         Rails.logger.info("#{e}")
       end      
+    end    
+  end
+  
+  def self.sends_interesting_vehicles_to_users
+    User.all.each do |user|
+      vehicles = user.matching_vehicles
+      begin
+        BackgroundTaskMailer.deliver_interesting_vehicles(user, vehicles)  
+      rescue Exception => e
+        Rails.logger.info("#{e}")
+      end      
     end
-    
   end
   
 end

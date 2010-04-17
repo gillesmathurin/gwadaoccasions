@@ -30,4 +30,8 @@ describe BackgroundTask do
       @results = true
     end
   end
+  
+  describe ".sends_interesting_vehicles" do
+    
+  end
 end

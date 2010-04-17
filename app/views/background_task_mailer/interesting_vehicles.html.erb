@@ -1,0 +1,17 @@
+Cher <%= @user.name %>
+
+Nous vous proposons aujourd'hui cette sélection de véhicules, parmi lesquels vous trouverez sans aucun doute votre bonheur !
+
+La sélection :
+<ul>
+	<% @vehicles.each do |vehicle| %>	
+	<li>
+		<%= @vehicle.modele %> - Année : <%= @vehicle.display_year %> - Kilometrage : <%= format_km(@vehicle.kilometrage) %> - Prix : <%= @vehicle.price %>
+		Contact : <%= @vehicle.provider.company %> Tel : <%= @vehicle.provider.telephone %> ou <%= @vehicle.provider.mobile %>
+	</li>
+	<% end %>
+</ul>
+
+Ne pas manquer pas ces occasions.
+
+A très bientôt.

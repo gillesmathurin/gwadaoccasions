@@ -5,4 +5,8 @@ namespace :emailing do
     BackgroundTask.sends_leads_list_to_providers
   end
   
+  desc  "Sends vehicles selection to users"
+  task :send_vehicles_selection do
+    BackgroundTask.sends_interesting_vehicles_to_users
+  end
 end

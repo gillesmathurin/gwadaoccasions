@@ -3,7 +3,7 @@
 <% @vehicle_leads_array.each do |vehicle_leads| %>
 	<p>
 		<%= vehicle_leads.vehicle.type %> <%= vehicle_leads.vehicle.modele %> <%= vehicle_leads.vehicle.immatriculation %>
-		<%= vehicle_leads.vehicle.annee %> <%= vehicle_leads.vehicle.price %> €
+		<%= vehicle_leads.vehicle.display_year %> <%= vehicle_leads.vehicle.price %> €
 	</p>
 	<p>
 		Clients potentiels :

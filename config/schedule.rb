@@ -1,5 +1,9 @@
-every 1.day, :at => '4:30 am' do
+every 1.day, :at => '4:00 am' do
   rake "emailing:send_leads_list"
+end
+
+every 1.day, :at => '5:00 am' do
+  rake "emailing:send_vehicles_selection"
 end
 
 # test rake task
