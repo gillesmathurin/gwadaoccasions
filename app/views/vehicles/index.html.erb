@@ -25,7 +25,7 @@
 					Clients potentiels pour ce véhicule : <%= v.matching_searchprofiles.count %><br/>
 					<ul>
 						<% v.matching_searchprofiles.each do |sp| %>
-							<li><%= sp.user.email %> | <!-- TODO : AJOUTER Les attributs nom et numero de telephone à la table users --></li>
+							<li><%= sp.user.email %> | <%= sp.user.name %> - <%= sp.user.mobile %></li>
 						<% end %>
 					</ul>
 				</p>
