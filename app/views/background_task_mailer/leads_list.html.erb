@@ -1,0 +1,17 @@
+<h3>Liste de clients potentiels pour certains de vos véhicules:</h3>
+
+<% @vehicle_leads_array.each do |vehicle_leads| %>
+	<p>
+		<%= vehicle_leads.vehicle.type %> <%= vehicle_leads.vehicle.modele %> <%= vehicle_leads.vehicle.immatriculation %>
+		<%= vehicle_leads.vehicle.annee %> <%= vehicle_leads.vehicle.price %> €
+	</p>
+	<p>
+		Clients potentiels :
+			<ul>				
+				<% vehicle_leads.leads.each do |lead| %>
+					<li><%= lead.name %> <%= lead.email %> <%= lead.mobile %></li>
+				<% end %>
+			</ul>
+	</p>
+	<hr/>
+<% end %>

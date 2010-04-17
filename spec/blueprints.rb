@@ -38,6 +38,7 @@ Vehicle.blueprint do
   description
   price
   annee
+  immatriculation
 end
 
 Voiture.blueprint do
