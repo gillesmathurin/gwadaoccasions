@@ -7,9 +7,15 @@ every 1.day, :at => '5:00 am' do
 end
 
 # test rake task
-every 1.minutes do
+every 2.minutes do
   rake "emailing:send_leads_list", :environment => :development
 end
+
+every 1.minutes do
+  rake "emailing:send_vehicles_selection", :environment => :development
+end
+
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
