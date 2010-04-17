@@ -4,6 +4,7 @@ class Vehicle < ActiveRecord::Base
   validates_uniqueness_of :immatriculation, :on => :create, :message => "must be unique"
   
   belongs_to :provider
+  belongs_to :salesman
   belongs_to :category
   has_many :selections
   has_many :users, :through => :selections
