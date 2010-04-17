@@ -26,6 +26,14 @@ module VehiclesHelper
     end
   end
 
+  def vehicle_available?(vehicle)
+    if vehicle.disponibilite
+      link_to_remote "Marquer comme Vendu", :url => mark_as_sold_provider_vehicle_path(current_provider, vehicle.id),
+       :method => :put
+    else
+      "VENDU"
+    end
+  end
 end
 
 
