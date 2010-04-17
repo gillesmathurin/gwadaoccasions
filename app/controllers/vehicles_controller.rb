@@ -98,6 +98,11 @@ class VehiclesController < ApplicationController
     end
   end
   
+  def mark_as_sold
+    @vehicle = current_provider.vehicles.find(params[:id])
+    @vehicle.update_attribute(:disponibilite, false)
+  end
+  
   private
   
   def find_provider

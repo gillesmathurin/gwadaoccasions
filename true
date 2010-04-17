@@ -1,0 +1,3 @@
+      exists  db/migrate
+      create  db/migrate/20100417000127_add_disponibilite_column_to_vehicles.rb
+wrong number of arguments (1 for 2)

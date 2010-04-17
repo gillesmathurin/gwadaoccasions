@@ -31,6 +31,7 @@ class Search #< ActiveRecord::Base
     scope = scope.scoped :conditions => ["annee <= ?", @maxyear] unless @maxyear.blank?
     scope = scope.scoped :conditions => ["energy = ?", @energy] unless @energy.blank?
     scope = scope.scoped :conditions => ["boite_vitesse = ?", @boite_vitesse] unless @boite_vitesse.blank? # || ["Jetski", "Bateau"].include(@category)
+    scope = scope.scoped :conditions => ["disponibilite = ?", true]
     scope
   end
 end

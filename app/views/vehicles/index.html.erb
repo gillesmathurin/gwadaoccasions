@@ -15,6 +15,13 @@
 					<% if provider_signed_in? %>
 						| <%= link_to "Modifier", edit_provider_vehicle_path(current_provider, v.id) %> |
 						<%= link_to "Supprimer", provider_vehicle_path(current_provider, v.id), :method => "delete" %>
+						|
+						<% if v.disponibilite %>
+						 <%= link_to_remote "Marquer comme Vendu",
+						 :url => mark_as_sold_provider_vehicle_path(current_provider, v.id), :method => :put %>
+						<% else %>
+							VENDU
+						<% end %>
 					<% end %>
 				</p>
 
