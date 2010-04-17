@@ -35,6 +35,7 @@ class Vehicle < ActiveRecord::Base
     self.annee.try(:year)
   end
   
+  # Fetches search_profiles based on vehicle price and kilometrage
   def matching_searchprofiles
     search_profiles = SearchProfile.with_price_and_kilometer_criterias(self.price, self.kilometrage)
     return search_profiles    

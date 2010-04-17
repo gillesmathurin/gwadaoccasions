@@ -55,4 +55,44 @@ describe Vehicle do
     end
   end
   
+  describe "#of_the_week" do
+    
+    it "fetches only vehicle selected for the week" do
+      @vehicle = Vehicle.make()
+      @vehicle2 = Vehicle.make(:select_for_week => true)
+      results = Vehicle.of_the_week()
+      results.should have(1).record
+      results.should include(@vehicle2)
+      results.should_not include(@vehicle)
+    end
+    
+  end
+  
+  describe "#with_price_criterias(type, minprice, maxprice)" do
+    before(:each) do
+      @vehicle = Voiture.make(:price => 6000)
+    end
+    
+    it "fetches vehicles whose price is between the price criterias" do      
+      results = Vehicle.with_price_criterias(@vehicle.type, @vehicle.price, @vehicle.price)
+      results.should include(@vehicle)
+    end
+    
+    it "doesn't fetch vehicles whose price is out of price criterias" do
+      results = Vehicle.with_price_criterias(@vehicle.type, 3000, 5000)
+      results.should_not include(@vehicle)
+    end
+  end
+  
+  describe "#matching_searchprofiles" do
+    
+    it "fetches search profiles based on vehicle price and kilometrage" do
+      @vehicle = Vehicle.make(:price => 5000, :kilometrage => 143000)
+      @searchprofile = SearchProfile.make(:minprice => 3000, :maxprice => 6000, :maxkilometer => 150000,
+      :minkilometer => 130000)
+      results = @vehicle.matching_searchprofiles
+      results.should include(@searchprofile)
+    end
+    
+  end
 end

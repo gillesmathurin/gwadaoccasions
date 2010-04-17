@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :vehicles, :through => :selections
   has_many :search_profiles
   
-  # Fetch vehicles matching the user search profiles
+  # Fetches vehicles matching the user search profiles
   def matching_vehicles
     vehicles = []
     self.search_profiles.each do |profile|
