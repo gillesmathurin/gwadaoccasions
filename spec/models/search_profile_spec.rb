@@ -31,7 +31,7 @@ describe SearchProfile do
   
   describe "#search_profile_count - validation" do
     
-    context "when the user is under is search profile limit" do
+    context "when the user is under is search profile limit number" do
       before(:each) do
         4.times { SearchProfile.create!(@valid_attributes) }
       end
@@ -54,9 +54,30 @@ describe SearchProfile do
         @profile.should_not be_valid
         @profile.should have(1).error
       end
+    end    
+  end
+  
+  describe "#with_price_and_kilometer_criterias(price, kilometrage)" do
+    
+    context "with matching criterias" do
+      
+      it "returns search profiles with matching criterias" do
+        @vehicle = Vehicle.make(:price => 6000, :kilometrage => 120000)
+        @search_profile = SearchProfile.make(:minprice => 4000, :maxprice => 6500, :minkilometer => 100000,
+          :maxkilometer => 130000)
+        results = SearchProfile.with_price_and_kilometer_criterias(@vehicle.price, @vehicle.kilometrage)
+        results.should include(@search_profile)
+      end
+      
     end
-
     
-    
+    context "without matching criterias" do
+      it "doesn't return search profiles" do
+        @search_profile = SearchProfile.make(:minprice => 4000, :maxprice => 6500, :minkilometer => 100000,
+          :maxkilometer => 130000)
+          results = SearchProfile.with_price_and_kilometer_criterias(7000, 75000)
+          results.should have(0).record
+      end
+    end
   end
 end
