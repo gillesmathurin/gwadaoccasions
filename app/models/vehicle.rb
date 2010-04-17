@@ -31,9 +31,12 @@ class Vehicle < ActiveRecord::Base
   
   named_scope :with_price_criterias, lambda { |type, minprice, maxprice| { :conditions => ['type = ? AND price >= ? AND price <= ?', type, minprice, maxprice] } }
   
-  
   def display_year
     self.annee.try(:year)
   end
   
+  def matching_searchprofiles
+    search_profiles = SearchProfile.with_price_and_kilometer_criterias(self.price, self.kilometrage)
+    return search_profiles    
+  end
 end
