@@ -68,6 +68,17 @@ describe Vehicle do
     
   end
   
+  describe "#sold" do
+    
+    it "returns the sold vehicles" do
+      @vehicle = Vehicle.make(:disponibilite => true)
+      @vehicle2 = Vehicle.make(:disponibilite => false)
+      results = Vehicle.sold
+      results.should include(@vehicle2)
+      results.should_not include(@vehicle)
+    end
+  end
+  
   describe "#with_price_criterias(type, minprice, maxprice)" do
     before(:each) do
       @vehicle = Voiture.make(:price => 6000)

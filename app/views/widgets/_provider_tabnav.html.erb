@@ -42,7 +42,7 @@ render_tabnav :provider,
          
   add_tab do |t|
    	t.named 'Historique Abonnement'
-   	t.links_to provider_subscription_payment_notifications_path(current_provider, current_provider.subscription)
+   	t.links_to provider_subscription_payment_notifications_path(current_provider, current_provider.subscription) if current_provider.subscription
   end 
   #
   #add_tab do |t|
