@@ -12,12 +12,12 @@
 		  <% for v in @vehicles %>
 		
 		    <p class="listitem">
-					<%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %> <%= debug vehicle_info(v) %>
+					<%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %>
 					<%= link_to "Voir fiche", vehicle_path(v), :class => "showlink"%>
 					<% if provider_signed_in? %>
 						| <%= link_to "Modifier", edit_provider_vehicle_path(current_provider, v.id) %> |
 						<%= link_to "Supprimer", provider_vehicle_path(current_provider, v.id), :method => "delete" %>
-						|	<%= vehicle_available?(v) %>					
+						|	<%= vehicle_available?(v) %> | <%= taggable_for_the_week?(v) %>					
 					<% end %>
 				</p>
 				<hr/>
@@ -59,7 +59,7 @@
 			</p>
 		</div>
 	<% else %>
-		<div class="registration_block">
+		<div class="actions_block">
 			<p>
 				<%= link_to "Ajouter un Véhicule", new_provider_vehicle_path(current_provider) %>
 			</p>

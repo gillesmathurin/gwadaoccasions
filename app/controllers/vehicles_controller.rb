@@ -104,6 +104,11 @@ class VehiclesController < ApplicationController
     @vehicle.update_attribute(:disponibilite, false)
   end
   
+  def select_for_week
+    @vehicle = current_provider.vehicles.find(params[:id])
+    @vehicle.update_attribute(:select_for_week, true)
+  end
+  
   private
   
   def find_provider

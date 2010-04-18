@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.provider_root '/providers', :controller => 'providers', :action => 'show'
   
   map.resources :providers do |providers|
-    providers.resources :vehicles, :member => {:mark_as_sold => :put}
+    providers.resources :vehicles, :member => {:mark_as_sold => :put, :select_for_week => :put}
     providers.resources :subscriptions, :has_many => :payment_notifications
     providers.resources :salesmen
   end
