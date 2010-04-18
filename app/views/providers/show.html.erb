@@ -41,12 +41,31 @@
 	
 	<% else %>
 	
-		<div class="account">
-			<p class="salesman-team">
-				Nombre de commerciaux : <%= @provider.salesmen.count %> | <%= link_to "Ajouter un commercial", new_provider_salesman_path(@provider) %>
-				| Nombre de véhicules : <%= @provider.vehicles.count %> | <%= link_to "Ajouter un Vehicule", new_provider_vehicle_path(@provider) %>
+		<div class="account">			
+			<h4>Tableau de Bord</h4>
+			
+			<h5>Abonnement</h5>
+			<p class="subscription_status">
+				Abonné depuis le : <%= @provider.subscription.subscription_date %> 
 			</p>
+			
+			<h5>Véhicules</h5>
+			<p class="float_of_vehicles">
+				Nombre de véhicules : <%= @provider.vehicles.count %> | <%= link_to "Ajouter un Vehicule", new_provider_vehicle_path(@provider) %> | <%= link_to "Consulter", provider_vehicles_path(@provider) %>
+			</p>
+			
+			<h5>Commerciaux</h5>			
+			<p class="salesman-team">
+				Nombre de commerciaux : <%= @provider.salesmen.count %> | <%= link_to "Ajouter un commercial", new_provider_salesman_path(@provider) %> | <%= link_to "Consulter", provider_salesmen_path(@provider) %>
+			</p>
+			
 		</div>
 	<% end %>
 	
+</div>
+<div id="sidebar" class="span-6 last">
+	<p>
+		<a href="https://sandbox.paypal.com/cgi-bin/webscr?cmd=_subscr- find&alias=gilles_1238294519_biz%me%2ecom">
+		<img border="0" src="https://paypal.com/en_US/i/btn/btn_unsubscribe_LG.gif"></a>
+	</p>
 </div>

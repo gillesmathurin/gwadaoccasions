@@ -2,7 +2,7 @@ html {
 }
 
 body {
-	background: url(../images/bg-gradient_02.jpg) repeat-x;
+	background: #f0ea2e url(../images/bg-gradient_02.jpg) repeat-x;
 	width: 980px;
 	margin-right: auto;
 	margin-left: auto;

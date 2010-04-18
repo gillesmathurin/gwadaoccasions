@@ -39,10 +39,6 @@
 				<td><%= f.select :boite_vitesse, Vehicle::VITESSE %></td>
 			</tr>
 			<tr>
-				<td><%= f.label :description, "Description" %></td>
-				<td><%= f.text_area :description %></td>
-			</tr>
-			<tr>
 				<td>
 					<%= f.label :salesman_id, "Commercial attitré" %>
 				</td>
@@ -97,4 +93,8 @@
 				<td>
 					<%= f.file_field :lbackpic %>
 				</td>
+			</tr>
+			<tr>
+				<td><%= f.label :description, "Description" %></td>
+				<td><%= f.text_area :description, :row => 15 %></td>
 			</tr>

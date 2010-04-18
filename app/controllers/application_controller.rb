@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include SslRequirement
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
@@ -9,7 +10,6 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   
   before_filter :vehicle_count, :visitor_count
-  include SslRequirement
   
   def ssl_required?
     return false if local_request? || RAILS_ENV == "test"

@@ -261,7 +261,7 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 .provider_tabnav {
 	color: #000;
 	border-bottom: 2px solid #af7770;
-	margin: 13px 0px 0px 20px;
+	margin: 13px 0px 15px 20px;
 	padding: 0px;
 	z-index: 1;
 	width: 95%;
