@@ -12,7 +12,7 @@
 		  <% for v in @vehicles %>
 		
 		    <p class="listitem">
-					<%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %>
+					<%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %> <%= debug vehicle_info(v) %>
 					<%= link_to "Voir fiche", vehicle_path(v), :class => "showlink"%>
 					<% if provider_signed_in? %>
 						| <%= link_to "Modifier", edit_provider_vehicle_path(current_provider, v.id) %> |
@@ -49,12 +49,20 @@
 		<p><%=h @user_number %> utilisateur(s) enregistré(s)</p>
 	</div>
 	
-	<div class="registration_block">
-		<p>Vous êtes un professionnel ?</p>
-		<p><%= link_to "Découvrez nos services", "/services.html" %></p>
-		<p>Vous êtes un particulier ?</p>
-		<p>
-			<%= link_to "Publiez gratuitement vos annonces", new_user_registration_path %>
-		</p>
-	</div>
+	<% unless provider_signed_in? || user_signed_in? %>
+		<div class="registration_block">
+			<p>Vous êtes un professionnel ?</p>
+			<p><%= link_to "Découvrez nos services", "/services.html" %></p>
+			<p>Vous êtes un particulier ?</p>
+			<p>
+				<%= link_to "Publiez gratuitement vos annonces", new_user_registration_path %>
+			</p>
+		</div>
+	<% else %>
+		<div class="registration_block">
+			<p>
+				<%= link_to "Ajouter un Véhicule", new_provider_vehicle_path(current_provider) %>
+			</p>
+		</div>
+	<% end %>
 </div>

@@ -1,4 +1,4 @@
-every 1.day, :at => '4:00 am' do
+exevery 1.day, :at => '4:00 am' do
   rake "emailing:send_leads_list"
 end
 

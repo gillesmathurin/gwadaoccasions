@@ -63,6 +63,7 @@ class VehiclesController < ApplicationController
   
   def create
     @vehicle = current_provider.vehicles.build(params[:vehicle])
+    @vehicle[:type] = params[:vehicle][:type]
     
     respond_to do |wants|
       if @vehicle.save
