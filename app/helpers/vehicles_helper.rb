@@ -31,15 +31,15 @@ module VehiclesHelper
       link_to_remote "Marquer comme Vendu", :url => mark_as_sold_provider_vehicle_path(current_provider, vehicle.id),
        :method => :put
     else
-      "VENDU"
+      content_tag(:span, "VENDU", :class => "notification")
     end
   end
   
   def taggable_for_the_week?(vehicle)
     unless vehicle.select_for_week
-      link_to_remote "Mettre en sélection de la semaine", :url => select_for_week_provider_vehicle_path(current_provider, vehicle.id), :method => :put
+      link_to_remote "Mettre en Sélection de la semaine", :url => select_for_week_provider_vehicle_path(current_provider, vehicle.id), :method => :put
     else
-      "<br/>"+"Déjà en sélection de la semaine"
+      "<br/>"+content_tag(:span, "Déjà en sélection de la semaine", :class => "notification") + " " + link_to_remote("Déselectionner", select_for_week_provider_vehicle_path(current_provider, vehicle.id), :method => :put, :class => "notification")
     end
   end
 end
