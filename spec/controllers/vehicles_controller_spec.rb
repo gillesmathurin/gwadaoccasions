@@ -41,12 +41,14 @@ describe VehiclesController do
       it "assigns a newly created provider's vehicle as @vehicle" do
         controller.stub_chain(:current_provider, :vehicles, :build).with({"these" => "params"}).
           and_return(mock_vehicle(:save => true))
+        mock_vehicle.stub(:[]=).with(:type, nil)
         post :create, :vehicle => {:these => "params"}
       end
       
       it "redirects to the provider's vehicles list page" do
         controller.stub_chain(:current_provider, :vehicles, :build).with({"these" => "params"}).
           and_return(mock_vehicle(:save => true))
+        mock_vehicle.stub(:[]=).with(:type, nil)
         post :create, :vehicle => {:these => "params"}
         response.should redirect_to(provider_vehicles_url(mock_provider))
       end
@@ -56,12 +58,14 @@ describe VehiclesController do
       it "assigns a newly but unsaved provider's vehicle as @vehicle" do
         controller.stub_chain(:current_provider, :vehicles, :build).with({}).
           and_return(mock_vehicle(:save => false))
+        mock_vehicle.stub(:[]=).with(:type, nil)
         post :create, :vehicle => {}
       end
       
       it "re-renders the new template" do
         controller.stub_chain(:current_provider, :vehicles, :build).with({}).
           and_return(mock_vehicle(:save => false))
+        mock_vehicle.stub(:[]=).with(:type, nil)
         post :create, :vehicle => {}
         response.should render_template(:new)        
       end

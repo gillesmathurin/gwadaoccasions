@@ -18,6 +18,7 @@ Rails::Initializer.run do |config|
   config.gem 'machinist'
   config.gem 'faker'
   config.gem 'whenever', :lib => false
+  config.gem 'twitter', :version => '0.9.4'
 
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
