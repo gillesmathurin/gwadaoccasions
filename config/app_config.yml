@@ -3,23 +3,25 @@ development:
   paypal_secret: foobar
   paypal_cert_id: CFJPNL63J97XY
   paypal_url: "https://www.sandbox.paypal.com/cgi-bin/websrc"
+  twitter_email_login: gilles.math@me.com
+  twitter_password: occasionsgwada971
 
 test:
   paypal_email: test@example.com
   paypal_secret: testscret
   paypal_cert_id: 123456789
   paypal_url: testpaypalurl
+  twitter_email_login: gilles.math@me.com
+  twitter_password: occasionsgwada971
+  
 
 cucumber:
   paypal_email: test@example.com
   paypal_secret: testscret
   paypal_cert_id: 123456789
   paypal_url: "https://www.sandbox.paypal.com/cgi-bin/websrc"
-# real production configuration
-# production:
-#   paypal_email: gillesmath@me.com
-#   paypal_cert_id: Z5L63AE6WT2LN
-#   paypal_url: "https://www.paypal.com/cgi-bin/websrc"
+  twitter_email_login: gilles.math@me.com
+  twitter_password: occasionsgwada971
 
 # testing production configuration
 production:
