@@ -3,4 +3,3 @@ log/*.log
 tmp/*
 db/*.sqlite3
 config/database.yml
-config/app_config.yml
