@@ -47,6 +47,9 @@ class Vehicle < ActiveRecord::Base
   private
   
   def tweet_it
-    
+    httpauth = Twitter::HTTPAuth.new('gilles.math@me.com', 'occasionsgwada971')
+    base = Twitter::Base.new(httpauth)
+    # tweet the new vehicle added
+    base.update("Gwadaoccasions : #{self.modele} - Année: #{self.display_year} - #{self.kilometrage} KM - #{self.price} €")
   end
 end
