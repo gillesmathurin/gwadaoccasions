@@ -10,6 +10,7 @@
 			<th>Status</th>
 			<th colspan="2">Actions</th>
 		</tr>
+		<% unless @providers.empty? %>
 		<% @providers.each do |provider| %>
 		<tr>
 			<td><%= provider.company %></td>
@@ -30,8 +31,14 @@
 			</td>
 		</tr>
 		<% end %>
+		<% else %>
+		<tr>
+			<td colspan="10">Pas d'abonné pour le moment</td>
+		</tr>
+		<% end %>
 	</table>
 </div>
+
 <div id="sidebar" class="span-6 last">
 	
 </div>

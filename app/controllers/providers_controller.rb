@@ -1,7 +1,7 @@
 class ProvidersController < ApplicationController
   layout 'provider'
   before_filter :authenticate_provider!, :only => :show
-  before_filter :authenticate_admin!, :only => [:index, :destroy]
+  before_filter :authenticate_admin!, :only => [:index, :destroy, :activate, :deactivate]
   ssl_required :show, :index
   
   def index
@@ -22,6 +22,16 @@ class ProvidersController < ApplicationController
     @provider = Provider.find(params[:id])
     @provider.destroy
     redirect_to(admin_providers_path(current_admin))
+  end
+  
+  def activate
+    @provider = Provider.find(params[:id])
+    @provider.update_attribute(:status, "active")
+  end
+  
+  def deactivate
+    @provider = Provider.find(params[:id])
+    @provider.update_attribute(:status, "pending")
   end
 
 end

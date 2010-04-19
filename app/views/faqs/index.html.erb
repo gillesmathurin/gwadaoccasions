@@ -1,0 +1,37 @@
+<div id="content" class="span-17 colborder">
+<h1>Listing faqs</h1>
+
+<table>
+  <tr>
+    <th>Question</th>
+    <th>Answer</th>
+  </tr>
+
+<% @faqs.each do |faq| %>
+  <tr>
+    <td><%=h faq.question %></td>
+    <td><%=h faq.answer %></td>
+    <td><%= link_to 'Show', faq %></td>
+    <td><%= link_to 'Edit', edit_faq_path(faq) %></td>
+    <td><%= link_to 'Destroy', faq, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New faq', new_faq_path %>
+</div>
+
+<div id="sidebar" class="span-6 last">
+	<div class="database_state">
+		<p>Statut</p>
+		<p><%=h @vehicle_number %> offre(s)</p>
+		<p><%=h @user_number %> utilisateur(s) enregistré(s)</p>
+	</div>
+	
+	<div class="registration_block">
+		<p>Vous êtes un professionnel ?</p>
+		<p><%= link_to "Découvrez nos services", "/services.html" %></p>
+	</div>
+</div>

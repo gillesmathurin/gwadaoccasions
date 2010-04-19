@@ -1,4 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :faqs
+
+  map.devise_for :admins
+
+  map.resources :admins do |admin|
+    admin.resources :providers, :member => { :activate => :put, :deactivate => :put }
+  end
+  
+  map.admin_root '/admins', :controller => 'providers', :action => 'index'
+  
   map.resources :salesmen
   
   map.resources :subscriptions do |subscriptions|

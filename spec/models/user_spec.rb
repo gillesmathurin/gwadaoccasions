@@ -21,7 +21,7 @@ describe User do
         @moto = Moto.make(:price => 5000)
       end
 
-      it "returns a mat vehicle" do
+      it "returns a matching vehicle" do
         @vehicles = @user.matching_vehicles
         @vehicles.should include(@voiture)
         @vehicles.should_not include(@moto)
