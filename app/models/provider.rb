@@ -13,4 +13,8 @@ class Provider < ActiveRecord::Base
   def pending?
     self.status == "pending"
   end
+  
+  def active?
+    self.status == "active"
+  end
 end

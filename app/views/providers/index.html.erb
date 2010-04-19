@@ -1,0 +1,37 @@
+<div id="content" class="span-17 colborder">
+	<h4>Vos abonnés</h4>	
+	<table>
+		<tr>
+			<th>Nom Société</th>
+			<th>Nom Contact</th>
+			<th>Telephone</th>
+			<th>Date Abonnement</th>
+			<th>Login</th>
+			<th>Status</th>
+			<th colspan="2">Actions</th>
+		</tr>
+		<% @providers.each do |provider| %>
+		<tr>
+			<td><%= provider.company %></td>
+			<td><%= provider.contact_name %></td>
+			<td><%= provider.telephone %></td>
+			<td><%= provider.subscription.subscription_date if subscription.date %></td>
+			<td><%= provider.login %></td>
+			<td><%= provider.status %></td>
+			<td>
+			<% if provider.pending? %>
+				<%= link_to_remote("Activer", :url => activate_admin_provider_path(current_admin, provider.id)) %>
+			<% else %>
+				<%= link_to_remote("Désactiver", :url => deactivate_admin_provider_path(current_admin, provider.id)) %>
+			<% end %>
+			</td>
+			<td>
+				<%= link_to "Supprimer", admin_provider_path(current_admin, provider.id), :method => :delete, :confirm => "Are you sure ?" %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+<div id="sidebar" class="span-6 last">
+	
+</div>

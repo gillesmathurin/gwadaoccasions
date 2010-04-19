@@ -37,7 +37,7 @@ module VehiclesHelper
   
   def taggable_for_the_week?(vehicle)
     unless vehicle.select_for_week
-      link_to_remote "Mettre en Sélection de la semaine", :url => select_for_week_provider_vehicle_path(current_provider, vehicle.id), :method => :put
+      link_to_remote "Sélectionner pour la semaine", :url => select_for_week_provider_vehicle_path(current_provider, vehicle.id), :method => :put
     else
       "<br/>"+content_tag(:span, "Déjà en sélection de la semaine", :class => "notification") + " " + link_to_remote("Déselectionner", select_for_week_provider_vehicle_path(current_provider, vehicle.id), :method => :put, :class => "notification")
     end
