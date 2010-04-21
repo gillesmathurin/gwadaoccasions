@@ -1,6 +1,6 @@
 class ProvidersController < ApplicationController
   layout 'provider'
-  before_filter :authenticate_provider!, :only => :show
+  before_filter :authenticate_provider!
   before_filter :authenticate_admin!, :only => [:index, :destroy, :activate, :deactivate]
   ssl_required :show, :index
   

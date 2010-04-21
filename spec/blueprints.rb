@@ -133,3 +133,9 @@ Salesman.blueprint do
   name { Faker::Name.name }
   mobile_phone { Faker::PhoneNumber.phone_number }
 end
+
+Admin.blueprint do
+  email
+  password
+  password_confirmation
+end

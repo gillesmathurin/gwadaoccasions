@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_filter :authenticate_provider!
+  before_filter :authenticate_provider!, :except => :new
   ssl_required :show, :create, :update
   
   def new

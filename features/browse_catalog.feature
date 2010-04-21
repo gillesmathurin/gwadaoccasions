@@ -21,4 +21,4 @@ Feature: Browse Catalog
 		Given I am on the homepage
 		And There aren't any vehicles in the database
 		When I follow "Catalogue"
-		Then I should see "Pas d'offres pour le moment."
+		Then I should see "Pas de véhicules pour le moment."

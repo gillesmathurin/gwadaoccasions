@@ -47,9 +47,11 @@ class Vehicle < ActiveRecord::Base
   private
   
   def tweet_it
-    httpauth = Twitter::HTTPAuth.new(APP_CONFIG[:twitter_email_login], APP_CONFIG[:twitter_password])
-    base = Twitter::Base.new(httpauth)
-    # tweet the new vehicle added
-    base.update("Gwadaoccasions : #{self.modele} - Année: #{self.display_year} - #{self.kilometrage} KM - #{self.price} €")
+    if Rails.env != "test" # TODO : find a better way to handle twitter in specs
+      httpauth = Twitter::HTTPAuth.new(APP_CONFIG[:twitter_email_login], APP_CONFIG[:twitter_password])
+      base = Twitter::Base.new(httpauth)
+      # tweet the new vehicle added
+      base.update("Gwadaoccasions : #{self.modele} - Année: #{self.display_year} - #{self.kilometrage} KM - #{self.price} €")
+    end
   end
 end

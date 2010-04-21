@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe FaqsController do
+  before(:each) do
+    @admin = Admin.make
+    sign_in(@admin)
+  end
 
   def mock_faq(stubs={})
     @mock_faq ||= mock_model(Faq, stubs)

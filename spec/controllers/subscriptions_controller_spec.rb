@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe SubscriptionsController do
   
-  def provider
-    @provider ||= Provider.make
+  def provider(stubs = {})
+    @provider ||= Provider.make(stubs)
   end
 
   describe "GET 'new'" do

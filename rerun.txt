@@ -1,1 +1,1 @@
-features/browse_catalog.feature:6:20 features/register_user.feature:6 features/subscriptions.feature:35
+features/subscriptions.feature:35
