@@ -74,6 +74,18 @@ div#overview span.km {
 	font-size: 1.2em;
 }
 
+div.listitem p.vehicle_index_image img {
+	float: left;
+}
+
+div.listitem p.vehicle_index_image {
+}
+
+div.listitem p.links {
+	margin-top: 2em;
+	padding-top: 1em;
+}
+
 div.subcontainer {
 	width: 990px;
 	height: 25px;
@@ -92,4 +104,8 @@ ul.menubar li {
 a.bigLink {
 	font-size: 1.3em;
 	color: #d3e3d0;
+}
+
+h4 {
+	margin-bottom: 2em;
 }

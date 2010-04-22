@@ -11,8 +11,9 @@
 		
 		  <% for v in @vehicles %>
 		
-		    <p class="listitem">
-					<%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %>
+		    <div class="listitem">
+				<p class="vehicle_index_image"><%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %></p>
+				<p class="links">
 					<%= link_to "Voir fiche", vehicle_path(v), :class => "showlink"%>
 					<% if provider_signed_in? %>
 						| <%= link_to "Modifier", edit_provider_vehicle_path(current_provider, v.id) %> |
@@ -20,6 +21,8 @@
 						|	<%= vehicle_available?(v) %> | <%= taggable_for_the_week?(v) %>					
 					<% end %>
 				</p>
+
+			</div>
 				<hr/>
 				<p class="client_potentiel">
 					Clients potentiels pour ce véhicule : <%= v.matching_searchprofiles.count %><br/>
@@ -29,7 +32,7 @@
 						<% end %>
 					</ul>
 				</p>
-
+				<hr/>
 		  <% end %>
 		
 		<% else %>
