@@ -8,7 +8,7 @@
 	<title><%= h(yield(:title) || "GwadaOccasions") %></title>
 	<%= stylesheet_link_tag 'blueprint/screen.css', 'blueprint/plugins/fancy-type/screen.css', 'base.css', :cache => true, :media => 'screen' %>
 	<%= stylesheet_link_tag 'blueprint/print.css', :cache => true, :media => 'print' %>
-	
+	<%= yield :script %>
 
 	<!--[if lt IE 8]><link rel="stylesheet" href="stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
 

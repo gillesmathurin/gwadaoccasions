@@ -1,6 +1,6 @@
 <div id="content" class="span-17 colborder">
 
-	<% form_for [current_provider, @vehicle] do |f| -%>
+	<% form_for @vehicle, :url => provider_vehicle_path(current_provider, @vehicle), :html => {:method => :put, :multipart => true} do |f| -%>
 		<%= f.error_messages %>
 	  <table>
 			
@@ -11,4 +11,6 @@
 			</tr>
 	  </table>
 	<% end -%>
+	
+	<p><%= link_to "Retour", provider_vehicles_path(current_provider) %></p>
 </div>

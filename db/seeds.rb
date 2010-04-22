@@ -6,13 +6,13 @@ a.each do |e|
 end
 
 #Creation d'une voiture
-Voiture.create!(:annee => 1.year.ago,
-:immatriculation => "value for immatriculation",
-:kilometrage => 20000,
-:modele => "value for modele",
-:energy => "value for energy",
-:boite_vitesse => "value for boite_vitesse",
-:price => 6000)
+# Voiture.create!(:annee => 1.year.ago,
+# :immatriculation => "value for immatriculation",
+# :kilometrage => 20000,
+# :modele => "value for modele",
+# :energy => "value for energy",
+# :boite_vitesse => "value for boite_vitesse",
+# :price => 6000)
 
 # Creation des formules d'abonnement
 if Plan.count == 0 

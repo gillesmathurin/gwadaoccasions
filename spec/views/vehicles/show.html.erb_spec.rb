@@ -126,7 +126,7 @@ describe "/vehicles/show" do
       @mock_lbackpic = mock('lbackpic')
       assigns[:vehicle].should_receive(:overviewpic).and_return(@mock_overviewpic)
       @mock_overviewpic.should_receive(:url).and_return("/images/url_overviewpic")
-      assigns[:vehicle].should_receive(:frontpic).and_return(@mock_frontpic)
+      assigns[:vehicle].should_receive(:frontpic).twice.and_return(@mock_frontpic)
       @mock_frontpic.stub(:url).and_return("/images/url_frontpic")
       assigns[:vehicle].should_receive(:backpic).and_return(@mock_backpic)
       @mock_backpic.stub(:url).and_return("/images/url_backpic")

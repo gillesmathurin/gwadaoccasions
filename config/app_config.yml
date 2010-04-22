@@ -29,3 +29,5 @@ production:
   paypal_secret: foobar
   paypal_cert_id: CFJPNL63J97XY
   paypal_url: "https://www.sandbox.paypal.com/cgi-bin/websrc"
+  twitter_email_login: "email_of_your_twitter_account"
+  twitter_password: "password_of_your_twitter_account"

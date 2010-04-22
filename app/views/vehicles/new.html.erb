@@ -1,6 +1,6 @@
 <div id="content" class="span-17 colborder">
 
-	<% form_for [current_provider, @vehicle] do |f| -%>
+	<% form_for [current_provider, @vehicle], :html => {:multipart => true} do |f| -%>
 		<%= f.error_messages %>
 	  <table>
 

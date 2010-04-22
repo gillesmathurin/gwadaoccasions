@@ -1,3 +1,30 @@
+<% content_for :script do %>
+	<%= javascript_include_tag 'highslide-with-gallery', :cache => true %>
+	<%= stylesheet_link_tag 'highslide', :cache => true %>
+	<script type="text/javascript">
+	hs.graphicsDir = '/images/highslide/graphics/';
+	hs.align = 'center';
+	hs.transitions = ['expand', 'crossfade'];
+	hs.outlineType = 'rounded-white';
+	hs.fadeInOut = true;
+	//hs.dimmingOpacity = 0.75;
+
+	// Add the controlbar
+	hs.addSlideshow({
+		//slideshowGroup: 'group1',
+		interval: 5000,
+		repeat: false,
+		useControls: true,
+		fixedControls: 'fit',
+		overlayOptions: {
+			opacity: .75,
+			position: 'bottom center',
+			hideOnMouseOut: true
+		}
+	});
+	</script>
+<% end %>
+
 <div id="content" class="span-17 colborder">
 	<%= render :partial => "shared/flash_messages" %>
 	
@@ -11,18 +38,18 @@
 		
 		<p><%= vehicle_info(@vehicle) %></p>
 		
-		<div class="gallery">
+		<div class="highslide-gallery">
 			<p><%= image_tag(@vehicle.overviewpic.url(:large)) %></p>
 			<table>
 				<tr>
-					<td><%= image_tag(@vehicle.frontpic.url(:thumb)) %></td>
-					<td><%= image_tag(@vehicle.backpic.url(:thumb)) %></td>
-					<td><%= image_tag(@vehicle.rfrontpic.url(:thumb)) %></td>
+					<td><%= link_to( image_tag(@vehicle.frontpic.url(:thumb)), @vehicle.frontpic.url(:large), :class => "highslide", :onclick => "return hs.expand(this);" ) %></td>
+					<td><%= link_to( image_tag(@vehicle.backpic.url(:thumb)), @vehicle.backpic.url(:large), :class => "highslide", :onclick => "return hs.expand(this);" ) %></td>
+					<td><%= link_to( image_tag(@vehicle.rfrontpic.url(:thumb)), @vehicle.rfrontpic.url(:large), :class => "highslide", :onclick => "return hs.expand(this);" ) %></td>
 				</tr>
 				<tr>
-					<td><%= image_tag(@vehicle.lfrontpic.url(:thumb)) %></td>
-					<td><%= image_tag(@vehicle.rbackpic.url(:thumb)) %></td>
-					<td><%= image_tag(@vehicle.lbackpic.url(:thumb)) %></td>
+					<td><%= link_to( image_tag(@vehicle.lfrontpic.url(:thumb)), @vehicle.lfrontpic.url(:large), :class => "highslide", :onclick => "return hs.expand(this);" ) %></td>
+					<td><%= link_to( image_tag(@vehicle.rbackpic.url(:thumb)), @vehicle.rbackpic.url(:large), :class => "highslide", :onclick => "return hs.expand(this);" ) %></td>
+					<td><%= link_to( image_tag(@vehicle.lbackpic.url(:thumb)), @vehicle.lbackpic.url(:large), :class => "highslide", :onclick => "return hs.expand(this);" ) %></td>
 				</tr>
 			</table>
 		</div>

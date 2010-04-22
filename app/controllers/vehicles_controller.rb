@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  before_filter :authenticate_provider!, :only => [:new, :edit, :create, :update, :destroy]
+  before_filter :authenticate_provider!, :only => [:new, :edit, :destroy]
   before_filter :find_provider
   
   def index
