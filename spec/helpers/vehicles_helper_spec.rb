@@ -9,9 +9,11 @@ describe VehiclesHelper do
   end
   
   describe "#vehicle_info(vehicle)" do
+    
     context "when vehicle is a car" do
       it "displays the modele, year and the price of the vehicle" do
         vehicle = Voiture.make(:modele => "Peugeot 206", :annee => 5.years.ago, :price => 6000)
+        helper.stub(:format_km)
         content = helper.vehicle_info(vehicle)
         content.should_not be_nil
         content.should == "Peugeot 206 - Année : 2005 - 6000 €"
@@ -21,6 +23,7 @@ describe VehiclesHelper do
     context "when vehicle is a Motorbike"do
       it "displays the modele, cylindree, year and price" do
         vehicle = Moto.make(:modele => "Yamaha 1525", :cylindree => "750", :annee => 5.years.ago, :price => 6000)
+        helper.stub(:format_km)
         content = helper.vehicle_info(vehicle)
         content.should_not be_nil
         content.should == "Yamaha 1525 - 750 cm3 - Année : 2005 - 6000 €"
@@ -31,7 +34,7 @@ describe VehiclesHelper do
       it "displays the modele, year and price" do
       vehicle = Jetski.make(:modele => "Yamaha 1525", :annee => 5.years.ago, :price => 6000)
       content = helper.vehicle_info(vehicle)
-      content.should == "Yamaha 1525 - Année : 2005 - 6000 €"        
+      content.should == "<p><span class=\"modele\">Yamaha 1525</span></p><p>Année : 2005</p><p><span class=\"prix\">6000 €</span></p>"        
       end
     end
     
@@ -39,7 +42,7 @@ describe VehiclesHelper do
       it "displays the modele and the price" do
         vehicle = Bateau.make(:modele => "Yamaha 1525", :price => 6000)
         content = helper.vehicle_info(vehicle)
-        content.should == "Yamaha 1525 - 6000 €"
+        content.should == "<p><span class=\"modele\">Yamaha 1525</span></p><p><span class=\"prix\">6000 €</span></p>"
       end
     end
   end

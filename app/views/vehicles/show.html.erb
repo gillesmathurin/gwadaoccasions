@@ -28,18 +28,23 @@
 <div id="content" class="span-17 colborder">
 	<%= render :partial => "shared/flash_messages" %>
 	
-	<p class="invitation">
-		Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes<br/> <%= link_to "Créez votre compte", new_user_registration_path, :class => "bigLink" %>
-	</p>
+	<% unless provider_signed_in? %>
+		<p class="invitation">
+			Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes<br/>
+			<%= link_to "Créez votre compte", new_user_registration_path, :class => "bigLink" %>
+		</p>
+	<% end %>
 	
 	<hr/>
 	
 	<div class="vehicle_description">
-		
-		<p><%= vehicle_info(@vehicle) %></p>
-		
+		<div id="overview">
+			<p class="img_overview">
+				<%= image_tag(@vehicle.overviewpic.url(:large), :class => "overview") %>
+			</p>
+			<div class="infos"><%= vehicle_info(@vehicle) %></div>
+		</div>
 		<div class="highslide-gallery">
-			<p><%= image_tag(@vehicle.overviewpic.url(:large)) %></p>
 			<table>
 				<tr>
 					<td><%= link_to( image_tag(@vehicle.frontpic.url(:thumb)), @vehicle.frontpic.url(:large), :class => "highslide", :onclick => "return hs.expand(this);" ) %></td>
@@ -55,9 +60,6 @@
 		</div>
 		
 		<div class="description">
-			<p class="infos">
-				<%= quick_info(@vehicle) %>
-			</p>
 			<p>
 				<%=h @vehicle.description %>
 			</p>
@@ -68,6 +70,9 @@
 				<%= link_to "Imprimez la fiche", print_vehicle_path(@vehicle) %> | 
 				<%= link_to "Sélectionnez", select_vehicle_path(@vehicle), :method => :put %>  |
 				<%= link_to_function("Dites-le à un ami", "$('tell_#{@vehicle.id}').toggle()" ) %>
+				<%- if provider_signed_in? -%>
+					<%= link_to "Modifier", edit_provider_vehicle_path(current_provider, @vehicle) %> | <%= link_to "Supprimer", provider_vehicle_path(current_provider, @vehicle), :method => :delete, :confirm => "En êtes vous sur ?" %>
+				<%- end -%>
 			</p>
 			<div id="tell_<%= @vehicle.id %>" style="display:none" class="append">
 				<%- form_remote_tag :url => tellafriend_vehicle_path(@vehicle),:update => "flash_messages", :complete => "$('tell_#{@vehicle.id}').hide();" do -%>

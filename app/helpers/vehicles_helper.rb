@@ -3,13 +3,27 @@ module VehiclesHelper
   def vehicle_info(vehicle)
     case vehicle.type
     when "Voiture"
-      "#{vehicle.modele} - Année : #{vehicle.display_year} - #{vehicle.price} €"
+      @content = content_tag(:p, content_tag(:span, "#{vehicle.modele}", :class => "modele"))
+      @content << content_tag(:p, "Année : #{vehicle.display_year}")
+      @content << content_tag(:p, content_tag(:span, "#{vehicle.price} €", :class => "prix"))
+      @content << content_tag(:p, content_tag(:span, "#{format_km(vehicle.kilometrage)}", :class => "km"))
+      @content << content_tag(:p, "#{vehicle.energy} - Boite #{vehicle.boite_vitesse}")
+      @content << content_tag(:p, "Immatriculation : #{vehicle.immatriculation}")
     when "Moto"
-      "#{vehicle.modele} - #{vehicle.cylindree} cm3 - Année : #{vehicle.display_year} - #{vehicle.price} €"
+      @content = content_tag(:p, content_tag(:span, "#{vehicle.modele}", :class => "modele"))
+      @content << content_tag(:p, "Cylindrée : #{vehicle.cylindree} cm3")
+      @content << content_tag(:p, "Année : #{vehicle.display_year}")
+      @content << content_tag(:p, content_tag(:span, "#{vehicle.price} €", :class => "prix"))
+      @content << content_tag(:p, content_tag(:span, "#{format_km(vehicle.kilometrage)}", :class => "km"))
+      @content << content_tag(:p, "#{vehicle.energy} - Boite #{vehicle.boite_vitesse}")
+      @content << content_tag(:p, "Immatriculation : #{vehicle.immatriculation}")
     when "Jetski"
-      "#{vehicle.modele} - Année : #{vehicle.display_year} - #{vehicle.price} €"
+      @content = content_tag(:p, content_tag(:span, "#{vehicle.modele}", :class => "modele"))
+      @content << content_tag(:p, "Année : #{vehicle.display_year}")
+      @content << content_tag(:p, content_tag(:span, "#{vehicle.price} €", :class => "prix"))
     when "Bateau"
-      "#{vehicle.modele} - #{vehicle.price} €"
+      @content = content_tag(:p, content_tag(:span, "#{vehicle.modele}", :class => "modele"))
+      @content << content_tag(:p, content_tag(:span, "#{vehicle.price} €", :class => "prix"))
     end
   end
   

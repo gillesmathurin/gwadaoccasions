@@ -21,14 +21,13 @@ div#content {
 }
 
 div#content p.invitation {
-	background-color: #1d7132;
 	text-align: center;
 	color: yellow;
 	padding: 5px;
 	font-size: 1.2em;
-}
-
-div#content div.vehicle_description div.gallery {
+	background: transparent url(../images/bg-userinvitation.png) no-repeat center;
+	width: 675px;
+	height: 60px;
 }
 
 div#maincontent {
@@ -39,6 +38,40 @@ div#header {
 	background: url(../images/header_05.png) no-repeat center top;
 	height: 150px;
 	width: 990px;
+}
+
+div.vehicle_description div#overview {
+	height: 370px;
+}
+
+div.vehicle_description div#overview p.img_overview {
+	float: left;
+}
+
+div.vehicle_description div#overview p.img_overview img {
+	border: 2px solid silver;
+}
+
+div#overview div.infos p {
+	margin-bottom: 2em;
+	font-weight: bold;
+}
+
+div#overview span.modele {
+	color: #b6636a;
+	font-weight: bold;
+	margin-left: 10px;
+	font-size: 1.3em;
+}
+
+div#overview span.prix {
+	color: red;
+	font-size: 1.3em;
+}
+
+div#overview span.km {
+	color: #5c06b7;
+	font-size: 1.2em;
 }
 
 div.subcontainer {

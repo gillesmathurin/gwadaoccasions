@@ -79,6 +79,7 @@ class VehiclesController < ApplicationController
   
   def update
     @vehicle = current_provider.vehicles.find(params[:id])
+    @vehicle[:type] = params[:vehicle][:type]
     
     respond_to do |wants|
       if @vehicle.update_attributes(params[:vehicle])
