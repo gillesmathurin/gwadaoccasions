@@ -58,19 +58,19 @@ div#overview div.infos p {
 }
 
 div#overview span.modele {
-	color: #b6636a;
+	color: #f04d1b;
 	font-weight: bold;
 	margin-left: 10px;
 	font-size: 1.3em;
 }
 
 div#overview span.prix {
-	color: red;
+	color: #f04d1b;
 	font-size: 1.3em;
 }
 
 div#overview span.km {
-	color: #5c06b7;
+	color: #39485e;
 	font-size: 1.2em;
 }
 

@@ -16,7 +16,7 @@ describe VehiclesHelper do
         helper.stub(:format_km)
         content = helper.vehicle_info(vehicle)
         content.should_not be_nil
-        content.should == "Peugeot 206 - Année : 2005 - 6000 €"
+        content.should == "<p><span class=\"modele\">Peugeot 206</span></p><p>Année : 2005</p><p><span class=\"prix\">6000 €</span></p><p><span class=\"km\"></span></p><p>--- \n- Diesel\n- Diesel\n - Boite --- \n- Automatique\n- Automatique\n</p><p>Immatriculation : bhC89B5F</p>"
       end
     end
     
@@ -26,7 +26,7 @@ describe VehiclesHelper do
         helper.stub(:format_km)
         content = helper.vehicle_info(vehicle)
         content.should_not be_nil
-        content.should == "Yamaha 1525 - 750 cm3 - Année : 2005 - 6000 €"
+        content.should == "<p><span class=\"modele\">Yamaha 1525</span></p><p>Cylindrée : 750 cm3</p><p>Année : 2005</p><p><span class=\"prix\">6000 €</span></p><p><span class=\"km\"></span></p><p> - Boite --- \n- Automatique\n- Automatique\n</p><p>Immatriculation : bhC89B5F</p>"
       end      
     end
     
