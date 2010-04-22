@@ -100,4 +100,8 @@
 		<p>Vous êtes un professionnel ?</p>
 		<p><%= link_to "Découvrez nos services", "/services.html" %></p>
 	</div>
+	
+	<%- if provider_signed_in? -%>
+		<!-- TODO : implement a quick search form -->
+	<%- end -%>
 </div>
