@@ -22,12 +22,13 @@ div#content {
 
 div#content p.invitation {
 	text-align: center;
-	color: yellow;
+	color: #e5ff24;
 	padding: 5px;
 	font-size: 1.2em;
 	background: transparent url(../images/bg-userinvitation.png) no-repeat center;
 	width: 675px;
 	height: 60px;
+	font-weight: bold;
 }
 
 div#maincontent {
@@ -93,19 +94,71 @@ div.subcontainer {
 }
 
 ul.menubar {
-	margin-left: 420px;
+	margin-left: 330px;
+	margin-top: 5px;
 }
 
 ul.menubar li {
 	float: left;
 	margin-right: 25px;
+	font-size: 1.2em;
+	list-style-type: none;
+}
+
+ul.menubar li a {
+	text-decoration: none;
+	font-weight: bold;
+	color: yellow;
+}
+
+ul.menubar li a:hover {
+	color: #f18790;
+	border-bottom: 2px solid #fa5153;
 }
 
 a.bigLink {
-	font-size: 1.3em;
-	color: #d3e3d0;
+	color: #32cbff;
+	font-size: 1.2em;
+	text-decoration: none;
+}
+
+a.bigLink:hover {
+	color: yellow;
+}
+
+div.actions a {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+div.actions a:hover {
+	font-weight: bold;
+	font-size: 1.2em;
+	color: #fb8a94;
 }
 
 h4 {
 	margin-bottom: 2em;
+}
+
+h5 {
+	color: #600;
+}
+
+div#sidebar h5 {
+	margin-bottom: 5px;
+}
+
+div.twitter {
+	text-align: center;
+	margin-bottom: 10px;
+	padding: 5px;
+	background-color: green;
+	border: 1px solid yellow;
+}
+
+div.twitter span {
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #e5ff24;
 }

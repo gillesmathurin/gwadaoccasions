@@ -71,7 +71,7 @@
 				<%= link_to "Sélectionnez", select_vehicle_path(@vehicle), :method => :put %>  |
 				<%= link_to_function("Dites-le à un ami", "$('tell_#{@vehicle.id}').toggle()" ) %>
 				<%- if provider_signed_in? -%>
-					<%= link_to "Modifier", edit_provider_vehicle_path(current_provider, @vehicle) %> | <%= link_to "Supprimer", provider_vehicle_path(current_provider, @vehicle), :method => :delete, :confirm => "En êtes vous sur ?" %>
+					| <%= link_to "Modifier", edit_provider_vehicle_path(current_provider, @vehicle) %> | <%= link_to "Supprimer", provider_vehicle_path(current_provider, @vehicle), :method => :delete, :confirm => "En êtes vous sur ?" %>
 				<%- end -%>
 			</p>
 			<div id="tell_<%= @vehicle.id %>" style="display:none" class="append">
