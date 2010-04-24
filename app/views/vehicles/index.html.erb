@@ -1,29 +1,29 @@
 <div id="content" class="span-17 colborder">	
 	
 	<% if request.path == vehicles_path() %>
-		<h4>Toutes les offres classées par prix croissant</h4>
+		<h5>Toutes les offres classées par prix croissant</h5>
 	<% elsif provider_signed_in? %>
-		<h4>Tous vos véhicules</h4>
+		<h5>Tous vos véhicules</h5>
 	<% end %>
 	
 	<div class="vehicles_list">
 		<% if !@vehicles.blank? %>
 		
 		  <% for v in @vehicles %>
-		
-		    <div class="listitem">
+ 		    <div class="listitem">
 				<p class="vehicle_index_image"><%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %></p>
 				<p class="links">
 					<%= link_to "Voir fiche", vehicle_path(v), :class => "showlink"%>
 					<% if provider_signed_in? %>
-						| <%= link_to "Modifier", edit_provider_vehicle_path(current_provider, v.id) %> |
-						<%= link_to "Supprimer", provider_vehicle_path(current_provider, v.id), :method => "delete" %>
+						| <%= link_to "Modifier", edit_provider_vehicle_path(current_provider, v.id) %>
+						| <%= link_to "Supprimer", provider_vehicle_path(current_provider, v.id), :method => "delete" %>
 						|	<%= vehicle_available?(v) %> | <%= taggable_for_the_week?(v) %>					
 					<% end %>
 				</p>
 
 			</div>
 				<hr/>
+				<% if provider_signed_in? %>
 				<p class="client_potentiel">
 					Clients potentiels pour ce véhicule : <%= v.matching_searchprofiles.count %><br/>
 					<ul>
@@ -33,6 +33,7 @@
 					</ul>
 				</p>
 				<hr/>
+				<% end %>
 		  <% end %>
 		
 		<% else %>
@@ -51,6 +52,8 @@
 		<p><%=h @vehicle_number %> offre(s)</p>
 		<p><%=h @user_number %> utilisateur(s) enregistré(s)</p>
 	</div>
+	
+	<%= render :partial => "shared/twitter" %>
 	
 	<% unless provider_signed_in? || user_signed_in? %>
 		<div class="registration_block">
