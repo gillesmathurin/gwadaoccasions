@@ -4,4 +4,4 @@ tmp/*
 db/*.sqlite3
 config/database.yml
 config/app_config.yml
-config.initializers/mail.rb
+config/initializers/mail.rb
