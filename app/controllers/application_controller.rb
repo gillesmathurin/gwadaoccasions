@@ -18,13 +18,13 @@ class ApplicationController < ActionController::Base
   
   layout :set_layout
   
-  # def after_sign_in_path_for(resource)
-  #   if resource.is_a?(Provider)
-  #     provider_url(resource.id)
-  #   else
-  #     super
-  #   end
-  # end
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(Provider)
+      provider_url(resource.id)
+    else
+      super
+    end
+  end
   
   private
   

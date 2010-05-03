@@ -37,6 +37,7 @@ class SubscriptionsController < ApplicationController
   end
   
   def congrats
-    
+    @provider = current_provider || Provider.find(params[:id])
+    @subscription = @provider.subscription
   end
 end
