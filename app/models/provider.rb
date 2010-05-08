@@ -1,5 +1,4 @@
 class Provider < ActiveRecord::Base
-  has_one :subscription
   has_many :vehicles, :dependent => :destroy
   has_many :salesmen, :dependent => :destroy
   # Include default devise modules. Others available are:

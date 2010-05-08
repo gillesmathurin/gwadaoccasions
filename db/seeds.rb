@@ -14,15 +14,3 @@ end
 # :boite_vitesse => "value for boite_vitesse",
 # :price => 6000)
 
-# Creation des formules d'abonnement
-if Plan.count == 0 
-  Plan.create!(:nom => "Standard", :price => 8500)
-end
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#   
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Major.create(:name => 'Daley', :city => cities.first)

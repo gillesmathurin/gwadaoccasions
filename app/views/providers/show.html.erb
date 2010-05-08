@@ -3,51 +3,34 @@
 	
 	<% if @provider.pending? %>
 		<div class="subscribe-block">
-		<h2>Veuillez vérifier les informations de votre profil</h2>
+			<h2>Veuillez vérifier les informations de votre profil</h2>
 		
-		<p>
-			Nom : <%= @provider.contact_name %><br/>
-			Login : <%= @provider.login %><br/>
-			Email : <%= @provider.email %><br/>
-			Société : <%= @provider.company %><br/>
-			Tel : <%= @provider.telephone %><br/>
-			Fax : <%= @provider.fax %><br/>
-			Mobile : <%= @provider.mobile if @provider.mobile %><br/>
-			Adresse : <%= @provider.address %><br/>
-			Code Postal : <%= @provider.zipcode %><br/>
-			Ville : <%= @provider.city %><br/>
-		</p>
+			<p>
+				Nom : <%= @provider.contact_name %><br/>
+				Login : <%= @provider.login %><br/>
+				Email : <%= @provider.email %><br/>
+				Société : <%= @provider.company %><br/>
+				Tel : <%= @provider.telephone %><br/>
+				Fax : <%= @provider.fax %><br/>
+				Mobile : <%= @provider.mobile if @provider.mobile %><br/>
+				Adresse : <%= @provider.address %><br/>
+				Code Postal : <%= @provider.zipcode %><br/>
+				Ville : <%= @provider.city %><br/>
+			</p>
 		
-		<p>
-			<%= link_to "Modifier votre Compte", edit_provider_registration_path() %>
-		</p>
+			<p>
+				<%= link_to "Modifier votre Compte", edit_provider_registration_path() %>
+			</p>
 		
-		<hr/>
+			<hr/>
 		
-		<h3>Choisissez votre formule d'abonnment</h3>
-		
-		<% form_for @subscription do |f| -%>
-		  <%= f.error_messages %>
-			<% @plans.each do |p| %>
-				<p>
-					<%= f.radio_button :plan_id, p.id  %> : <%= p.nom %> <%= format_price(p.human_price) %>
-				</p>
-				<p>
-					<%= submit_tag "Souscrire" %>
-				</p>			
-			<% end %>
-		<% end -%>
+			<h3>Votre compte est suspendu, veuillez contactez le support pour le débloquer</h3>
 		</div>
 	
 	<% else %>
 	
 		<div class="account">			
 			<h4>Tableau de Bord</h4>
-			
-			<h5>Abonnement</h5>
-			<p class="subscription_status">
-				Abonné depuis le : <%= @provider.subscription.subscription_date %> 
-			</p>
 			
 			<h5>Véhicules</h5>
 			<p class="float_of_vehicles">
@@ -59,18 +42,24 @@
 				Nombre de commerciaux : <%= @provider.salesmen.count %> | <%= link_to "Ajouter un commercial", new_provider_salesman_path(@provider) %> | <%= link_to "Consulter", provider_salesmen_path(@provider) %>
 			</p>
 			
+			<h5>Statistiques</h5>
+			<p>
+				<!-- Prix moyen recherché :  -->
+				<!-- Prix Maximum recherché : -->
+				<!-- Prix minimum recherché : -->
+				<!-- Kilométrage moyen recherché : -->
+				<!-- Kilométrage maximum recherché : -->
+				<!-- Kilométrage minimum recherché : -->
+			</p>
+			<p>
+				<!-- Quantité moyenne de ventes par mois :  -->
+				<!-- Meilleur vendeur : -->
+				<!-- Plus mauvais vendeur : -->
+			</p>
 		</div>
 	<% end %>
 	
 </div>
 <div id="sidebar" class="span-6 last">
-	<!-- TODO : recréer ce lien à partir de mon compte paypal business réel -->
-	<p>
-		Pour vous désabonner, cliquez :
-	</p>
-	<p>
-		<A HREF="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=E8P87ZPXRF2MW">
-		<IMG SRC="https://www.sandbox.paypal.com/fr_FR/FR/i/btn/btn_unsubscribe_LG.gif" BORDER="0">
-		</A>
-	</p>
+
 </div>

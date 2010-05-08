@@ -12,7 +12,6 @@
 
 	<!--[if lt IE 8]><link rel="stylesheet" href="stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
 
-	<%# stylesheet_link_tag 'base' %>
 	<%= javascript_include_tag 'prototype', 'effects' %>
 </head>
 
@@ -23,7 +22,6 @@
 				<li><%= link_to "Accueil", root_path() %></li>
 				<li><%= link_to "Catalogue", vehicles_path() %></li>
 				<li>Nos Services</li>
-				<li><%= link_to "Abonnez vous", new_provider_registration_path() %> </li>
 				<li>Aide</li>
 				<li>
 					<% if user_signed_in? %>
@@ -36,7 +34,7 @@
 					<% if provider_signed_in? %>
 					 	<%= link_to "Deconnexion", destroy_provider_session_path() %>
 					<% else %>
-						<%= link_to "Espace Pro", new_provider_session_path() %>
+						<%= link_to "Admin", new_provider_session_path() %>
 					<% end %>
 				</li>
 			</ul>
