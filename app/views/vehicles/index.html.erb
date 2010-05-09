@@ -11,7 +11,8 @@
 		
 		  <% for v in @vehicles %>
  		    <div class="listitem">
-				<p class="vehicle_index_image"><%= image_tag(v.overviewpic.url(:thumb)) %>  <%= vehicle_info(v) %></p>
+				<p class="vehicle_index_image"><%= image_tag(v.overviewpic.url(:thumb)) %></p>
+				 <%= vehicle_info(v) %>
 				<p class="links">
 					<%= link_to "Voir fiche", vehicle_path(v), :class => "showlink"%>
 					<% if provider_signed_in? %>

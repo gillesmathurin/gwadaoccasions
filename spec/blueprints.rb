@@ -110,25 +110,6 @@ Provider.blueprint do
   status { "pending" }
 end
 
-Plan.blueprint do
-  nom { "Standard" }
-  price { 8500 }
-end
-
-Subscription.blueprint do
-  provider_id {  }
-  plan_id {  }
-  status { "pending" }
-end
-
-PaymentNotification.blueprint do
-  # subscription_id {}
-  params { {:mc_gross => "85.00"} }
-  created_at { Time.now }
-  status { "paid" }
-  transaction_id { String.random_alphanumeric(8) }
-end
-
 Salesman.blueprint do
   name { Faker::Name.name }
   mobile_phone { Faker::PhoneNumber.phone_number }
