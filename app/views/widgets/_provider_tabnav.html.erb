@@ -39,11 +39,6 @@ render_tabnav :provider,
 	t.named 'Commerciaux'
 	t.links_to provider_salesmen_path(current_provider) if current_provider
   end
-         
-  add_tab do |t|
-   	t.named 'Historique Abonnement'
-   	t.links_to provider_subscription_payment_notifications_path(current_provider, current_provider.subscription) if current_provider && current_provider.subscription
-  end 
   #
   #add_tab do |t|
   #  t.named 'Customers'

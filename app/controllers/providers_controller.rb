@@ -10,12 +10,6 @@ class ProvidersController < ApplicationController
   
   def show
     @provider = current_provider
-    @plans = Plan.all
-    if @provider.subscription.nil?
-      @subscription = @provider.build_subscription()
-    else
-      @subscription = @provider.subscription
-    end
   end
   
   def destroy

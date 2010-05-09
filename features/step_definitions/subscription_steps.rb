@@ -15,9 +15,9 @@ Given /^I have one\s+provider "([^\"]*)" with password "([^\"]*)" and login "([^
            :password_confirmation => password)
 end
 
-Given /^I follow Espace Pro$/ do
+Given /^I follow Admin$/ do
   # visit path_to("provider_login")
-  click_link("Espace Pro")
+  click_link("Admin")
 end
 
 Given /^I am a new, authenticated pending provider$/ do

@@ -9,7 +9,7 @@ Given /^I am a new, authenticated active provider$/ do
   password = 'secretpass'
 
   Given %{I have one active provider "#{email}" with password "#{password}" and login "#{login}"}
-  And %{I follow Espace Pro}
+  And %{I follow Admin}
   And %{I fill in "provider_email" with "#{email}"}
   And %{I fill in "provider_login" with "#{login}"}
   And %{I fill in "provider_password" with "#{password}"}
