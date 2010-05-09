@@ -16,14 +16,3 @@ Given /^I am a new, authenticated active provider$/ do
   And %{I press "Sign in"}
 end
 
-Given /^I have been subscribed since "([^\"]*)" months$/ do |arg1|
-  number = arg1.to_i
-  @subscription = Subscription.make(:provider => @provider, :status => "verified")
-  while number > 0
-   PaymentNotification.make(:created_at => number.months.ago, :subscription => @subscription)
-    number = number - 1    
-  end
-  # @subscription.payment_notifications << PaymentNotification.make(:created_at => 3.months.ago)
-  # @subscription.payment_notifications << PaymentNotification.make(:created_at => 2.months.ago)
-  # @subscription.payment_notifications << PaymentNotification.make(:created_at => 1.months.ago)
-end

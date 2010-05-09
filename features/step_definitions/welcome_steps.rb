@@ -17,9 +17,9 @@ Then /^I should see a menu bar$/ do
   response.should have_selector("ul.menubar")
   response.should contain("Catalogue")
   response.should contain("Nos Services")
-  response.should contain("Abonnez vous")
   response.should contain("Aide")
   response.should contain("Connexion")
+  response.should contain("Admin")
 end
 
 Then /^I should see a "([^\"]*)"$/ do |text|
