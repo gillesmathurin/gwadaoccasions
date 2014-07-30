@@ -47,6 +47,7 @@ gem 'devise'
 # Testing
 group :test do
 	gem 'cucumber-rails', require: false
-	# database_cleaner is not required, but highly recommended
+	gem 'capybara'
 	gem 'database_cleaner'
+	gem 'capybara_minitest_spec'
 end
