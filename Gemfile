@@ -52,3 +52,9 @@ group :test do
 	gem 'database_cleaner'
 	gem 'capybara_minitest_spec'
 end
+
+group :development do
+	gem 'guard'
+	gem 'guard-minitest'
+	gem 'guard-cucumber'
+end
