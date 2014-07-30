@@ -10,9 +10,9 @@ Feature: Welcome
 		And there is no Vehicle
 		When I enter the welcome page
 		Then I should see a menu bar
-		And I should see a "Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes" 
+		And I should see a "Enregistrez vos profils de recherche et recevez quotidiennement les offres correspondantes"
 		And I should see a search form
-		And I should see a "0 offre" in a text-block 
+		And I should see a "0 offre" in a text-block
 		And I should see a "0 utilisateur(s) enregistré(s)" in a text-block
 		And I should see a "Vous êtes un professionnel ?" text
 		And I should see a "Découvrez nos services" link

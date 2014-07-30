@@ -21,3 +21,7 @@ config/initializers/mail.rb
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/gwadaoccasion.sublime-project
+
+/gwadaoccasion.sublime-workspace
