@@ -45,6 +45,7 @@ gem 'autoprefixer-rails'
 # Authentification
 gem 'devise'
 # Testing
+gem "spring-commands-cucumber"
 group :test do
 	gem 'cucumber-rails', require: false
 	gem 'capybara'
