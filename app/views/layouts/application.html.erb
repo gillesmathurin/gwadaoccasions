@@ -1,50 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-	<title><%= h(yield(:title) || "GwadaOccasions") %></title>
-	<%= stylesheet_link_tag 'blueprint/screen.css', 'blueprint/plugins/fancy-type/screen.css', 'base.css', :cache => true, :media => 'screen' %>
-	<%= stylesheet_link_tag 'blueprint/print.css', :cache => true, :media => 'print' %>
-	<%= yield :script %>
-
-	<!--[if lt IE 8]><link rel="stylesheet" href="stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-
-	<%# stylesheet_link_tag 'base' %>
-	<%= javascript_include_tag 'prototype', 'effects' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 </head>
-
 <body>
-	<div class="container">
-		<div id="header" class="span-24 last">
-			<ul class="menubar">
-				<li><%= link_to "Accueil", root_path() %></li>
-				<li><%= link_to "Catalogue", vehicles_path() %></li>
-				<li>Nos Services</li>
-				<li><%= link_to "Abonnez vous", new_provider_registration_path() %> </li>
-				<li>Aide</li>
-				<li>
-					<% if user_signed_in? %>
-						<%= link_to "Deconnexion", destroy_user_session_path() %>
-					<% else %>
-						<%= link_to "Connexion", new_user_session_path() %>
-					<% end %>
-				</li>
-				<li>
-					<% if provider_signed_in? %>
-					 	<%= link_to "Deconnexion", destroy_provider_session_path() %>
-					<% else %>
-						<%= link_to "Espace Pro", new_provider_session_path() %>
-					<% end %>
-				</li>
-			</ul>
-		</div>
-		<%= yield %>
-	</div>
-	<div class="subcontainer">
-		&nbsp;		
-	</div>
+	<title><%= h(yield(:title) || "GwadaOccasions") %></title>
+
+<%= yield %>
+
 </body>
 </html>
