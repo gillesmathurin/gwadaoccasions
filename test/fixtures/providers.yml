@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+active: 
+  email: provider_1@example.com
+  login: firstprovider
+  company: soguava
+  address: jarry
+  zipcode: 97120
+  city: Baie-Mahault
+  state: France
+  telephone: 0000000000
+  fax: 0000000000
+  mobile: 0000000000000
+  contact_name: Mr Smith
+  status: 1
+  encrypted_password: <%= ::BCrypt::Password.create("pleasebb285208da3f07e78ea059820eb1bedca611aad5cc86dd8d021d3c1519633f3fe25fdc6230eaa91585ede5c20a11fc7a2a27b0e2bd0be90b296072ea20d21cd9", cost: 1).to_s %>
+#
+pending:
+  email: provider_2@example.com
+  login: firstprovider
+  company: soguava
+  address: jarry
+  zipcode: 97120
+  city: Baie-Mahault
+  state: France
+  telephone: 0000000000
+  fax: 0000000000
+  mobile: 0000000000000
+  contact_name: Mr Smith
+  status: 0
+  encrypted_password: <%= ::BCrypt::Password.create("pleasebb285208da3f07e78ea059820eb1bedca611aad5cc86dd8d021d3c1519633f3fe25fdc6230eaa91585ede5c20a11fc7a2a27b0e2bd0be90b296072ea20d21cd9", cost: 1).to_s %>

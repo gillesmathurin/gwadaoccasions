@@ -10,7 +10,6 @@ class SearchProfile < ActiveRecord::Base
   private
   
   def search_profile_count
-    count = SearchProfile.where(user_id: self.user_id).count
-    errors.add_to_base("Vous avez atteint le nombre maximum de profils. Veuillez modifier un profil existant.") if count == 5
+    errors.add(:base, 'Vous avez atteint le nombre maximum de profils. Veuillez modifier un profil existant') if SearchProfile.where(user_id: self.user_id).count == 5
   end
 end

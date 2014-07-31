@@ -9,8 +9,6 @@ class Admin < ActiveRecord::Base
   private
   
   def verify_count
-    if Admin.count >= 1
-       return false
-    end
+    return false if Admin.count >= 1
   end
 end

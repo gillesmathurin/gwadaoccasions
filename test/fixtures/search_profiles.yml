@@ -5,12 +5,15 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
+  category: Voiture
   minprice: 3000
   maxprice: 6000
   maxkilometer: 150000
   minkilometer: 70000
+  user: fred
 #
 two:
+  category: Voiture
   minprice: 5000
   maxprice: 10000
   maxkilometer: 50000
