@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one: 
-  type: MyString
+  type: Voiture
   price: 1
   kilometrage: 1
   annee: 2010-03-04
@@ -21,10 +21,12 @@ one:
   overviewpic_file_size: 1
   overviewpic_content_type: MyString
   overviewpic_updated_at: 2010-03-04 08:13:58
+  select_for_week: true
+  disponibilite: true
 #
 two:
-  type: MyString
-  price: 1
+  type: Voiture
+  price: 20
   kilometrage: 1
   annee: 2010-03-04
   immatriculation: MyString
@@ -39,3 +41,25 @@ two:
   overviewpic_file_size: 1
   overviewpic_content_type: MyString
   overviewpic_updated_at: 2010-03-04 08:13:58
+  select_for_week: false
+  disponibilite: false
+
+sp_vehicle:
+  type: Voiture
+  price: 3000
+  kilometrage: 75000
+  annee: 2010-03-04
+  immatriculation: 898AZT971
+  serialnumber: AZX12345TRF
+  modele: MyString
+  marque_id: 1
+  cylindree: MyString
+  energy: MyString
+  boite_vitesse: MyString
+  description: MyText
+  overviewpic_file_name: MyString
+  overviewpic_file_size: 1
+  overviewpic_content_type: MyString
+  overviewpic_updated_at: 2010-03-04 08:13:58
+  select_for_week: true
+  disponibilite: true

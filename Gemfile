@@ -39,6 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 # ######### Application gems #################
+
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
