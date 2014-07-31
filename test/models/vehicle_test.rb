@@ -30,10 +30,35 @@ class VehicleTest < ActiveSupport::TestCase
   end
 
   test "#matching_searchprofiles returns saved search profiles matching vehicle" do
-    skip("need to refactor this method in its own service")
+    sp = search_profiles(:one)
+    vehicle = vehicles(:sp_vehicle)
+    assert_includes(vehicle.matching_searchprofiles, sp)
   end
 
-  test "#tweet_me post a tweet after vehicle creation" do
-    skip("need refactoring and twitter webservice mocking")
+  test "#share_me post vehicle creation event on twitter and facebook" do
+    skip("not implemented yet")
+  end
+
+  test "#of_the_week scope fetches vehicles which are selected for the current week" do
+    vehicle = vehicles(:one)
+    assert_equal(2, Vehicle.of_the_week.size,)
+    assert_includes(Vehicle.of_the_week, vehicle, "Doesn't include the vehicle")
+  end
+
+  test '#sold scope fetches sold vehicles' do
+    assert_equal(1, Vehicle.sold.size)
+    assert_includes(Vehicle.sold ,vehicles(:two), "Doesn't include the vehicle")
+    assert_not_includes( Vehicle.sold, vehicles(:one) )
+  end
+
+  test '#available scope fetches availabe vehicles' do
+    assert_equal(2, Vehicle.available.size)
+    assert_includes(Vehicle.available, vehicles(:one), "Doesn't include the vehicle")
+    assert_not_includes(Vehicle.available, vehicles(:two))
+  end
+
+  test 'scope with_price_criterias fetches vehicle mathcing given price criteria' do
+    assert_equal(1, Vehicle.with_price_criterias('Voiture', 1, 10).size)
+    assert_includes(Vehicle.with_price_criterias('Voiture', 0, 10), vehicles(:one))
   end
 end
