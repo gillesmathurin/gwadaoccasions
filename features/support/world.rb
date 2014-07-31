@@ -1,12 +1,12 @@
-class MinitestWorld
-	extend Minitest::Assertions
-	attr_accessor :assertions
+# class MinitestWorld
+#   extend Minitest::Assertions
+#   attr_accessor :assertions
 
-	def initialize
-		self.assertions = 0
-	end
-end
+#   def initialize
+#     self.assertions = 0
+#   end
+# end
 
-World do
-	MinitestWorld.new
-end
+# World do
+#   MinitestWorld.new
+# end

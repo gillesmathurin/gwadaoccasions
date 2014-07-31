@@ -1,6 +1,3 @@
-require 'machinist/active_record'
-require 'sham'
-require 'faker'
 include ActionView::Helpers::NumberHelper
 include ApplicationHelper
 

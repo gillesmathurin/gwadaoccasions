@@ -1,8 +1,12 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: 
   type: MyString
-  price: 5000
+  price: 1
   kilometrage: 1
   annee: 2010-03-04
   immatriculation: MyString
@@ -17,10 +21,10 @@ one:
   overviewpic_file_size: 1
   overviewpic_content_type: MyString
   overviewpic_updated_at: 2010-03-04 08:13:58
-
+#
 two:
   type: MyString
-  price: 7000
+  price: 1
   kilometrage: 1
   annee: 2010-03-04
   immatriculation: MyString

@@ -44,6 +44,8 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 # Authentification
 gem 'devise'
+# Attachments
+gem 'paperclip'
 # Testing
 gem "spring-commands-cucumber"
 group :test do
