@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731195654) do
+ActiveRecord::Schema.define(version: 20140801021059) do
 
   create_table "admins", force: true do |t|
     t.datetime "created_at"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20140731195654) do
   create_table "subscriptions", force: true do |t|
     t.integer  "plan_id"
     t.datetime "subscription_date"
-    t.string   "status"
+    t.integer  "status",            limit: 255
     t.integer  "provider_id"
     t.string   "subscriber_id"
     t.datetime "created_at"

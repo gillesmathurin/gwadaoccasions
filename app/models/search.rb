@@ -1,25 +1,16 @@
-class Search #< ActiveRecord::Base
+class Search
+  include ActiveModel::Model
   attr_accessor :minprice, :maxprice, :minkilometrage, :maxkilometrage, :minyear, :maxyear,
    :energy, :boite_vitesse, :category
   
-  def initialize(params = {})
-    @category = params[:category]
-    @minprice = params[:minprice]
-    @maxprice = params[:maxprice]
-    @minkilometrage = params[:minkilometrage]
-    @maxkilometrage = params[:maxkilometrage]
-    @minyear = params[:minyear]
-    @maxyear = params[:maxyear]
-    @energy = params[:energy]
-    @boite_vitesse = params[:boite_vitesse]
-  end
   
   def vehicles
-    @vehicles ||= find_vehicles
+    @vehicles ||= find_vehicles 
   end
   
   private
   
+  # TODO : refactor using Rails Upgrade handbook Chap. 4.4.1 - Better query composition
   def find_vehicles
     scope = Vehicle.scoped({})
     scope = scope.scoped :conditions => ["type = ?", @category] unless @category.blank?

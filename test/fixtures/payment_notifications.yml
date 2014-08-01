@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+verified:
+  params: '{:status=>\"verified\", :subscr_id=>2000}' 
+  subscription: verified_subscription
+  status: verified
+  transaction_id: 2000
+
+paid:
+  params: '{:status=>\"verified\", :subscr_id=>2000}'
+  subscription: verified_subscription
+  status: paid
+  transaction_id: 2001
+# 
+cancel:
+  params: '{:status=>\"verified\", :subscr_id=>2000}'
+  subscription: verified_subscription
+  status: paid
+  transaction_id: 2002

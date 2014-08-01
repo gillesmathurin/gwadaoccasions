@@ -53,7 +53,7 @@ class Vehicle < ActiveRecord::Base
 
   # TODO : Implement the SocialService (as a lib or model) responsible for sharing on social network
   def share_me
-    SocialServices.tweet(self)
+    SocialService.tweet(self)
     SocialService.fb_post(self)
   end
 end
