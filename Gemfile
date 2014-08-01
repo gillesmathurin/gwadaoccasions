@@ -54,6 +54,7 @@ group :test do
 	gem 'capybara'
 	gem 'database_cleaner'
 	gem 'capybara_minitest_spec'
+  gem 'minitest-reporters'
 end
 
 group :development do

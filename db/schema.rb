@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801021059) do
+ActiveRecord::Schema.define(version: 20140801164116) do
 
   create_table "admins", force: true do |t|
     t.datetime "created_at"
@@ -155,8 +155,8 @@ ActiveRecord::Schema.define(version: 20140801021059) do
     t.string   "modele"
     t.integer  "marque_id"
     t.string   "cylindree"
-    t.string   "energy"
-    t.string   "boite_vitesse"
+    t.integer  "energy",                   limit: 255
+    t.integer  "boite_vitesse",            limit: 255
     t.text     "description"
     t.string   "overviewpic_file_name"
     t.integer  "overviewpic_file_size"
@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 20140801021059) do
     t.datetime "overviewpic_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "select_for_week",          default: false
+    t.boolean  "select_for_week",                      default: false
     t.integer  "category_id"
     t.string   "backpic_file_name"
     t.string   "backpic_content_type"
@@ -191,7 +191,7 @@ ActiveRecord::Schema.define(version: 20140801021059) do
     t.integer  "lbackpic_file_size"
     t.datetime "lbackpic_updated_at"
     t.integer  "provider_id"
-    t.boolean  "disponibilite",            default: true
+    t.boolean  "disponibilite",                        default: true
     t.integer  "salesman_id"
   end
 

@@ -14,8 +14,8 @@ one:
   modele: MyString
   marque_id: 1
   cylindree: MyString
-  energy: MyString
-  boite_vitesse: MyString
+  energy: 0
+  boite_vitesse: 0
   description: MyText
   overviewpic_file_name: MyString
   overviewpic_file_size: 1
@@ -34,8 +34,8 @@ two:
   modele: MyString
   marque_id: 1
   cylindree: MyString
-  energy: MyString
-  boite_vitesse: MyString
+  energy: 0
+  boite_vitesse: 0
   description: MyText
   overviewpic_file_name: MyString
   overviewpic_file_size: 1
@@ -48,14 +48,14 @@ sp_vehicle:
   type: Voiture
   price: 3000
   kilometrage: 75000
-  annee: 2010-03-04
+  annee: <%= 4.years.ago %>
   immatriculation: 898AZT971
   serialnumber: AZX12345TRF
   modele: MyString
   marque_id: 1
   cylindree: MyString
-  energy: MyString
-  boite_vitesse: MyString
+  energy: 0
+  boite_vitesse: 0
   description: MyText
   overviewpic_file_name: MyString
   overviewpic_file_size: 1
